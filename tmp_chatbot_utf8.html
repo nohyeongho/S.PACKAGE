@@ -1,4 +1,4 @@
-
+﻿
 <html lang="ko">
 
 <head>
@@ -9,237 +9,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-    <style>
-        /* [대시보드 전용 스타일 - LG CS 포털 스타일] */
-        :root {
-            --portal-bg: #FFFFFF;
-            --portal-header-bg: #FFFFFF;
-            --portal-border: #E5E7EB;
-            --portal-text-main: #111827;
-            --portal-text-sub: #6B7280;
-            --portal-accent: #C0004D;
-            --portal-blue: #3B82F6;
-        }
-
-        #dashboard-layer {
-            background-color: var(--portal-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-            font-family: 'Noto Sans KR', sans-serif;
-            color: var(--portal-text-main);
-        }
-
-        /* 헤더 스타일 */
-        .p-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--portal-border);
-            position: sticky;
-            top: 0;
-            background: #FFF;
-            z-index: 100;
-        }
-        .p-header-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        /* 탭 스타일 */
-        .p-tabs {
-            display: flex;
-            border-bottom: 2px solid #EEE;
-            background: #FFF;
-        }
-        .p-tab {
-            flex: 1;
-            padding: 12px 0;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 700;
-            color: #999;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-        }
-        .p-tab.active {
-            color: var(--portal-accent);
-            border-bottom: 2px solid var(--portal-accent);
-        }
-
-        /* 섹션 및 그리드 스타일 */
-        .p-section-title {
-            padding: 16px;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--portal-accent);
-        }
-        .p-info-row {
-            display: flex;
-            border-bottom: 1px solid #F3F4F6;
-            padding: 10px 16px;
-            align-items: center;
-        }
-        .p-label {
-            width: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #444;
-            flex-shrink: 0;
-        }
-        .p-value {
-            flex: 1;
-            font-size: 13px;
-            font-weight: 500;
-            color: #333;
-        }
-        .p-btn-small {
-            padding: 4px 12px;
-            border: 1px solid #CCC;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 700;
-            background: #FFF;
-            cursor: pointer;
-        }
-
-        /* 하단 바 */
-        .p-bottom-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #FFF;
-            border-top: 1px solid var(--portal-border);
-            display: flex;
-            padding: 10px 16px;
-            gap: 8px;
-            z-index: 200;
-        }
-        .p-btn-outline {
-            flex: 1;
-            padding: 10px 0;
-            border: 1px solid #D12F2F;
-            color: #D12F2F;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 700;
-            text-align: center;
-            background: #FFF;
-        }
-        .p-btn-fill {
-            flex: 1;
-            padding: 10px 0;
-            background: var(--portal-accent);
-            color: #FFF;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        /* 챗봇 실행 버튼 (크기 축소 버전) */
-        #launch-chatbot-btn {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, #FF6B6B 0%, #D63384 50%, #833AB4 100%);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 3px 8px rgba(214, 51, 132, 0.3);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1.5px solid rgba(255,255,255,0.3);
-            flex-shrink: 0;
-            margin-top: -5px;
-            z-index: 10;
-        }
-        #launch-chatbot-btn:hover { 
-            transform: scale(1.1); 
-            box-shadow: 0 5px 12px rgba(214, 51, 132, 0.4);
-        }
-        #launch-chatbot-btn:active { transform: scale(0.95); }
-        
-        .ai-chat-label {
-            color: #FFFFFF;
-            font-size: 7px;
-            font-weight: 800;
-            margin-top: 0px;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -0.02em;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-            line-height: 1;
-        }
-
-        /* [심플 AI 로딩 스타일] */
-        .ai-simple-orb {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            background: rgba(131, 58, 180, 0.05);
-            border-radius: 50%;
-        }
-        .ai-pulse-ring {
-            position: absolute;
-            inset: 0;
-            border: 2px solid rgba(131, 58, 180, 0.3);
-            border-radius: 50%;
-            animation: ai-simple-pulse 2s infinite;
-        }
-        @keyframes ai-simple-pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        @keyframes text-gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        /* [런처 애니메이션] */
-        #launcher-layer {
-            position: fixed;
-            inset: 0;
-            background-color: #000;
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #FFF;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .launcher-icon { font-size: 90px; color: #E22D1E; margin-bottom: 24px; animation: l-pulse 1.5s infinite; }
-        .launcher-text { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: #EEE; }
-        @keyframes l-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
-
-        /* [챗봇 컨테이너 스코핑] */
-        #chatbot-app-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            z-index: 1500;
-            opacity: 0;
-            transition: opacity 0.7s ease;
-        }
-    </style>
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -4867,118 +4639,8 @@
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased min-h-screen text-sharp" style="margin:0; padding:0; overflow-x:hidden;">
-    <!-- [레이어 1: 프리미엄 대시보드] -->
-    <div id="dashboard-layer">
-        <!-- 상단 헤더 -->
-        <header class="p-header">
-            <span class="material-symbols-outlined cursor-pointer">arrow_back</span>
-            <div class="p-header-title">PB141345JK / 수기파기고객</div>
-            <div class="flex gap-4">
-                <span class="material-symbols-outlined cursor-pointer">refresh</span>
-                <span class="material-symbols-outlined cursor-pointer">search</span>
-                <span class="material-symbols-outlined cursor-pointer">grid_view</span>
-            </div>
-        </header>
-
-        <!-- 탭 메뉴 -->
-        <nav class="p-tabs">
-            <div class="p-tab active">고객정보</div>
-            <div class="p-tab">상담정보</div>
-            <div class="p-tab">처리결과</div>
-            <div class="p-tab">금액현황</div>
-        </nav>
-
-        <!-- 정보 리스트 영역 -->
-        <main class="flex-1 overflow-y-auto pb-24 bg-white">
-            <div class="p-info-row">
-                <div class="p-label">주수리수선 여부</div>
-                <div class="p-value">N</div>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">접수유형</div>
-                <div class="p-value">출장 / 긴급건</div>
-                <button class="p-btn-small">수정</button>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">약속일시</div>
-                <div class="p-value">2025-12-28 20:00</div>
-                <button class="p-btn-small">재약속</button>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">요구일시</div>
-                <div class="p-value">2025-11-14 13:44</div>
-                <button class="p-btn-small">약속이력</button>
-            </div>
-            
-            <div class="p-section-title">요구사항</div>
-            <div class="p-info-row" style="height: 50px;"></div>
-
-            <div class="p-info-row">
-                <div class="p-label">개인정보동의</div>
-                <div class="p-value">N | <span class="text-slate-400">ThinQ고객여부</span> N |</div>
-                <button class="p-btn-small">ThinQ 가입</button>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">담당SM</div>
-                <div class="p-value">노영호</div>
-                <button class="p-btn-small">담당자 이력</button>
-            </div>
-
-            <div class="p-section-title" style="color: #D12F2F;">상담정보</div>
-            <div class="p-info-row">
-                <div class="p-label">제품명</div>
-                <div class="p-value">냉장고_상냉장/하냉동</div>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">모델</div>
-                <div class="flex-1 px-3 py-2 border border-slate-300 rounded flex justify-between items-center bg-white mr-2">
-                    <span class="text-[14px] font-bold">F918SS33.AKOR</span>
-                    <span class="material-symbols-outlined text-[18px] text-slate-400">close</span>
-                </div>
-            </div>
-            
-            <div class="flex gap-1 p-3 overflow-x-auto no-scrollbar">
-                <button class="p-btn-small whitespace-nowrap">OCR</button>
-                <button class="p-btn-small whitespace-nowrap">상담 / PS</button>
-                <button class="p-btn-small whitespace-nowrap">기술교본</button>
-                <button class="p-btn-small whitespace-nowrap">회로도</button>
-                <button class="p-btn-small whitespace-nowrap">설명서</button>
-                <button class="p-btn-small whitespace-nowrap">기술정보</button>
-                <span class="material-symbols-outlined text-slate-700">qr_code_scanner</span>
-            </div>
-
-            <div class="p-info-row">
-                <div class="p-label">모델정보</div>
-                <div class="p-value text-[11px] text-slate-500">최초생산일자 : 2016-01-15<br>최종생산일자 : 2018-04-30</div>
-            </div>
-            <div class="p-info-row">
-                <div class="p-label">제조번호</div>
-                <div class="flex-1 px-3 py-2 border border-slate-300 rounded bg-white mr-2 h-9"></div>
-                <span class="material-symbols-outlined text-slate-700">reorder</span>
-            </div>
-        </main>
-
-        <!-- 하단 바 영역 -->
-        <div class="p-bottom-bar">
-            <!-- 챗봇 실행 버튼 (AI Chat 아이콘) -->
-            <div id="launch-chatbot-btn" title="AI 기술 지원 실행">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="white" style="margin-bottom: 2px;">
-                    <path d="M12 2c2.2 0 4 1.8 4 4v1h1c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h1V6c0-2.2 1.8-4 4-4zm0 2c-1.1 0-2 .9-2 2v1h4V6c0-1.1-.9-2-2-2zm-3 7c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm6 0c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm-3 4H9c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2h-3z"/>
-                </svg>
-                <div class="ai-chat-label">AI Chat</div>
-            </div>
-            
-            <button class="p-btn-outline ml-auto">부품정보</button>
-            <button class="p-btn-outline">LGSC</button>
-            <button class="p-btn-fill">처리완료</button>
-        </div>
-    </div>
-
-
-    <!-- [레이어 3: 기존 AI 기술 지원 챗봇 앱] -->
-    <div id="chatbot-app-layer">
-
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased min-h-screen pb-24 text-sharp">
 
 
     <header class="px-6 pt-6 pb-4 flex items-start justify-between 
@@ -4998,17 +4660,16 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
             <div class="flex flex-col">
                 <h1 class="text-[18px] font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-                    안녕하세요! SM님
-                </h1>
+                    ?덈뀞?섏꽭?? SM??                </h1>
                 <div class="mt-1.5 space-y-0">
                     <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        모델 : FH25VC
+                        紐⑤뜽 : FH25VC
                     </p>
                     <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        제조번호 : 601KEHX00021
+                        ?쒖“踰덊샇 : 601KEHX00021
                     </p>
                     <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        증상 : 건조가 안될 경우
+                        利앹긽 : 嫄댁“媛 ?덈맆 寃쎌슦
                     </p>
                 </div>
             </div>
@@ -5016,20 +4677,20 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
 
         <div class="flex flex-col items-end gap-2">
-            <!-- 상단: 설정 버튼 + 작은 pill 버튼 나란히 -->
+            <!-- ?곷떒: ?ㅼ젙 踰꾪듉 + ?묒? pill 踰꾪듉 ?섎???-->
             <div class="flex items-center gap-2">
-                <!-- 설정 버튼 -->
+                <!-- ?ㅼ젙 踰꾪듉 -->
                 <div class="relative">
                     <button id="settings-btn" class="text-slate-400 hover:text-slate-600 transition-colors mb-1">
                         <span class="material-symbols-outlined text-[24px] leading-none">settings</span>
                     </button>
-                    <!-- 설정 메뉴 (팝업) -->
+                    <!-- ?ㅼ젙 硫붾돱 (?앹뾽) -->
                     <div id="settings-menu"
                         class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 z-50 p-2">
                         <div class="space-y-1">
                             <label
                                 class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">수리 통계</span>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">?섎━ ?듦퀎</span>
                                 <input type="checkbox" id="toggle-repair-stats" class="sr-only peer" checked>
                                 <div
                                     class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
@@ -5037,7 +4698,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </label>
                             <label
                                 class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">이력 정보</span>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">?대젰 ?뺣낫</span>
                                 <input type="checkbox" id="toggle-history-info" class="sr-only peer" checked>
                                 <div
                                     class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
@@ -5047,7 +4708,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     </div>
                 </div>
 
-                <!-- 작은 pill 버튼 (설정 아이콘 높이와 유사한 크기) -->
+                <!-- ?묒? pill 踰꾪듉 (?ㅼ젙 ?꾩씠肄??믪씠? ?좎궗???ш린) -->
                 <button type="button" id="deep-research-btn" class="inline-flex items-center gap-1.5 rounded-full
              bg-blue-50 text-blue-700
              py-[3px] px-3 text-[11px] font-semibold
@@ -5059,29 +4720,25 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 </button>
             </div>
 
-            <!-- 상태 리스트 -->
+            <!-- ?곹깭 由ъ뒪??-->
             <div class="space-y-0.5">
                 <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    <span>LGSC : 지원</span>
+                    <span>LGSC : 吏??/span>
                     <span class="ml-auto">&gt;</span>
                 </div>
 
                 <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    <span>LGSC 중수리 : 지원</span>
-                    <span class="ml-auto">&gt;</span>
-                </div>
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                    <span>ARGUS : 미지원</span>
+                    <span>LGSC 以묒닔由?: 吏??/span>
                     <span class="ml-auto">&gt;</span>
                 </div>
 
-                <!-- 대시보드 복귀 버튼 (ARGUS 아래 배치) -->
-                <button type="button" id="exit-chatbot-btn" class="mt-4 inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-400 hover:text-primary" title="대시보드로 돌아가기">
-                    <span class="material-symbols-outlined text-[24px]">arrow_back</span>
-                </button>
+                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                    <span>ARGUS : 誘몄???/span>
+                    <span class="ml-auto">&gt;</span>
+                </div>
             </div>
         </div>
 
@@ -5092,8 +4749,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
             <div class="flex border-b border-slate-100 dark:border-slate-800">
                 <button class="flex-1 py-4 text-center text-primary font-bold border-b-2 border-primary text-[15px]">
-                    AI 브리핑
-                </button>
+                    AI 釉뚮━??                </button>
                 <button class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
                 </button>
                 <button class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
@@ -5106,22 +4762,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
                         Briefing</span>
                 </div>
-                
-                <!-- 심플 AI 로딩 인디케이터 -->
-                <div id="ai-loading-container" class="hidden flex-col items-center justify-center py-24 mb-6 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/40 shadow-sm transition-all duration-300">
-                    <div class="ai-simple-orb">
-                        <div class="ai-pulse-ring"></div>
-                        <span class="material-symbols-outlined text-purple-600 text-5xl font-black relative z-10">auto_awesome</span>
-                    </div>
-                    <div class="text-center relative z-10 px-6">
-                        <p class="text-[19px] font-black tracking-tighter mb-2" style="background: linear-gradient(90deg, #833AB4, #3498db, #833AB4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: text-gradient 3s linear infinite; font-family: 'Inter', sans-serif;">Deep Intelligence Analyzing...</p>
-                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-bold leading-relaxed">최신 기술 정보 및 빅데이터 패턴을 정밀 분석 중입니다.</p>
-                    </div>
-                </div>
-
-                <div id="ai-briefing-card"
-                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/50"
-                    style="display:none; opacity:0; transform: translateY(-10px); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                <div
+                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/50">
                     <div class="flex justify-between items-start mb-6">
                         <div class="flex items-center gap-2">
                             <div class="bg-primary/10 p-1.5 rounded-lg">
@@ -5133,70 +4775,60 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         <button id="voice-play-btn"
                             class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200">
                             <span class="material-symbols-outlined text-sm" id="voice-play-icon">play_circle</span>
-                            <span id="voice-play-text">음성 재생</span>
+                            <span id="voice-play-text">?뚯꽦 ?ъ깮</span>
                         </button>
                     </div>
                     <div id="ai-content-wrapper" class="relative transition-all duration-500 overflow-hidden"
                         style="max-height: none;">
                         <div id="ai-briefing-content" class="space-y-6 text-[14px] leading-relaxed pb-4">
-                            <!-- 스트리밍될 대상 (초기 공백) -->
-                        </div>
-                        
-                        <!-- 스트리밍 원본 소스 (풍성한 내용으로 복구) -->
-                        <div id="ai-briefing-source" style="display:none;">
-                            <div id="repair-stats-section" class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">1. 수리 통계 분석</h3>
-                                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
-                                    드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span class="text-slate-900 dark:text-white font-bold">부품 교체가 전체의 64%</span>를 차지하고 있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.
-                                </p>
-                                <ul class="space-y-2 mb-4 ml-1">
-                                    <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                        <span class="text-primary mt-1">●</span>
-                                        <span><span class="font-bold text-slate-900 dark:text-white">조정 수리 10%:</span> 배선 재결선, 커넥터 접촉 불량 조치 등 비교적 경미한 조치입니다.</span>
-                                    </li>
-                                    <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                        <span class="text-primary mt-1">●</span>
-                                        <span><span class="font-bold text-slate-900 dark:text-white">설명 처리 2%:</span> 세탁물 과다 적재 등 고객 안내만으로 해결되는 경우로 드문 편입니다.</span>
-                                    </li>
-                                </ul>
-                                <div class="bg-blue-50/50 dark:bg-blue-900/10 p-3 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
-                                    <p class="text-slate-800 dark:text-slate-200 font-bold text-[13px] mb-1">부품 교체 중 MAIN PCB 비중 72%</p>
-                                    <p class="text-slate-600 dark:text-slate-400 text-[12px]">LE 에러의 주요 원인이 모터 자체보다는 PCB 제어 이상에 집중되어 있음을 시사합니다.</p>
-                                </div>
-                            </div>
-
-                            <div class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">2. 업무 기준 안내 (무상 적용 조건)</h3>
-                                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
-                                    해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년 무상 보증</span>이 적용되는 모델입니다.
-                                </p>
-                                <div class="bg-slate-100/50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200/50 dark:border-slate-700/50 space-y-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                        <span class="text-[13px] text-slate-700 dark:text-slate-300"><span class="font-bold">생산 기간:</span> 2018년 5월 ~ 2019년 11월</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                        <span class="text-[13px] text-slate-700 dark:text-slate-300"><span class="font-bold">적용 범위:</span> LE 에러 발생 시 MAIN PCB 교체 건</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">3. 기술 정보</h3>
+                            <div id="repair-stats-section">
+                                <h3
+                                    class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                    ?섎━ ?듦퀎</h3>
                                 <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                    현장 점검 시 <span class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위</span>로 우선 측정하십시오. 기준치 이내라면 PCB 제어 로직 이상일 확률이 90% 이상입니다.
+                                    ?쒕읆?명긽湲?<span class="text-slate-900 dark:text-white font-bold">LE ?먮윭 諛쒖깮 ??遺???뚯슂 鍮꾩쨷??                                        64%</span>濡?媛???믪쑝硫? 議곗젙 ?섎━??10%, ?ㅻ챸 泥섎━??2% ?섏??? 遺??援먯껜 以묒뿉?쒕뒗 <span
+                                        class="text-slate-900 dark:text-white font-bold">MAIN PCB 援먯껜媛 72%</span>濡?媛???믪?
+                                    鍮꾩쨷??                                    李⑥???
                                 </p>
                             </div>
-
-                            <div class="pt-2">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">4. 이력 정보</h3>
-                                <div class="bg-purple-50/30 dark:bg-purple-900/10 p-3 rounded-xl border border-purple-100/30 dark:border-purple-800/20 space-y-2">
-                                    <p class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">
-                                        고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>이며, 해당 제품은 2028-05-31까지 무상 케어 대상입니다. 과거 90일 이내 재서비스 건이므로 세심한 배려가 필요합니다.
+                            <div>
+                                <h3
+                                    class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                    ?낅Т 湲곗?</h3>
+                                <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                    ?대떦 紐⑤뜽? LE ?먮윭 諛쒖깮 ??<span class="text-slate-900 dark:text-white font-bold">MAIN PCB??                                        ???7??                                        臾댁긽 ?곸슜 ???/span>?? 2018??5?붾???2019??11?붽퉴吏 ?앹궛???쒗뭹???쒗빐 臾댁긽 泥섎━ 媛?ν븿.
+                                </p>
+                            </div>
+                            <div>
+                                <h3
+                                    class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                    湲곗닠?뺣낫</h3>
+                                <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                    LE ?먮윭 諛쒖깮 ???명긽臾?怨쇰떎 諛??대Ъ ?좎엯 ?щ?瑜??곗꽑 ?먭??섍퀬, <span
+                                        class="text-slate-900 dark:text-white font-bold">?ㅽ뀒?댄꽣 ???컪??8~11廓 踰붿쐞濡?痢≪젙</span>?섏뿬
+                                    湲곗???                                    踰쀬뼱??寃쎌슦 紐⑦꽣瑜?援먯껜?? ?댁긽???놁쓣 寃쎌슦 PCB 援먯껜瑜?沅뚯옣??
+                                </p>
+                            </div>
+                            <div class="pt-2" id="history-info-section">
+                                <h3
+                                    class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
+                                    ?대젰 ?뺣낫</h3>
+                                <div class="space-y-3">
+                                    <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                        怨좉컼?섏? <span class="text-slate-900 dark:text-white font-bold">VIP 硫ㅻ쾭???깃툒</span>?쇰줈,
+                                        ?대떦
+                                        ?쒗뭹? <span class="text-slate-900 dark:text-white font-bold">2028-05-31源뚯? 臾댁긽
+                                            ?쒕퉬??/span>媛 ?쒓났?⑸땲??
                                     </p>
-                </div>
-                        <!-- 그라데이션 오버레이 (접혔을 때만 표시) -->
+                                    <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                        怨쇨굅 VOC ?대젰???뺤씤?섏뼱 ?ъ쟾 二쇱쓽媛 ?꾩슂?섎ŉ, ?명긽湲?湲됱닔?몄뒪 吏李??붿껌???덉뿀?듬땲?? ?먰븳, 蹂?嫄댁? <span
+                                            class="text-slate-900 dark:text-white font-bold">90???대궡 ?ъ꽌鍮꾩뒪 嫄?/span>?대?濡?媛곷퀎??                                        二쇱쓽媛
+                                        ?꾩슂?⑸땲??
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 洹몃씪?곗씠???ㅻ쾭?덉씠 (?묓삍???뚮쭔 ?쒖떆) -->
                         <div id="content-gradient-overlay"
                             class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-slate-800/50 to-transparent pointer-events-none hidden">
                         </div>
@@ -5204,7 +4836,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-center">
                         <button id="toggle-content-btn"
                             class="text-primary font-bold flex items-center gap-1 text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-colors">
-                            <span id="toggle-content-text">내용 접기</span>
+                            <span id="toggle-content-text">?댁슜 ?묎린</span>
                             <span id="toggle-content-icon"
                                 class="material-symbols-outlined text-[20px]">expand_less</span>
                         </button>
@@ -5213,179 +4845,527 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             </div>
         </div>
 
-        <!-- 상호작용 아이콘 (좋아요, 싫어요, 복사) -->
+        <!-- ?곹샇?묒슜 ?꾩씠肄?(醫뗭븘?? ?レ뼱?? 蹂듭궗) -->
         <div class="flex justify-end gap-4 mb-2 px-2">
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="좋아요">
+            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="醫뗭븘??>
                 <span class="material-symbols-outlined text-[20px]">thumb_up</span>
             </button>
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="싫어요">
+            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="?レ뼱??>
                 <span class="material-symbols-outlined text-[20px]">thumb_down</span>
             </button>
             <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-                title="복사하기">
+                title="蹂듭궗?섍린">
                 <span class="material-symbols-outlined text-[20px]">bookmark</span>
             </button>
         </div>
 
-    </header>
-    <main class="flex-1 overflow-y-auto px-4 pb-32 pt-2 custom-scrollbar">
-        <!-- 스트리밍될 대시보드 하단 분석 영역 (초기 공백) -->
-        <div id="dashboard-stream-target" class="space-y-6"></div>
-        
-        <!-- 대시보드 원본 소스 (숨김 처리) -->
-        <div id="dashboard-source" style="display:none;">
-            <section class="space-y-6">
-                <!-- 통계 정보 -->
-                <div class="space-y-3">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1 h-5 bg-red-500 rounded-full"></span>
-                        <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">통계 정보</h2>
-                    </div>
-                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-                        <table class="w-full text-center text-[13px] border-collapse">
-                            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                <tr>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">고장원인</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">비중</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">조정</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">설명</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">방문 취소</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">비용계</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품대</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">수리비</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">출장비</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">소계</td>
-                                    <td class="px-3 py-2">79%</td>
-                                    <td class="px-3 py-2">11%</td>
-                                    <td class="px-3 py-2">48%</td>
-                                    <td class="px-3 py-2">19%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">건조덕트이물</td>
-                                    <td class="px-3 py-2 font-bold bg-[#63b39c] text-white">39%</td>
-                                    <td class="px-3 py-2">7%</td>
-                                    <td class="px-3 py-2">24%</td>
-                                    <td class="px-3 py-2">7%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">83,500</td>
-                                    <td class="px-3 py-2">44,500</td>
-                                    <td class="px-3 py-2">11,000</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">기능이해/설정미숙</td>
-                                    <td class="px-3 py-2 font-bold bg-[#e0f2f1] text-slate-700 dark:bg-[#e0f2f1]/10 dark:text-slate-200">25%</td>
-                                    <td class="px-3 py-2">1%</td>
-                                    <td class="px-3 py-2">13%</td>
-                                    <td class="px-3 py-2">11%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">72,500</td>
-                                    <td class="px-3 py-2">44,500</td>
-                                    <td class="px-3 py-2">0</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">메인보드</td>
-                                    <td class="px-3 py-2">14%</td>
-                                    <td class="px-3 py-2">3%</td>
-                                    <td class="px-3 py-2">10%</td>
-                                    <td class="px-3 py-2">1%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">103,000</td>
-                                    <td class="px-3 py-2">64,000</td>
-                                    <td class="px-3 py-2">11,000</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <section class="space-y-6">
+
+            <!-- ?듦퀎 ?뺣낫 -->
+            <div class="space-y-3">
+
+
+                <div class="flex items-center gap-1.5">
+                    <span class="w-1 h-5 bg-red-500 rounded-full"></span>
+                    <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">?듦퀎 ?뺣낫</h2>
                 </div>
 
-                <!-- 증상별 부품 TOP 10 -->
-                <section class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-1 h-5 bg-red-500 rounded-full"></span>
-                            <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">증상별 부품 TOP 10</h2>
-                        </div>
-                        <button id="toggle-parts-btn" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                            <span id="toggle-parts-icon" class="material-symbols-outlined text-red-500">expand_less</span>
-                        </button>
-                    </div>
-                    <div id="parts-table-wrapper" class="overflow-hidden transition-all duration-300 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm rounded-xl">
-                        <table class="w-full text-left text-[13px] border-collapse">
-                            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                <tr>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품명</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">PN</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">건수</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">가격</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">재고</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr>
-                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">Pure Chem,R-600A</td>
-                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">RAC30248901</td>
-                                    <td class="px-3 py-2">193 (22%)</td>
-                                    <td class="px-3 py-2 text-right font-semibold">6,500</td>
-                                    <td class="px-3 py-2 text-right font-black text-slate-400">11</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">Compressor,Assy</td>
-                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">AGM30077605</td>
-                                    <td class="px-3 py-2">107 (12%)</td>
-                                    <td class="px-3 py-2 text-right font-semibold">341,000</td>
-                                    <td class="px-3 py-2 text-right font-black text-slate-400">3</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
 
-                <section class="space-y-3">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-slate-600 text-xl">smart_display</span>
-                        <h2 class="font-bold text-lg text-slate-900 dark:text-white">학습용 영상 컨텐츠</h2>
+
+                <div
+                    class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                    <table class="w-full text-center text-[13px] border-collapse">
+                        <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">怨좎옣?먯씤</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">鍮꾩쨷</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">遺??/th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">議곗젙</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">?ㅻ챸</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">諛⑸Ц 痍⑥냼</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">鍮꾩슜怨?/th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">遺?덈?</th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">?섎━鍮?/th>
+                            <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">異쒖옣鍮?/th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <tr>
+                                <td class="px-3 py-2 font-bold">?뚭퀎</td>
+                                <td class="px-3 py-2">79%</td>
+                                <td class="px-3 py-2">11%</td>
+                                <td class="px-3 py-2">48%</td>
+                                <td class="px-3 py-2">19%</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2">-</td>
+                            </tr>
+
+                            <tr>
+                                <td class="px-3 py-2 font-bold">嫄댁“?뺥듃?대Ъ</td>
+                                <td class="px-3 py-2 font-bold bg-[#63b39c] text-white">39%</td>
+                                <td class="px-3 py-2">7%</td>
+                                <td class="px-3 py-2">24%</td>
+                                <td class="px-3 py-2">7%</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2 font-bold">83,500</td>
+                                <td class="px-3 py-2">44,500</td>
+                                <td class="px-3 py-2">11,000</td>
+                                <td class="px-3 py-2">28,000</td>
+                            </tr>
+
+                            <tr>
+                                <td class="px-3 py-2 font-bold">湲곕뒫?댄빐/?ㅼ젙誘몄닕</td>
+                                <td
+                                    class="px-3 py-2 font-bold bg-[#e0f2f1] text-slate-700 dark:bg-[#e0f2f1]/10 dark:text-slate-200">
+                                    25%</td>
+                                <td class="px-3 py-2">1%</td>
+                                <td class="px-3 py-2">13%</td>
+                                <td class="px-3 py-2">11%</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2 font-bold">72,500</td>
+                                <td class="px-3 py-2">44,500</td>
+                                <td class="px-3 py-2">0</td>
+                                <td class="px-3 py-2">28,000</td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="px-3 py-2 font-bold">硫붿씤蹂대뱶</td>
+                                <td class="px-3 py-2">14%</td>
+                                <td class="px-3 py-2">3%</td>
+                                <td class="px-3 py-2">10%</td>
+                                <td class="px-3 py-2">1%</td>
+                                <td class="px-3 py-2">-</td>
+                                <td class="px-3 py-2 font-bold">103,000</td>
+                                <td class="px-3 py-2">64,000</td>
+                                <td class="px-3 py-2">11,000</td>
+                                <td class="px-3 py-2">28,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 利앹긽蹂?遺??TOP 10 (湲곗〈 肄붾뱶 洹몃?濡? -->
+            <section class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-1 h-5 bg-red-500 rounded-full"></span>
+                        <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">利앹긽蹂?遺??TOP 10</h2>
                     </div>
-                    <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
-                        <div class="flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                            <div class="h-28 bg-slate-200 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-slate-400 text-3xl">play_circle</span>
+                    <button id="toggle-parts-btn"
+                        class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+                        <span id="toggle-parts-icon" class="material-symbols-outlined text-red-500">expand_less</span>
+                    </button>
+                </div>
+
+                <div id="parts-table-wrapper"
+                    class="overflow-hidden transition-all duration-300 ease-in-out border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm rounded-xl"
+                    style="max-height: 1000px; opacity: 1;">
+                    <table class="w-full text-left text-[13px] border-collapse">
+                        <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                            <tr>
+                                <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">遺?덈챸</th>
+                                <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">PN</th>
+                                <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">嫄댁닔</th>
+                                <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">媛寃?/th>
+                                <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">?ш퀬</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <!-- 1 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">Pure
+                                    Chem,R-600A</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    RAC30248901 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('RAC30248901', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    193 (22%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    6,500</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">11</td>
+                            </tr>
+                            <!-- 2 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">
+                                    Compressor,Parts Assembly,SVC</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    AGM30077605 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('AGM30077605', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    107 (12%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    341,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">3</td>
+                            </tr>
+                            <!-- 3 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">Ring
+                                </td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    MGZ63047101 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('MGZ63047101', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    92 (11%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    3,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">5</td>
+                            </tr>
+                            <!-- 4 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">
+                                    Evaporator Assembly</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    ADL73683303 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('ADL73683303', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    68 (8%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    78,500</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">7</td>
+                            </tr>
+                            <!-- 5 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">Ring
+                                </td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    MGZ63048001 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('MGZ63048001', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    62 (7%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    3,500</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">34</td>
+                            </tr>
+                            <!-- 6 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">
+                                    Compressor,Parts Assembly,SVC</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    AGM30077606 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('AGM30077606', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    50 (6%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    341,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">77</td>
+                            </tr>
+                            <!-- 7 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">FREON
+                                    GAS,R-410A</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    7860G00001A <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('7860G00001A', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    66 (8%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    26,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">54</td>
+                            </tr>
+                            <!-- 8 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">Ring
+                                </td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    MGZ63047202 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('MGZ63047202', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    33 (4%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    4,500</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">23</td>
+                            </tr>
+                            <!-- 9 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">Ring
+                                </td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    MGZ63847301 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('MGZ63847301', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    27 (3%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    6,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">55</td>
+                            </tr>
+                            <!-- 10 -->
+                            <tr>
+                                <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200 leading-tight">SVC PCB
+                                    Assembly,Onboarding</td>
+                                <td
+                                    class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400 whitespace-nowrap flex items-center gap-1">
+                                    CSP30020930 <span
+                                        class="material-symbols-outlined text-[14px] cursor-pointer hover:text-blue-600"
+                                        onclick="copyToClipboard('CSP30020930', event)">content_copy</span>
+                                </td>
+                                <td class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                                    23 (3%)</td>
+                                <td
+                                    class="px-3 py-2 text-slate-700 dark:text-slate-300 whitespace-nowrap font-semibold text-right">
+                                    132,000</td>
+                                <td class="px-3 py-2 text-right font-black text-slate-400">66</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-slate-600">play_arrow</span>
+                <h2 class="font-bold text-lg text-slate-900">Contents</h2>
+            </div>
+            <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x px-1">
+                <!-- 湲곗닠?뺣낫 7嫄?-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-blue-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                            <span class="material-symbols-outlined">description</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">湲곗닠?뺣낫 7嫄?/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- ?쒕퉬?ㅻℓ?댁뼹 1嫄?-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-purple-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                            <span class="material-symbols-outlined">construction</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">?쒕퉬?ㅻℓ?댁뼹 1嫄?/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-purple-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- ?ㅻ챸??1嫄?-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-indigo-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">?ㅻ챸??1嫄?/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-indigo-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- ?ㅽ럺 -->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-orange-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                            <span class="material-symbols-outlined">fact_check</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">?ㅽ럺</span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-orange-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- 寃곗꽑??-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-amber-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <span class="material-symbols-outlined">hub</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">寃곗꽑??/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-amber-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- 遺꾪빐??-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-red-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                            <span class="material-symbols-outlined">grid_view</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">遺꾪빐??/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-red-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- ?ㅼ뒪濡쒗빐寃?-->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-green-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+                            <span class="material-symbols-outlined">handyman</span>
+                        </div>
+                        <span class="font-bold text-sm text-slate-900 dark:text-slate-100">?ㅼ뒪濡쒗빐寃?/span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-green-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+
+                <!-- 利앹긽蹂꾩닔由ш??대뱶 -->
+                <div
+                    class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-teal-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400">
+                            <span class="material-symbols-outlined">healing</span>
+                        </div>
+                        <span class="font-bold text-slate-900 dark:text-slate-100">利앹긽蹂꾩닔由ш??대뱶</span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-slate-400 group-hover:text-teal-500 transition-colors text-sm">arrow_forward_ios</span>
+                </div>
+            </div>
+        </section>
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-slate-900 font-bold">play_circle</span>
+                <h2 class="font-bold text-lg text-slate-900">Videos</h2>
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+                <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar px-1 snap-x">
+
+                    <!-- Video 1 -->
+                    <a href="https://youtu.be/MkSGfX86XBc" target="_blank"
+                        class="snap-start flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all group">
+                        <!-- Thumbnail Area -->
+                        <div class="relative h-28 bg-slate-200 dark:bg-slate-800">
+                            <!-- Placeholder Image (Gradient) -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white/50 text-[32px]">smart_display</span>
                             </div>
-                            <div class="p-3">
-                                <h3 class="text-slate-900 dark:text-white font-bold text-xs line-clamp-2">세탁기 완전 분해 청소방법!</h3>
-                                <p class="text-[10px] text-slate-500 mt-1">Verified Video • 788.3K Views</p>
+                            <!-- Play Overlay -->
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center backdrop-blur-sm">
+                                    <span class="material-symbols-outlined text-white text-[20px]">play_arrow</span>
+                                </div>
+                            </div>
+                            <!-- Duration Badge -->
+                            <div
+                                class="absolute bottom-2 right-2 bg-black/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
+                                12:33
                             </div>
                         </div>
-                    </div>
-                </section>
-            </section>
 
                         <!-- Content Area -->
-                        <div class="p-3">
-                            <p class="text-[10px] text-slate-500 font-bold mb-1">lge.co.kr</p>
-                            <h3 class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2 mb-2">
-                                세탁기 분해 청소 방법 전체영상 세탁조 통돌이 분해 청소 풀영상
+                        <div class="p-4">
+                            <p class="text-[11px] text-slate-500 font-bold mb-1">youtube.com</p>
+                            <h3
+                                class="text-slate-900 dark:text-white font-bold text-[14px] leading-snug line-clamp-2 mb-2">
+                                ?명긽湲??꾩쟾 遺꾪빐 泥?냼諛⑸쾿! ?낆껜留먭퀬 媛꾨떒?섍퀬 ?쎄쾶 ??꾨줈 ?묒뾽?대낫?몄슂!
                             </h3>
                             <div class="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
                                 <span class="text-green-600 flex items-center gap-0.5">
                                     <span class="material-symbols-outlined text-[12px]">check_circle</span>
                                     Verified
                                 </span>
-                                <span>•</span>
+                                <span>??/span>
+                                <span>Apr 23, 2021</span>
+                                <span>??/span>
+                                <span>788.3K Views</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Video 2 -->
+                    <a href="https://www.lge.co.kr/support/solutions-20152827440348" target="_blank"
+                        class="snap-start flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all group">
+                        <!-- Thumbnail Area -->
+                        <div class="relative h-28 bg-slate-200 dark:bg-slate-800">
+                            <!-- Placeholder Image (Gradient 2) -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-[#63b39c] to-[#42957e] flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white/50 text-[32px]">build</span>
+                            </div>
+                            <!-- Play Overlay -->
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center backdrop-blur-sm">
+                                    <span class="material-symbols-outlined text-white text-[20px]">play_arrow</span>
+                                </div>
+                            </div>
+                            <!-- Duration Badge -->
+                            <div
+                                class="absolute bottom-2 right-2 bg-black/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
+                                7:36
+                            </div>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="p-3">
+                            <p class="text-[10px] text-slate-500 font-bold mb-1">lge.co.kr</p>
+                            <h3 class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2 mb-2">
+                                ?명긽湲?遺꾪빐 泥?냼 諛⑸쾿 ?꾩껜?곸긽 ?명긽議??듬룎??遺꾪빐 泥?냼 ??곸긽
+                            </h3>
+                            <div class="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
+                                <span class="text-green-600 flex items-center gap-0.5">
+                                    <span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                    Verified
+                                </span>
+                                <span>??/span>
                                 <span>Mar 6, 2020</span>
-                                <span>•</span>
+                                <span>??/span>
                                 <span>51.5K Views</span>
                             </div>
                         </div>
@@ -5401,14 +5381,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
     <div class="pt-2 px-4">
         <h3
             class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
-            AI 추천 질문</h3>
+            AI 異붿쿇 吏덈Ц</h3>
         <div class="space-y-3 px-4">
             <p class="text-slate-700 dark:text-slate-300 font-medium">
-                드럼세탁기 LE 발생시 고장원인과 조치방법은 뭐니?
+                ?쒕읆?명긽湲?LE 諛쒖깮??怨좎옣?먯씤怨?議곗튂諛⑸쾿? 萸먮땲?
             </p>
             <p class="text-slate-700 dark:text-slate-300 font-medium">
-                드럼세탁기 Main pcb 점검방법을 알려줘
-            </p>
+                ?쒕읆?명긽湲?Main pcb ?먭?諛⑸쾿???뚮젮以?            </p>
         </div>
     </div>
 
@@ -5424,7 +5403,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <div class="relative flex flex-1 items-center gap-1">
                 <input
                     class="w-full rounded-full bg-white px-5 py-2.5 text-[14px] font-semibold placeholder-slate-500 focus:outline-none dark:bg-slate-800 dark:text-white pink-input-border"
-                    placeholder="무엇이든 물어보세요" type="text">
+                    placeholder="臾댁뾿?대뱺 臾쇱뼱蹂댁꽭?? type="text">
                 <button class="absolute right-3 p-1">
                     <span class="material-symbols-outlined text-xl font-bold text-slate-600">mic</span>
                 </button>
@@ -5435,11 +5414,10 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         </div>
     </footer>
 
-    <!-- 복사 완료 알림 (Toast) -->
+    <!-- 蹂듭궗 ?꾨즺 ?뚮┝ (Toast) -->
     <div id="copy-toast"
         class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-[100]">
-        복사되었습니다
-    </div>
+        蹂듭궗?섏뿀?듬땲??    </div>
 
     <!-- Code injected by live-server -->
     <script>
@@ -5502,18 +5480,17 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             if (isSpeaking) {
                 window.speechSynthesis.cancel();
                 isSpeaking = false;
-                voiceText.textContent = '음성 재생';
+                voiceText.textContent = '?뚯꽦 ?ъ깮';
                 voiceIcon.textContent = 'play_circle';
                 voiceBtn.classList.remove('text-primary', 'border-primary');
             } else {
-                // 텍스트 가져오기 및 자연스러운 끊어 읽기를 위한 전처리
-                let text = briefingContent.innerText;
-                // 줄바꿈이 있는 곳에 마침표를 추가하여 확실히 쉬어가도록 처리 (띄어쓰기/레이아웃 인식)
+                // ?띿뒪??媛?몄삤湲?諛??먯뿰?ㅻ윭???딆뼱 ?쎄린瑜??꾪븳 ?꾩쿂由?                let text = briefingContent.innerText;
+                // 以꾨컮轅덉씠 ?덈뒗 怨녹뿉 留덉묠?쒕? 異붽??섏뿬 ?뺤떎???ъ뼱媛?꾨줉 泥섎━ (?꾩뼱?곌린/?덉씠?꾩썐 ?몄떇)
                 text = text.replace(/\n+/g, '. ');
 
                 const utterance = new SpeechSynthesisUtterance(text);
 
-                // 한국어 음성 선택 (Google 음성 선호)
+                // ?쒓뎅???뚯꽦 ?좏깮 (Google ?뚯꽦 ?좏샇)
                 const voices = window.speechSynthesis.getVoices();
                 const koVoice = voices.find(v => v.lang.includes('ko') && v.name.includes('Google')) ||
                     voices.find(v => v.lang.includes('ko'));
@@ -5522,20 +5499,20 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     utterance.voice = koVoice;
                 }
 
-                // 젊고 밝은 목소리 설정
-                utterance.pitch = 1.2; // 피치를 높여서 젊고 밝은 느낌
-                utterance.rate = 1.0;  // 속도는 보통
+                // ?딄퀬 諛앹? 紐⑹냼由??ㅼ젙
+                utterance.pitch = 1.2; // ?쇱튂瑜??믪뿬???딄퀬 諛앹? ?먮굦
+                utterance.rate = 1.0;  // ?띾룄??蹂댄넻
 
                 utterance.onend = function () {
                     isSpeaking = false;
-                    voiceText.textContent = '음성 재생';
+                    voiceText.textContent = '?뚯꽦 ?ъ깮';
                     voiceIcon.textContent = 'play_circle';
                     voiceBtn.classList.remove('text-primary', 'border-primary');
                 };
 
                 window.speechSynthesis.speak(utterance);
                 isSpeaking = true;
-                voiceText.textContent = '재생 중지';
+                voiceText.textContent = '?ъ깮 以묒?';
                 voiceIcon.textContent = 'stop_circle';
                 voiceBtn.classList.add('text-primary', 'border-primary');
             }
@@ -5581,131 +5558,127 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         const deepResearchBtn = document.getElementById('deep-research-btn');
         let isDeepResearchMode = false;
 
-        // 원본 콘텐츠 (초기 상태 HTML 저장)
+        // ?먮낯 肄섑뀗痢?(珥덇린 ?곹깭 HTML ???
         const originalContentHTML = `
                         <div id="repair-stats-section">
                             <h3
                                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                수리 통계</h3>
+                                ?섎━ ?듦퀎</h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                드럼세탁기 <span class="text-slate-900 dark:text-white font-bold">LE 에러 발생 시 부품 소요 비중이
-                                    64%</span>로 가장 높으며, 조정 수리는 10%, 설명 처리는 2% 수준임. 부품 교체 중에서는 <span
-                                    class="text-slate-900 dark:text-white font-bold">MAIN PCB 교체가 72%</span>로 가장 높은 비중을
-                                차지함.
+                                ?쒕읆?명긽湲?<span class="text-slate-900 dark:text-white font-bold">LE ?먮윭 諛쒖깮 ??遺???뚯슂 鍮꾩쨷??                                    64%</span>濡?媛???믪쑝硫? 議곗젙 ?섎━??10%, ?ㅻ챸 泥섎━??2% ?섏??? 遺??援먯껜 以묒뿉?쒕뒗 <span
+                                    class="text-slate-900 dark:text-white font-bold">MAIN PCB 援먯껜媛 72%</span>濡?媛???믪? 鍮꾩쨷??                                李⑥???
                             </p>
                         </div>
                         <div>
                             <h3
                                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                업무 기준</h3>
+                                ?낅Т 湲곗?</h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년
-                                    무상 적용 대상</span>임. 2018년 5월부터 2019년 11월까지 생산된 제품에 한해 무상 처리 가능함.
+                                ?대떦 紐⑤뜽? LE ?먮윭 諛쒖깮 ??<span class="text-slate-900 dark:text-white font-bold">MAIN PCB?????7??                                    臾댁긽 ?곸슜 ???/span>?? 2018??5?붾???2019??11?붽퉴吏 ?앹궛???쒗뭹???쒗빐 臾댁긽 泥섎━ 媛?ν븿.
                             </p>
                         </div>
                         <div>
                             <h3
                                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                기술정보</h3>
+                                湲곗닠?뺣낫</h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                LE 에러 발생 시 세탁물 과다 및 이물 유입 여부를 우선 점검하고, <span
-                                    class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위로 측정</span>하여 기준을
-                                벗어날 경우 모터를 교체함. 이상이 없을 경우 PCB 교체를 권장함.
+                                LE ?먮윭 諛쒖깮 ???명긽臾?怨쇰떎 諛??대Ъ ?좎엯 ?щ?瑜??곗꽑 ?먭??섍퀬, <span
+                                    class="text-slate-900 dark:text-white font-bold">?ㅽ뀒?댄꽣 ???컪??8~11廓 踰붿쐞濡?痢≪젙</span>?섏뿬 湲곗???                                踰쀬뼱??寃쎌슦 紐⑦꽣瑜?援먯껜?? ?댁긽???놁쓣 寃쎌슦 PCB 援먯껜瑜?沅뚯옣??
                             </p>
                         </div>
                         <div class="pt-2" id="history-info-section">
                             <h3
                                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
-                                이력 정보</h3>
+                                ?대젰 ?뺣낫</h3>
                             <div class="space-y-3">
                                 <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                    고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>으로, 해당
-                                    제품은 <span class="text-slate-900 dark:text-white font-bold">2028-05-31까지 무상
-                                        서비스</span>가 제공됩니다.
+                                    怨좉컼?섏? <span class="text-slate-900 dark:text-white font-bold">VIP 硫ㅻ쾭???깃툒</span>?쇰줈, ?대떦
+                                    ?쒗뭹? <span class="text-slate-900 dark:text-white font-bold">2028-05-31源뚯? 臾댁긽
+                                        ?쒕퉬??/span>媛 ?쒓났?⑸땲??
                                 </p>
                                 <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                    과거 VOC 이력이 확인되어 사전 주의가 필요하며, 세탁기 급수호스 지참 요청이 있었습니다. 또한, 본 건은 <span
-                                        class="text-slate-900 dark:text-white font-bold">90일 이내 재서비스 건</span>이므로 각별한 주의가
-                                    필요합니다.
+                                    怨쇨굅 VOC ?대젰???뺤씤?섏뼱 ?ъ쟾 二쇱쓽媛 ?꾩슂?섎ŉ, ?명긽湲?湲됱닔?몄뒪 吏李??붿껌???덉뿀?듬땲?? ?먰븳, 蹂?嫄댁? <span
+                                        class="text-slate-900 dark:text-white font-bold">90???대궡 ?ъ꽌鍮꾩뒪 嫄?/span>?대?濡?媛곷퀎??二쇱쓽媛
+                                    ?꾩슂?⑸땲??
                                 </p>
                             </div>
                         </div>`;
 
-        // 상세 콘텐츠 (Deep Research HTML)
+        // ?곸꽭 肄섑뀗痢?(Deep Research HTML)
         const detailedContentHTML = `
                         <div id="repair-stats-section">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                1. 수리 통계 분석</h3>
+                                1. ?섎━ ?듦퀎 遺꾩꽍</h3>
                             <div class="text-slate-700 dark:text-slate-300 font-medium space-y-3">
-                                <p>드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span class="text-slate-900 dark:text-white font-bold">부품 교체가 전체의 64%</span>를 차지하고 있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.<br>
-                                이는 LE 에러가 주로 기계적 또는 전기적 부품 이상과 직접적으로 연관되어 있음을 의미합니다.</p>
+                                <p>?쒕읆?명긽湲곗뿉??LE ?먮윭媛 諛쒖깮?섎뒗 寃쎌슦, ?ㅼ젣 ?쒕퉬???대젰 湲곗??쇰줈 <span class="text-slate-900 dark:text-white font-bold">遺??援먯껜媛 ?꾩껜??64%</span>瑜?李⑥??섍퀬 ?덉뼱 ?⑥닚 ?ъ슜 ?덈궡??議곗젙留뚯쑝濡??닿껐?섎뒗 鍮꾩쨷? ??? ?몄엯?덈떎.<br>
+                                ?대뒗 LE ?먮윭媛 二쇰줈 湲곌퀎???먮뒗 ?꾧린??遺???댁긽怨?吏곸젒?곸쑝濡??곌??섏뼱 ?덉쓬???섎??⑸땲??</p>
                                 
                                 <ul class="list-disc pl-5 space-y-1">
-                                    <li><strong>조정 수리 10%</strong>: 배선 재결선, 커넥터 접촉 불량 조치, 센서 위치 조정 등 비교적 경미한 조치로 해결되는 사례입니다.</li>
-                                    <li><strong>설명 처리 2%</strong>: 세탁물 과다 적재, 사용 환경 문제 등 고객 안내만으로 해결되는 경우로, 실제로는 매우 드문 편입니다.</li>
+                                    <li><strong>議곗젙 ?섎━ 10%</strong>: 諛곗꽑 ?ш껐?? 而ㅻ꽖???묒큺 遺덈웾 議곗튂, ?쇱꽌 ?꾩튂 議곗젙 ??鍮꾧탳??寃쎈???議곗튂濡??닿껐?섎뒗 ?щ??낅땲??</li>
+                                    <li><strong>?ㅻ챸 泥섎━ 2%</strong>: ?명긽臾?怨쇰떎 ?곸옱, ?ъ슜 ?섍꼍 臾몄젣 ??怨좉컼 ?덈궡留뚯쑝濡??닿껐?섎뒗 寃쎌슦濡? ?ㅼ젣濡쒕뒗 留ㅼ슦 ?쒕Ц ?몄엯?덈떎.</li>
                                 </ul>
 
-                                <p class="pt-1"><strong>부품 교체 중 MAIN PCB 비중 72%</strong><br>
-                                부품 교체 사례 중 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB 교체가 72%</span>로 가장 높은 비중을 차지하고 있습니다.<br>
-                                이는 LE 에러의 주요 원인이 모터 자체보다는 PCB 제어 이상, 회로 오류, 제어 신호 불량에 집중되어 있음을 시사합니다.<br>
-                                <span class="text-blue-600 font-semibold">따라서 현장에서는 PCB 관련 점검 및 교체 가능성을 염두에 두고 접근하시는 것이 효율적입니다.</span></p>
+                                <p class="pt-1"><strong>遺??援먯껜 以?MAIN PCB 鍮꾩쨷 72%</strong><br>
+                                遺??援먯껜 ?щ? 以?<span class="text-slate-900 dark:text-white font-bold">MAIN PCB 援먯껜媛 72%</span>濡?媛???믪? 鍮꾩쨷??李⑥??섍퀬 ?덉뒿?덈떎.<br>
+                                ?대뒗 LE ?먮윭??二쇱슂 ?먯씤??紐⑦꽣 ?먯껜蹂대떎??PCB ?쒖뼱 ?댁긽, ?뚮줈 ?ㅻ쪟, ?쒖뼱 ?좏샇 遺덈웾??吏묒쨷?섏뼱 ?덉쓬???쒖궗?⑸땲??<br>
+                                <span class="text-blue-600 font-semibold">?곕씪???꾩옣?먯꽌??PCB 愿???먭? 諛?援먯껜 媛?μ꽦???쇰몢???먭퀬 ?묎렐?섏떆??寃껋씠 ?⑥쑉?곸엯?덈떎.</span></p>
                             </div>
                         </div>
                         <div class="mt-6">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                2. 업무 기준 안내 (무상 적용 조건)</h3>
+                                2. ?낅Т 湲곗? ?덈궡 (臾댁긽 ?곸슜 議곌굔)</h3>
                             <div class="text-slate-700 dark:text-slate-300 font-medium space-y-2">
-                                <p>해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년 무상 보증</span>이 적용되는 모델입니다.<br>
-                                다만, 모든 제품이 무상 대상은 아니며 아래 조건을 모두 충족해야 합니다.</p>
+                                <p>?대떦 紐⑤뜽? LE ?먮윭 諛쒖깮 ??<span class="text-slate-900 dark:text-white font-bold">MAIN PCB?????7??臾댁긽 蹂댁쬆</span>???곸슜?섎뒗 紐⑤뜽?낅땲??<br>
+                                ?ㅻ쭔, 紐⑤뱺 ?쒗뭹??臾댁긽 ??곸? ?꾨땲硫??꾨옒 議곌굔??紐⑤몢 異⑹”?댁빞 ?⑸땲??</p>
                                 <ul class="list-none bg-slate-50 dark:bg-slate-800 p-3 rounded-lg space-y-1 border border-slate-200 dark:border-slate-700">
-                                    <li>■ <strong>생산 기간</strong>: 2018년 5월 ~ 2019년 11월</li>
-                                    <li>■ <strong>적용 범위</strong>: LE 에러 발생 시 MAIN PCB 교체에 한하여 무상 처리 가능</li>
+                                    <li>??<strong>?앹궛 湲곌컙</strong>: 2018??5??~ 2019??11??/li>
+                                    <li>??<strong>?곸슜 踰붿쐞</strong>: LE ?먮윭 諛쒖깮 ??MAIN PCB 援먯껜???쒗븯??臾댁긽 泥섎━ 媛??/li>
                                 </ul>
-                                <p>위 조건에 해당할 경우, 고객 과실 여부와 무관하게 PCB 교체 비용은 청구되지 않으며, 해당 기준을 벗어난 제품은 일반 유상 처리 대상이 됩니다.<br>
-                                <span class="text-red-500 font-bold">따라서 방문 전 제조년월 확인은 필수 사항입니다.</span></p>
+                                <p>??議곌굔???대떦??寃쎌슦, 怨좉컼 怨쇱떎 ?щ?? 臾닿??섍쾶 PCB 援먯껜 鍮꾩슜? 泥?뎄?섏? ?딆쑝硫? ?대떦 湲곗???踰쀬뼱???쒗뭹? ?쇰컲 ?좎긽 泥섎━ ??곸씠 ?⑸땲??<br>
+                                <span class="text-red-500 font-bold">?곕씪??諛⑸Ц ???쒖“?꾩썡 ?뺤씤? ?꾩닔 ?ы빆?낅땲??</span></p>
                             </div>
                         </div>
                         <div class="mt-6">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                3. 기술 정보 및 점검 절차</h3>
+                                3. 湲곗닠 ?뺣낫 諛??먭? ?덉감</h3>
                             <div class="text-slate-700 dark:text-slate-300 font-medium space-y-3">
-                                <p>LE 에러 발생 시 권장되는 표준 점검 순서는 다음과 같습니다.</p>
+                                <p>LE ?먮윭 諛쒖깮 ??沅뚯옣?섎뒗 ?쒖? ?먭? ?쒖꽌???ㅼ쓬怨?媛숈뒿?덈떎.</p>
                                 <ol class="list-decimal pl-5 space-y-2">
-                                    <li><strong>세탁물 과다 여부 및 이물 유입 여부 우선 확인</strong><br>
-                                    과다 적재 또는 이물로 인해 모터 부하가 발생할 경우 LE 에러가 표시될 수 있으므로, 가장 먼저 육안 점검 및 고객 사용 패턴을 확인합니다.</li>
-                                    <li><strong>스테이터 저항값 측정</strong><br>
-                                    - 기준값: <span class="text-blue-600 font-bold">8~11Ω</span><br>
-                                    측정 결과가 기준 범위를 벗어날 경우, 모터 자체 불량으로 판단하여 모터 교체를 진행합니다.</li>
-                                    <li><strong>모터 이상이 없을 경우 PCB 점검</strong><br>
-                                    스테이터 저항값이 정상 범위일 경우, 모터보다는 PCB 제어 불량 가능성이 높으므로 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB 교체를 권장</span>합니다.</li>
+                                    <li><strong>?명긽臾?怨쇰떎 ?щ? 諛??대Ъ ?좎엯 ?щ? ?곗꽑 ?뺤씤</strong><br>
+                                    怨쇰떎 ?곸옱 ?먮뒗 ?대Ъ濡??명빐 紐⑦꽣 遺?섍? 諛쒖깮??寃쎌슦 LE ?먮윭媛 ?쒖떆?????덉쑝誘濡? 媛??癒쇱? ?≪븞 ?먭? 諛?怨좉컼 ?ъ슜 ?⑦꽩???뺤씤?⑸땲??</li>
+                                    <li><strong>?ㅽ뀒?댄꽣 ???컪 痢≪젙</strong><br>
+                                    - 湲곗?媛? <span class="text-blue-600 font-bold">8~11廓</span><br>
+                                    痢≪젙 寃곌낵媛 湲곗? 踰붿쐞瑜?踰쀬뼱??寃쎌슦, 紐⑦꽣 ?먯껜 遺덈웾?쇰줈 ?먮떒?섏뿬 紐⑦꽣 援먯껜瑜?吏꾪뻾?⑸땲??</li>
+                                    <li><strong>紐⑦꽣 ?댁긽???놁쓣 寃쎌슦 PCB ?먭?</strong><br>
+                                    ?ㅽ뀒?댄꽣 ???컪???뺤긽 踰붿쐞??寃쎌슦, 紐⑦꽣蹂대떎??PCB ?쒖뼱 遺덈웾 媛?μ꽦???믪쑝誘濡?<span class="text-slate-900 dark:text-white font-bold">MAIN PCB 援먯껜瑜?沅뚯옣</span>?⑸땲??</li>
                                 </ol>
-                                <p class="text-sm text-slate-500 italic">이와 같은 절차는 불필요한 부품 교체를 방지하고, 재방문을 줄이기 위한 표준 가이드라인입니다.</p>
+                                <p class="text-sm text-slate-500 italic">?댁? 媛숈? ?덉감??遺덊븘?뷀븳 遺??援먯껜瑜?諛⑹??섍퀬, ?щ갑臾몄쓣 以꾩씠湲??꾪븳 ?쒖? 媛?대뱶?쇱씤?낅땲??</p>
                             </div>
                         </div>
                         <div class="pt-4" id="history-info-section">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
-                                4. 이력 정보 및 서비스 시 유의사항</h3>
+                                4. ?대젰 ?뺣낫 諛??쒕퉬?????좎쓽?ы빆</h3>
                             <div class="text-slate-700 dark:text-slate-300 font-medium space-y-2">
                                 <div class="grid grid-cols-1 gap-2">
                                     <div class="bg-purple-50 dark:bg-slate-800 p-2 rounded border border-purple-100 dark:border-slate-700">
-                                        <div class="font-bold text-purple-700 dark:text-purple-300">고객 등급: VIP 멤버십</div>
-                                        <div class="text-sm">→ 서비스 품질 및 응대에 특히 유의가 필요합니다.</div>
+                                        <div class="font-bold text-purple-700 dark:text-purple-300">怨좉컼 ?깃툒: VIP 硫ㅻ쾭??/div>
+                                        <div class="text-sm">???쒕퉬???덉쭏 諛??묐????뱁엳 ?좎쓽媛 ?꾩슂?⑸땲??</div>
                                     </div>
                                     <div class="p-2 border-b border-slate-100 dark:border-slate-700">
-                                        <div class="font-bold text-slate-900 dark:text-white">무상 서비스 기간: 2028년 5월 31일까지</div>
-                                        <div class="text-sm">→ 보증 기간 내이므로, 조건 충족 시 무상 처리 적극 검토 대상입니다.</div>
+                                        <div class="font-bold text-slate-900 dark:text-white">臾댁긽 ?쒕퉬??湲곌컙: 2028??5??31?쇨퉴吏</div>
+                                        <div class="text-sm">??蹂댁쬆 湲곌컙 ?댁씠誘濡? 議곌굔 異⑹” ??臾댁긽 泥섎━ ?곴레 寃????곸엯?덈떎.</div>
                                     </div>
                                     <div class="p-2 border-b border-slate-100 dark:border-slate-700">
-                                        <div class="font-bold text-red-600">과거 VOC 이력 존재</div>
-                                        <div class="text-sm">→ 이전 불만 이력이 있어 고객 만족도가 낮을 수 있으므로, 설명 및 조치 과정에서 충분한 안내가 필요합니다.</div>
+                                        <div class="font-bold text-red-600">怨쇨굅 VOC ?대젰 議댁옱</div>
+                                        <div class="text-sm">???댁쟾 遺덈쭔 ?대젰???덉뼱 怨좉컼 留뚯”?꾧? ??쓣 ???덉쑝誘濡? ?ㅻ챸 諛?議곗튂 怨쇱젙?먯꽌 異⑸텇???덈궡媛 ?꾩슂?⑸땲??</div>
                                     </div>
                                     <div class="p-2 border-b border-slate-100 dark:border-slate-700">
-                                        <div class="font-bold text-slate-900 dark:text-white">급수호스 지참 요청 이력</div>
-                                        <div class="text-sm">→ 방문 시 급수호스를 반드시 준비하여 추가 방문이 발생하지 않도록 유의해야 합니다.</div>
+                                        <div class="font-bold text-slate-900 dark:text-white">湲됱닔?몄뒪 吏李??붿껌 ?대젰</div>
+                                        <div class="text-sm">??諛⑸Ц ??湲됱닔?몄뒪瑜?諛섎뱶??以鍮꾪븯??異붽? 諛⑸Ц??諛쒖깮?섏? ?딅룄濡??좎쓽?댁빞 ?⑸땲??</div>
                                     </div>
                                     <div class="bg-red-50 dark:bg-red-900/30 p-2 rounded border border-red-100 dark:border-red-800">
-                                        <div class="font-bold text-red-600 dark:text-red-400">90일 이내 재서비스 건</div>
-                                        <div class="text-sm">→ 동일 또는 유사 증상으로 재접수된 건으로, 조치의 정확성 및 결과 설명을 더욱 신중히 진행해야 하는 고위험 건입니다.</div>
+                                        <div class="font-bold text-red-600 dark:text-red-400">90???대궡 ?ъ꽌鍮꾩뒪 嫄?/div>
+                                        <div class="text-sm">???숈씪 ?먮뒗 ?좎궗 利앹긽?쇰줈 ?ъ젒?섎맂 嫄댁쑝濡? 議곗튂???뺥솗??諛?寃곌낵 ?ㅻ챸???붿슧 ?좎쨷??吏꾪뻾?댁빞 ?섎뒗 怨좎쐞??嫄댁엯?덈떎.</div>
                                     </div>
                                 </div>
                             </div>
@@ -5715,21 +5688,20 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const briefingContent = document.getElementById('ai-briefing-content');
 
             if (!isDeepResearchMode) {
-                // 상세 모드로 전환
+                // ?곸꽭 紐⑤뱶濡??꾪솚
                 briefingContent.innerHTML = detailedContentHTML;
                 this.classList.remove('bg-blue-50', 'text-blue-700');
                 this.classList.add('bg-blue-600', 'text-white', 'shadow-md');
                 isDeepResearchMode = true;
             } else {
-                // 원래 모드로 복귀
+                // ?먮옒 紐⑤뱶濡?蹂듦?
                 briefingContent.innerHTML = originalContentHTML;
                 this.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
                 this.classList.add('bg-blue-50', 'text-blue-700');
                 isDeepResearchMode = false;
             }
 
-            // 설정 메뉴의 토글 상태 재적용
-            const repairStatsEl = document.getElementById('repair-stats-section');
+            // ?ㅼ젙 硫붾돱???좉? ?곹깭 ?ъ쟻??            const repairStatsEl = document.getElementById('repair-stats-section');
             const historyInfoEl = document.getElementById('history-info-section');
 
             if (repairStatsEl) repairStatsEl.style.display = document.getElementById('toggle-repair-stats').checked ? 'block' : 'none';
@@ -5748,21 +5720,20 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         if (toggleContentBtn) {
             toggleContentBtn.addEventListener('click', function () {
                 if (isContentExpanded) {
-                    // 접기
+                    // ?묎린
                     aiContentWrapper.style.maxHeight = '300px';
-                    toggleContentText.textContent = '내용 펼치기';
+                    toggleContentText.textContent = '?댁슜 ?쇱튂湲?;
                     toggleContentIcon.textContent = 'expand_more';
                     contentGradientOverlay.classList.remove('hidden');
                     isContentExpanded = false;
                 } else {
-                    // 펼치기
-                    aiContentWrapper.style.maxHeight = aiContentWrapper.scrollHeight + 'px';
-                    // 애니메이션 완료 후 max-height 제거 (내용 변경 대응)
+                    // ?쇱튂湲?                    aiContentWrapper.style.maxHeight = aiContentWrapper.scrollHeight + 'px';
+                    // ?좊땲硫붿씠???꾨즺 ??max-height ?쒓굅 (?댁슜 蹂寃????
                     setTimeout(() => {
                         if (isContentExpanded) aiContentWrapper.style.maxHeight = 'none';
                     }, 500);
 
-                    toggleContentText.textContent = '내용 접기';
+                    toggleContentText.textContent = '?댁슜 ?묎린';
                     toggleContentIcon.textContent = 'expand_less';
                     contentGradientOverlay.classList.add('hidden');
                     isContentExpanded = true;
@@ -5780,7 +5751,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         if (togglePartsBtn) {
             togglePartsBtn.addEventListener('click', function () {
                 if (isPartsExpanded) {
-                    // 접기
+                    // ?묎린
                     partsTableWrapper.style.maxHeight = '0px';
                     partsTableWrapper.style.opacity = '0';
                     partsTableWrapper.style.borderWidth = '0px';
@@ -5788,8 +5759,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     togglePartsIcon.textContent = 'expand_more';
                     isPartsExpanded = false;
                 } else {
-                    // 펼치기
-                    partsTableWrapper.style.display = 'block'; // Ensure it flows
+                    // ?쇱튂湲?                    partsTableWrapper.style.display = 'block'; // Ensure it flows
                     partsTableWrapper.style.maxHeight = partsTableWrapper.scrollHeight + 'px';
                     partsTableWrapper.style.opacity = '1';
                     partsTableWrapper.style.borderWidth = '1px';
@@ -5845,18 +5815,18 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         }
     </script>
 
-    <!-- 부품 담기 팝업 -->
+    <!-- 遺???닿린 ?앹뾽 -->
     <div id="add-parts-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
-        <!-- 배경 오버레이 -->
+        <!-- 諛곌꼍 ?ㅻ쾭?덉씠 -->
         <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
 
-        <!-- 팝업 패널 -->
+        <!-- ?앹뾽 ?⑤꼸 -->
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                 <div
                     class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    <!-- 헤더 -->
+                    <!-- ?ㅻ뜑 -->
                     <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-slate-100 dark:border-slate-700">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
@@ -5864,7 +5834,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     class="text-slate-400 hover:text-slate-500">
                                     <span class="material-symbols-outlined">close</span>
                                 </button>
-                                <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">부품 담기</h3>
+                                <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">遺???닿린</h3>
                             </div>
                             <div class="flex items-center gap-2 text-slate-400">
                                 <span class="material-symbols-outlined">shopping_cart</span>
@@ -5872,42 +5842,42 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>
                         <div class="mt-4 pb-2 border-b-2 border-slate-800 w-full">
-                            <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
+                            <p class="text-sm font-bold text-slate-900">?묒닔踰덊샇 : PC301551TX</p>
                         </div>
                     </div>
 
-                    <!-- 컨텐츠 -->
+                    <!-- 而⑦뀗痢?-->
                     <div class="bg-white px-4 py-4">
                         <table class="w-full text-center text-sm border-collapse">
                             <thead class="bg-slate-50 text-slate-600 font-bold border-t border-slate-200">
                                 <tr>
                                     <th class="py-3 w-12 pl-4">
-                                        <!-- 전체 선택 체크박스 (비활성 예시) -->
+                                        <!-- ?꾩껜 ?좏깮 泥댄겕諛뺤뒪 (鍮꾪솢???덉떆) -->
                                         <div id="add-parts-select-all"
                                             class="w-6 h-6 rounded-full border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
                                         </div>
                                     </th>
-                                    <th class="py-3">부품명</th>
+                                    <th class="py-3">遺?덈챸</th>
                                     <th class="py-3">PN</th>
-                                    <th class="py-3">건수</th>
-                                    <th class="py-3">가격</th>
+                                    <th class="py-3">嫄댁닔</th>
+                                    <th class="py-3">媛寃?/th>
                                 </tr>
                             </thead>
                             <tbody id="modal-parts-list" class="divide-y divide-slate-100 text-slate-700 text-[13px]">
-                                <!-- JavaScript로 동적 추가될 영역 -->
+                                <!-- JavaScript濡??숈쟻 異붽????곸뿭 -->
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- 푸터 -->
+                    <!-- ?명꽣 -->
                     <div class="bg-white px-4 py-3 pb-6 sm:flex sm:flex-row-reverse sm:px-6 gap-2">
                         <button type="button" id="confirm-add-btn"
                             class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                            담기
+                            ?닿린
                         </button>
                         <button type="button" id="cancel-modal-btn"
                             class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                            취소
+                            痍⑥냼
                         </button>
                     </div>
                 </div>
@@ -5915,7 +5885,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         </div>
     </div>
 
-    <!-- 확인 팝업 (페이지 이동 확인) -->
+    <!-- ?뺤씤 ?앹뾽 (?섏씠吏 ?대룞 ?뺤씤) -->
     <div id="confirm-move-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
         <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
@@ -5926,18 +5896,18 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div class="mt-2 text-center">
                             <h3 class="text-base font-semibold leading-6 text-slate-900" id="modal-title">
-                                부품주문 화면으로 이동 하시겠습니까?
+                                遺?덉＜臾??붾㈃?쇰줈 ?대룞 ?섏떆寃좎뒿?덇퉴?
                             </h3>
                         </div>
                     </div>
                     <div class="bg-white px-4 py-3 pb-6 flex justify-center gap-8 sm:px-6">
                         <button type="button" id="confirm-move-cancel-btn"
                             class="text-slate-500 hover:text-slate-700 font-bold text-sm">
-                            취소
+                            痍⑥냼
                         </button>
                         <button type="button" id="confirm-move-ok-btn"
                             class="text-slate-900 hover:text-black font-bold text-sm">
-                            확인
+                            ?뺤씤
                         </button>
                     </div>
                 </div>
@@ -5945,7 +5915,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         </div>
     </div>
 
-    <!-- 부품 주문 팝업 -->
+    <!-- 遺??二쇰Ц ?앹뾽 -->
     <div id="order-parts-modal" class="fixed inset-0 z-[70] hidden" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
         <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
@@ -5953,13 +5923,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                 <div
                     class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
-                    <!-- 헤더 -->
+                    <!-- ?ㅻ뜑 -->
                     <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div class="flex items-center justify-between mb-4">
                             <button type="button" id="close-order-modal-btn-x" class="text-slate-900">
                                 <span class="material-symbols-outlined font-bold">close</span>
                             </button>
-                            <h3 class="text-xl font-bold leading-6 text-slate-900">부품 주문</h3>
+                            <h3 class="text-xl font-bold leading-6 text-slate-900">遺??二쇰Ц</h3>
                             <div class="flex items-center gap-3">
                                 <div class="relative">
                                     <span class="material-symbols-outlined text-slate-900">shopping_cart</span>
@@ -5970,35 +5940,35 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>
                         <div class="pb-2 border-b border-slate-400 w-full">
-                            <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
+                            <p class="text-sm font-bold text-slate-900">?묒닔踰덊샇 : PC301551TX</p>
                         </div>
                     </div>
 
-                    <!-- 전체선택 -->
+                    <!-- ?꾩껜?좏깮 -->
                     <div class="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center gap-3">
                         <div id="order-select-all-btn"
                             class="w-6 h-6 rounded border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
-                            <!-- 체크박스 UI -->
+                            <!-- 泥댄겕諛뺤뒪 UI -->
                         </div>
-                        <span class="font-bold text-slate-900 text-sm">전체선택</span>
+                        <span class="font-bold text-slate-900 text-sm">?꾩껜?좏깮</span>
                     </div>
 
-                    <!-- 주문 목록 -->
+                    <!-- 二쇰Ц 紐⑸줉 -->
                     <div class="bg-white px-6 py-4 max-h-[60vh] overflow-y-auto">
                         <div id="order-parts-list" class="space-y-6">
-                            <!-- 동적 추가 -->
+                            <!-- ?숈쟻 異붽? -->
                         </div>
                     </div>
 
-                    <!-- 푸터 -->
+                    <!-- ?명꽣 -->
                     <div class="bg-white px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 gap-2 border-t border-slate-100">
                         <button type="button" id="final-order-btn"
                             class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                            주문
+                            二쇰Ц
                         </button>
                         <button type="button" id="cancel-order-btn"
                             class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                            취소
+                            痍⑥냼
                         </button>
                     </div>
                 </div>
@@ -6006,7 +5976,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         </div>
     </div>
 
-    <!-- 주문 완료 팝업 -->
+    <!-- 二쇰Ц ?꾨즺 ?앹뾽 -->
     <div id="order-complete-modal" class="fixed inset-0 z-[80] hidden" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
         <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
@@ -6021,17 +5991,16 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 <span class="material-symbols-outlined text-green-600 text-2xl font-bold">check</span>
                             </div>
                             <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">
-                                주문이 완료되었습니다
-                            </h3>
+                                二쇰Ц???꾨즺?섏뿀?듬땲??                            </h3>
                             <p class="text-sm text-slate-500 mt-2">
-                                선택하신 부품 주문이 정상적으로 접수되었습니다.
+                                ?좏깮?섏떊 遺??二쇰Ц???뺤긽?곸쑝濡??묒닔?섏뿀?듬땲??
                             </p>
                         </div>
                     </div>
                     <div class="bg-white px-4 py-3 pb-6 flex justify-center sm:px-6">
                         <button type="button" id="order-complete-ok-btn"
                             class="inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[100px]">
-                            확인
+                            ?뺤씤
                         </button>
                     </div>
                 </div>
@@ -6041,11 +6010,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
 
 
-    <!-- 복사 완료 알림 (Toast) -->
+    <!-- 蹂듭궗 ?꾨즺 ?뚮┝ (Toast) -->
 
 
     <script>
-        // ... (기존 스크립트) ...
+        // ... (湲곗〈 ?ㅽ겕由쏀듃) ...
 
         // Parts Popup Functionality & Flow
         const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
@@ -6067,17 +6036,17 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
         // 1. Open Add Parts Modal
         function openModal(partData) {
-            // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
-            // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
-            // 여기서는 UI 시나리오대로 기존 예시와 합침.
+            // 珥덇린 ?곗씠???명똿 (湲곗〈 ?덉떆 ?곗씠??+ ?대┃???곗씠??
+            // ?ㅼ젣 援ы쁽?먯꽌???대┃???곗씠?곕쭔 ?ｊ굅?? 鍮꾨룞湲곕줈 媛?몄?????
+            // ?ш린?쒕뒗 UI ?쒕굹由ъ삤?濡?湲곗〈 ?덉떆? ?⑹묠.
 
             const otherPart = {
                 id: 'part-1',
                 name: 'Compressor,Parts Assembly,SVC',
-                pn: 'AGM30128802\n(원품)',
+                pn: 'AGM30128802\n(?먰뭹)',
                 pnRaw: 'AGM30128802',
-                count: '235건\n(55%)',
-                price: '310,000원',
+                count: '235嫄?n(55%)',
+                price: '310,000??,
                 priceRaw: 310000,
                 checked: true
             };
@@ -6085,12 +6054,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const selectedPart = {
                 id: 'part-2',
                 name: (partData.name || '').replace(',', ',<br>'),
-                pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
+                pn: (partData.pn || '').split(' ')[0] + '<br>(?먰뭹)',
                 pnRaw: (partData.pn || '').split(' ')[0],
                 count: (partData.count || '').replace(' ', '<br>'),
-                price: (partData.price || '') + '원',
+                price: (partData.price || '') + '??,
                 priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
-                checked: false // 기본 선택 안됨
+                checked: false // 湲곕낯 ?좏깮 ?덈맖
             };
 
             currentPartsList = [otherPart, selectedPart];
@@ -6166,23 +6135,23 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
         document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
 
-        // "담기" Click -> Show Confirmation
+        // "?닿린" Click -> Show Confirmation
         document.getElementById('confirm-add-btn').addEventListener('click', function () {
-            // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
-            closeModal(); // 1번 닫고
-            confirmMoveModal.classList.remove('hidden'); // 2번 열기
+            // ?좏깮????ぉ???덈뒗吏 ?뺤씤 (?좏깮 ?놁뼱???뺤씤李??꾩슱吏 ?щ???湲고쉷 ?섏〈, ?ш린?쒕뒗 ?꾩?)
+            closeModal(); // 1踰??リ퀬
+            confirmMoveModal.classList.remove('hidden'); // 2踰??닿린
         });
 
 
         // Event Listeners for Confirmation Modal
         document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
             closeConfirmModal();
-            addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
+            addPartsModal.classList.remove('hidden'); // 痍⑥냼 ???ㅼ떆 1踰?紐⑤떖濡??뚯븘媛?(UX???먯뿰?ㅻ윭?)
         });
 
         document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
             closeConfirmModal();
-            openOrderModal(); // 3번 열기
+            openOrderModal(); // 3踰??닿린
         });
 
 
@@ -6213,7 +6182,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
             let html = '';
             if (orderPopupItems.length === 0) {
-                html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
+                html = '<div class="text-center py-8 text-slate-500">?좏깮??遺?덉씠 ?놁뒿?덈떎.</div>';
             } else {
                 orderPopupItems.forEach((part, index) => {
                     const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
@@ -6232,8 +6201,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         <span class="font-black mr-1">CNZ</span> ${part.pnRaw}
                                     </div>
                                     <div class="text-xs text-slate-500 font-bold tracking-tight">
-                                        ${part.priceRaw.toLocaleString()}원 / ${part.priceRaw.toLocaleString()}원
-                                    </div>
+                                        ${part.priceRaw.toLocaleString()}??/ ${part.priceRaw.toLocaleString()}??                                    </div>
                                 </div>
                                 <div class="text-[13px] text-slate-800 font-medium mb-3 leading-snug">
                                     ${part.name.replace('<br>', ' ')}
@@ -6242,9 +6210,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <div class="flex items-center gap-2">
                                          <div class="flex items-center gap-1 px-2 py-0.5 rounded-full border border-[#4CAF50] text-[#4CAF50] bg-white text-xs font-bold">
                                             <span class="material-symbols-outlined text-[14px]">search</span>
-                                            출고
+                                            異쒓퀬
                                          </div>
-                                         <span class="text-slate-800 text-sm font-bold">냉장고</span>
+                                         <span class="text-slate-800 text-sm font-bold">?됱옣怨?/span>
                                          <span class="text-slate-400 text-sm ml-2">0</span>
                                     </div>
                                     <div class="flex items-center">
@@ -6288,12 +6256,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
         document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
         document.getElementById('final-order-btn').addEventListener('click', function () {
-            alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
+            alert('二쇰Ц???꾨즺?섏뿀?듬땲??'); // ?ㅼ젣 濡쒖쭅? ?놁쑝誘濡??뚮┝
             closeOrderModal();
         });
 
 
-        // ... (기존 테이블 행 클릭 이벤트 유지) ...
+        // ... (湲곗〈 ?뚯씠釉????대┃ ?대깽???좎?) ...
         partsRows.forEach(row => {
             row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
             row.addEventListener('click', function () {
@@ -6311,206 +6279,6 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         });
 
 
-    </script>
-    </div><!-- #chatbot-app-layer END -->
-
-    <script>
-        // [레이어 전환 및 실행 로직]
-        (function() {
-            const launchBtn = document.getElementById('launch-chatbot-btn');
-            const exitBtn = document.getElementById('exit-chatbot-btn');
-            const dashboard = document.getElementById('dashboard-layer');
-            const launcher = document.getElementById('launcher-layer');
-            const chatbotApp = document.getElementById('chatbot-app-layer');
-
-            // 1. 초기 상태 설정: 대시보드만 표시
-            dashboard.style.display = 'flex';
-            chatbotApp.style.display = 'none';
-
-            launchBtn.addEventListener('click', () => {
-                // 대시보드 페이드 아웃 (즉시 전환을 위해 시간 단축)
-                dashboard.style.transition = 'opacity 0.2s ease';
-                dashboard.style.opacity = '0';
-                
-                setTimeout(() => {
-                    dashboard.style.display = 'none';
-                    
-                    // 로딩 화면(런처)을 건너뛰고 챗봇 앱 컨테이너를 즉시 표시
-                    chatbotApp.style.display = 'block';
-                    setTimeout(() => { 
-                        chatbotApp.style.opacity = '1'; 
-                        // 차트 및 레이아웃 갱신을 위해 리사이즈 이벤트 발생
-                        window.dispatchEvent(new Event('resize'));
-                    }, 50);
-                }, 200);
-            });
-
-            exitBtn.addEventListener('click', () => {
-                // 챗봇 종료 처리
-                chatbotApp.style.transition = 'opacity 0.5s ease';
-                chatbotApp.style.opacity = '0';
-                
-                setTimeout(() => {
-                    chatbotApp.style.display = 'none';
-                    
-                    // 대시보드 복귀
-                    dashboard.style.display = 'flex';
-                    setTimeout(() => { dashboard.style.opacity = '1'; }, 50);
-                }, 550);
-            });
-
-            // Deep Research 버튼 인터랙션 로직
-            const deepResearchBtn = document.getElementById('deep-research-btn');
-            const briefingCard = document.getElementById('ai-briefing-card');
-            const loadingContainer = document.getElementById('ai-loading-container');
-
-            if (deepResearchBtn) {
-                deepResearchBtn.addEventListener('click', function() {
-                    // 1. 버튼 로딩 상태로 변경
-                    const originalHTML = this.innerHTML;
-                    this.disabled = true;
-                    this.classList.add('opacity-80', 'cursor-not-allowed');
-                    this.innerHTML = `
-                        <span class="material-symbols-outlined text-[16px] leading-none animate-spin">sync</span>
-                        연구 진행 중...
-                    `;
-
-                    // 2. 초기 리셋 (기본 답변 및 하단 영역 모두 비우기)
-                    briefingCard.style.display = 'none';
-                    loadingContainer.classList.remove('hidden');
-                    loadingContainer.classList.add('flex');
-                    
-                    const dashboardTarget = document.getElementById('dashboard-stream-target');
-                    const questionsTarget = document.getElementById('ai-questions-stream-target');
-                    if (dashboardTarget) dashboardTarget.innerHTML = '';
-                    if (questionsTarget) questionsTarget.innerHTML = '';
-
-                    // 3. 1.2초 후 순차 스트리밍 시작
-                    setTimeout(() => {
-                        // 로딩 컨테이너 숨기기
-                        loadingContainer.classList.add('hidden');
-                        loadingContainer.classList.remove('flex');
-
-                        // 버튼 상태 복구
-                        this.innerHTML = originalHTML;
-                        this.disabled = false;
-                        this.classList.remove('opacity-80', 'cursor-not-allowed');
-
-                        // 결과 카드 노출 및 순차 스트리밍 시작
-                        briefingCard.style.display = 'block';
-                        briefingCard.style.opacity = '1';
-                        briefingCard.style.transform = 'translateY(0)';
-                        
-                        const briefingSource = document.getElementById('ai-briefing-source');
-                        const briefingContent = document.getElementById('ai-briefing-content');
-                        
-                        const dashboardSource = document.getElementById('dashboard-source');
-                        const questionsSource = document.getElementById('ai-questions-source');
-
-                        // [순차적 스트리밍 시퀀스]
-                        if (briefingSource && briefingContent) {
-                            // Stage 1: AI 브리핑
-                            streamHTML(briefingSource, briefingContent, () => {
-                                // Stage 2: 대시보드 분석 본체 (통계, TOP 10 등)
-                                if (dashboardSource && dashboardTarget) {
-                                    streamHTML(dashboardSource, dashboardTarget, () => {
-                                        // Stage 3: 추천 질문
-                                        if (questionsSource && questionsTarget) {
-                                            streamHTML(questionsSource, questionsTarget, () => {
-                                                // 전체 완료 후 인터랙션 재연결
-                                                initDashboardInteractions();
-                                                window.dispatchEvent(new Event('resize'));
-                                            });
-                                        }
-                                    }, 20); // 본문은 양이 매우 많으므로 20자씩 고속 출력
-                                }
-                            });
-                        }
-                    }, 1400); 
-                });
-            }
-
-            // [인터랙션 재연결 함수]
-            function initDashboardInteractions() {
-                // 1. 부품 TOP 10 토글 버튼 재연결
-                const toggleBtn = document.getElementById('toggle-parts-btn');
-                const wrapper = document.getElementById('parts-table-wrapper');
-                const icon = document.getElementById('toggle-parts-icon');
-                
-                if (toggleBtn && wrapper) {
-                    toggleBtn.onclick = function() {
-                        const isHidden = wrapper.style.maxHeight === '0px';
-                        wrapper.style.maxHeight = isHidden ? '1000px' : '0px';
-                        wrapper.style.opacity = isHidden ? '1' : '0';
-                        if (icon) icon.innerText = isHidden ? 'expand_less' : 'expand_more';
-                    };
-                }
-
-                // 2. 테이블 행 클릭 시 팝업 열기 재연결
-                const dashboardTarget = document.getElementById('dashboard-stream-target');
-                if (dashboardTarget) {
-                    const rows = dashboardTarget.querySelectorAll('table tbody tr');
-                    rows.forEach(row => {
-                        row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-                        row.onclick = function() {
-                            const cells = this.querySelectorAll('td');
-                            if (cells.length >= 4 && this.closest('section')?.querySelector('h2')?.innerText.includes('부품')) {
-                                const partData = {
-                                    name: cells[0].innerText.trim(),
-                                    pn: cells[1].innerText.trim(),
-                                    count: cells[2].innerText.trim(),
-                                    price: cells[3].innerText.trim()
-                                };
-                                if (typeof openModal === 'function') openModal(partData);
-                            }
-                        };
-                    });
-                }
-            }
-
-            // [안정적인 고속 스트리밍 함수 - 커스텀 속도 옵션 추가]
-            function streamHTML(sourceElement, targetElement, callback, customChunkSize) {
-                const htmlString = sourceElement.innerHTML;
-                let index = 0;
-                targetElement.innerHTML = '';
-                
-                function step() {
-                    if (index < htmlString.length) {
-                        // 기본은 10자, 본문 등 양이 많으면 전달받은 customChunkSize 사용
-                        let chunkSize = customChunkSize || 10; 
-                        let nextIndex = Math.min(index + chunkSize, htmlString.length);
-                        
-                        let currentSub = htmlString.substring(0, nextIndex);
-                        let lastOpen = currentSub.lastIndexOf('<');
-                        let lastClose = currentSub.lastIndexOf('>');
-                        
-                        if (lastOpen > lastClose) {
-                            const realEnd = htmlString.indexOf('>', lastOpen);
-                            if (realEnd !== -1) {
-                                index = realEnd + 1;
-                            } else {
-                                index = nextIndex;
-                            }
-                        } else {
-                            index = nextIndex;
-                        }
-                        
-                        targetElement.innerHTML = htmlString.substring(0, index);
-                        
-                        // 자연스러운 스크롤 추적 (메인 컨테이너 하단으로)
-                        const appMain = document.querySelector('#chatbot-app-layer main');
-                        if (appMain) {
-                            appMain.scrollTop = appMain.scrollHeight;
-                        }
-                        
-                        setTimeout(step, 8); 
-                    } else if (callback) {
-                        callback();
-                    }
-                }
-                step();
-            }
-        })();
     </script>
 </body>
 
