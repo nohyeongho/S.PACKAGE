@@ -295,7 +295,39 @@
             opacity: 0;
             transition: opacity 0.7s ease;
         }
+        /* [개별 항목 상세 토글 버튼 3D 애니메이션] */
+        .toggle-detail-btn {
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            perspective: 500px;
+            transform-style: preserve-3d;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .toggle-detail-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .toggle-detail-btn:active {
+            transform: translateY(0);
+        }
+
+        .toggle-detail-btn.spin-3d {
+            animation: rotate3d-toggle 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes rotate3d-toggle {
+            0% { transform: rotateY(0); }
+            50% { transform: rotateY(180deg); opacity: 0.7; }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .toggle-detail-btn .material-symbols-outlined {
+            transition: transform 0.3s;
+        }
+
     </style>
+
 
     <script>
         tailwind.config = {
@@ -5227,7 +5259,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <h3
                                         class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                         <span>수리 통계</span>
-                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="repair-stats">
+                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="repair-stats">
                                             <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                         </button>
                                     </h3>
@@ -5243,7 +5275,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <h3
                                         class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                         <span>업무 기준</span>
-                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="work-standard">
+                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="work-standard">
                                             <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                         </button>
                                     </h3>
@@ -5257,7 +5289,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <h3
                                         class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                         <span>기술정보</span>
-                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="tech-info">
+                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="tech-info">
                                             <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                         </button>
                                     </h3>
@@ -5272,7 +5304,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <h3
                                         class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">
                                         <span>이력 정보</span>
-                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="history-info">
+                                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="history-info">
                                             <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                         </button>
                                     </h3>
@@ -5297,10 +5329,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                             <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
                                         </div>
                                     </div>
-                                    <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors mt-0.5" data-section="lgsc-info">
+                                    <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
                                         <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                     </button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -5735,7 +5768,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-repair-stats">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>수리 통계</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="repair-stats">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="repair-stats">
                                 <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </h3>
@@ -5747,7 +5780,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-work-standard">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>업무 기준</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="work-standard">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="work-standard">
                                 <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </h3>
@@ -5759,7 +5792,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-tech-info">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>기술정보</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="tech-info">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="tech-info">
                                 <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </h3>
@@ -5771,7 +5804,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-history-info">
                         <div class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                             <span>이력 정보</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="history-info">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="history-info">
                                 <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </div>
@@ -5783,8 +5816,23 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 과거 VOC 이력이 확인되어 사전 주의가 필요하며, 세탁기 급수호스 지참 요청이 있었습니다. 또한, 본 건은 <span class="text-slate-900 dark:text-white font-bold">90일 이내 재서비스 건</span>이므로 각별한 주의가 필요합니다.
                             </p>
                         </div>
+                    </div>`,
+                'lgsc-info': `
+                    <div id="section-lgsc-info" class="mt-6 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 border-l-[4px] border-purple-500 rounded-l-xl rounded-r-md py-3 pl-3 pr-4">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                            <div>
+                                <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC/Argus</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
+                            </div>
+                        </div>
+                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                        </button>
                     </div>`
             };
+
+
 
             // 상세 콘텐츠 데이터 구조화
             const detailedData = {
@@ -5792,10 +5840,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-repair-stats">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>1. 수리 통계 분석</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="repair-stats">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="repair-stats">
                                 <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
                             </button>
                         </h3>
+
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
                             드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span class="font-bold text-slate-900 dark:text-white">부품 교체가 전체의 64%</span>를 차지하고 있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.<br>
                             이는 LE 에러가 주로 기계적 또는 전기적 부품 이상과 직접적으로 연관되어 있음을 의미합니다.
@@ -5815,10 +5864,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-work-standard">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>2. 업무 기준 안내 (무상 적용 조건)</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="work-standard">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="work-standard">
                                 <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
                             </button>
                         </h3>
+
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">
                             해당 모델은 LE 에러 발생 시 MAIN PCB에 대해 7년 무상 보증이 적용되는 모델입니다.<br>
                             다만, 모든 제품이 무상 대상은 아니며 아래 조건을 모두 충족해야 합니다.
@@ -5836,10 +5886,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-tech-info">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>3. 기술 정보 및 점검 절차</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="tech-info">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="tech-info">
                                 <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
                             </button>
                         </h3>
+
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
                             LE 에러 발생 시 권장되는 표준 점검 순서는 다음과 같습니다.
                         </p>
@@ -5865,10 +5916,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <div id="section-history-info">
                         <h3 class="flex items-center justify-between font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                             <span>4. 이력 정보 및 유의사항</span>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="history-info">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="history-info">
                                 <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
                             </button>
                         </h3>
+
                         <div class="space-y-3">
                             <div class="flex items-start gap-2">
                                 <span class="material-symbols-outlined text-[18px] text-yellow-600 mt-0.5">stars</span>
@@ -5906,8 +5958,87 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </div>
                             </div>
                         </div>
+                    </div>`,
+                'lgsc-info': `
+                    <div id="section-lgsc-info" class="mt-6 space-y-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+                        <div class="flex items-center justify-between mb-2 relative z-10">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-purple-600">query_stats</span>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-[15px]">LGSC/Argus 상세 정보</h3>
+                            </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-5 relative z-10">
+                            <!-- 1. LGSC 진단이력 -->
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                                    1. LGSC 진단이력
+                                </h4>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">진단이력이 있습니다.</span>
+                                    <span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] rounded border border-slate-200 dark:border-slate-700 font-bold">SHOW</span>
+                                </div>
+                                <p class="text-slate-900 dark:text-white font-bold text-[13px] mb-2 px-1 border-l-2 border-slate-200 dark:border-slate-700">LGSC 내장형 FOTA 이력이 있습니다</p>
+                                <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
+                                    <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
+                                        <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                            <tr>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Checksum(전)</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum(후)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                                            <tr>
+                                                <td class="px-2 py-2 font-mono">P00000000</td>
+                                                <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
+                                                <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
+                                                <td class="px-2 py-2 font-mono text-slate-500">0x00001212</td>
+                                                <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 2. 최근 S/W 버전 정보(LGSC) -->
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                                    2. 최근 S/W 버전 정보(LGSC)
+                                </h4>
+                                <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
+                                    <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
+                                        <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                            <tr>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
+                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                                            <tr>
+                                                <td class="px-2 py-2 font-mono">P00000000</td>
+                                                <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
+                                                <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
+                                                <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>`
             };
+
 
             // 전체 상세 콘텐츠 (Deep Research 버튼용 연동)
             const detailedContentHTML = `
@@ -5916,7 +6047,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     ${detailedData['work-standard']}
                     ${detailedData['tech-info']}
                     ${detailedData['history-info']}
+                    ${detailedData['lgsc-info']}
                 </div>`;
+
 
             // 원본 콘텐츠
             const originalContentHTML = `
@@ -5924,7 +6057,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>수리 통계</span>
-                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="repair-stats">
+                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="repair-stats">
                                     <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                 </button>
                             </h3>
@@ -5939,7 +6072,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>업무 기준</span>
-                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="work-standard">
+                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="work-standard">
                                     <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                 </button>
                             </h3>
@@ -5952,7 +6085,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>기술정보</span>
-                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="tech-info">
+                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="tech-info">
                                     <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                 </button>
                             </h3>
@@ -5966,10 +6099,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                                 <span>이력 정보</span>
-                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="history-info">
+                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="history-info">
                                     <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                                 </button>
                             </h3>
+
                             <div class="space-y-3">
                                 <p class="text-slate-700 dark:text-slate-300 font-medium">
                                     고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>으로, 해당
@@ -6824,33 +6958,46 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     });
                 }
 
-                // 3. 개별 섹션 상세 토글 기능 추가 (이벤트 위임)
+            // 3. 개별 섹션 상세 토글 기능 추가 (이벤트 위임 + 3D 회전 애니메이션)
                 const briefingContent = document.getElementById('ai-briefing-content');
                 if (briefingContent) {
-                    briefingContent.onclick = function(e) {
+                    briefingContent.onclick = function (e) {
                         const btn = e.target.closest('.toggle-detail-btn');
                         if (btn) {
                             const sectionKey = btn.getAttribute('data-section');
                             const parentId = btn.closest('[id^="section-"]').id;
                             const targetDiv = document.getElementById(parentId);
                             const icon = btn.querySelector('.material-symbols-outlined');
-                            
+
                             if (targetDiv && detailedData && detailedData[sectionKey]) {
-                                if (icon.innerText === 'add') {
-                                    // 상세 내용으로 교체
-                                    targetDiv.innerHTML = detailedData[sectionKey];
-                                } else {
-                                    // 요약 내용으로 복구
-                                    targetDiv.innerHTML = summaryData[sectionKey];
-                                }
-                                
-                                // 하단 스크롤 추적
-                                const appMain = document.querySelector('#chatbot-app-layer main');
-                                if (appMain) appMain.scrollTop = appMain.scrollHeight;
+                                // 3D 회전 애니메이션 클래스 추가
+                                btn.classList.add('spin-3d');
+
+                                // 회전 애니메이션 중간 지점(180도) 부근에서 콘텐츠 교체
+                                setTimeout(() => {
+                                    if (icon.innerText === 'add') {
+                                        // 상세 내용으로 교체
+                                        targetDiv.innerHTML = detailedData[sectionKey];
+                                    } else {
+                                        // 요약 내용으로 복구
+                                        targetDiv.innerHTML = summaryData[sectionKey];
+                                    }
+
+                                    // 하단 스크롤 추적
+                                    const appMain = document.querySelector('#chatbot-app-layer main');
+                                    if (appMain) appMain.scrollTop = appMain.scrollHeight;
+                                }, 300);
+
+                                // 애니메이션 종료 후 클래스 제거 (재사용 가능하도록)
+                                setTimeout(() => {
+                                    const newBtn = targetDiv.querySelector('.toggle-detail-btn');
+                                    if (newBtn) newBtn.classList.remove('spin-3d');
+                                }, 600);
                             }
                         }
                     };
                 }
+
             }
 
             // [안정적인 고속 스트리밍 함수 - 잔상 및 깜빡임 제거 버전]
