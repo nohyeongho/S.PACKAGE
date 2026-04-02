@@ -5729,11 +5729,73 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const deepResearchBtn = document.getElementById('deep-research-btn');
             let isDeepResearchMode = false;
 
+            // 요약 콘텐츠 데이터 구조화 (접기 기능용)
+            const summaryData = {
+                'repair-stats': `
+                    <div id="section-repair-stats">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>수리 통계</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="repair-stats">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 font-medium">
+                            드럼세탁기 <span class="text-slate-900 dark:text-white font-bold">LE 에러 발생 시 부품 소요 비중이 64%</span>로 가장 높으며, 조정 수리는 10%, 설명 처리는 2% 수준임. 부품 교체 중에서는 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB 교체가 72%</span>로 가장 높은 비중을 차지함.
+                        </p>
+                    </div>`,
+                'work-standard': `
+                    <div id="section-work-standard">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>업무 기준</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="work-standard">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 font-medium">
+                            해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년 무상 적용 대상</span>임. 2018년 5월부터 2019년 11월까지 생산된 제품에 한해 무상 처리 가능함.
+                        </p>
+                    </div>`,
+                'tech-info': `
+                    <div id="section-tech-info">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>기술정보</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="tech-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 font-medium">
+                            LE 에러 발생 시 세탁물 과다 및 이물 유입 여부를 우선 점검하고, <span class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위로 측정</span>하여 기준을 벗어날 경우 모터를 교체함. 이상이 없을 경우 PCB 교체를 권장함.
+                        </p>
+                    </div>`,
+                'history-info': `
+                    <div id="section-history-info">
+                        <div class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
+                            <span>이력 정보</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors" data-section="history-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </div>
+                        <div class="space-y-3">
+                            <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>으로, 해당 제품은 <span class="text-slate-900 dark:text-white font-bold">2028-05-31까지 무상 서비스</span>가 제공됩니다.
+                            </p>
+                            <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                과거 VOC 이력이 확인되어 사전 주의가 필요하며, 세탁기 급수호스 지참 요청이 있었습니다. 또한, 본 건은 <span class="text-slate-900 dark:text-white font-bold">90일 이내 재서비스 건</span>이므로 각별한 주의가 필요합니다.
+                            </p>
+                        </div>
+                    </div>`
+            };
+
             // 상세 콘텐츠 데이터 구조화
             const detailedData = {
                 'repair-stats': `
-                    <div>
-                        <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">1. 수리 통계 분석</h3>
+                    <div id="section-repair-stats">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>1. 수리 통계 분석</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="repair-stats">
+                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            </button>
+                        </h3>
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
                             드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span class="font-bold text-slate-900 dark:text-white">부품 교체가 전체의 64%</span>를 차지하고 있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.<br>
                             이는 LE 에러가 주로 기계적 또는 전기적 부품 이상과 직접적으로 연관되어 있음을 의미합니다.
@@ -5750,8 +5812,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'work-standard': `
-                    <div>
-                        <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">2. 업무 기준 안내 (무상 적용 조건)</h3>
+                    <div id="section-work-standard">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>2. 업무 기준 안내 (무상 적용 조건)</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="work-standard">
+                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            </button>
+                        </h3>
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">
                             해당 모델은 LE 에러 발생 시 MAIN PCB에 대해 7년 무상 보증이 적용되는 모델입니다.<br>
                             다만, 모든 제품이 무상 대상은 아니며 아래 조건을 모두 충족해야 합니다.
@@ -5766,8 +5833,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </p>
                     </div>`,
                 'tech-info': `
-                    <div>
-                        <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">3. 기술 정보 및 점검 절차</h3>
+                    <div id="section-tech-info">
+                        <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                            <span>3. 기술 정보 및 점검 절차</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="tech-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            </button>
+                        </h3>
                         <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
                             LE 에러 발생 시 권장되는 표준 점검 순서는 다음과 같습니다.
                         </p>
@@ -5790,8 +5862,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </p>
                     </div>`,
                 'history-info': `
-                    <div>
-                        <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">4. 이력 정보 및 서비스 시 유의사항</h3>
+                    <div id="section-history-info">
+                        <h3 class="flex items-center justify-between font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
+                            <span>4. 이력 정보 및 유의사항</span>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-600 text-white hover:bg-slate-700 transition-colors" data-section="history-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            </button>
+                        </h3>
                         <div class="space-y-3">
                             <div class="flex items-start gap-2">
                                 <span class="material-symbols-outlined text-[18px] text-yellow-600 mt-0.5">stars</span>
@@ -6756,10 +6833,16 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             const sectionKey = btn.getAttribute('data-section');
                             const parentId = btn.closest('[id^="section-"]').id;
                             const targetDiv = document.getElementById(parentId);
+                            const icon = btn.querySelector('.material-symbols-outlined');
                             
                             if (targetDiv && detailedData && detailedData[sectionKey]) {
-                                // 상세 내용으로 교체
-                                targetDiv.innerHTML = detailedData[sectionKey];
+                                if (icon.innerText === 'add') {
+                                    // 상세 내용으로 교체
+                                    targetDiv.innerHTML = detailedData[sectionKey];
+                                } else {
+                                    // 요약 내용으로 복구
+                                    targetDiv.innerHTML = summaryData[sectionKey];
+                                }
                                 
                                 // 하단 스크롤 추적
                                 const appMain = document.querySelector('#chatbot-app-layer main');
