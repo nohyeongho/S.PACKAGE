@@ -6741,47 +6741,95 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 }
             }
 
-            // [안정적인 고속 스트리밍 함수 - 커스텀 속도 옵션 추가]
+            // [안정적인 고속 스트리밍 함수 - 잔상 및 깜빡임 제거 버전]
             function streamHTML(sourceElement, targetElement, callback, customChunkSize) {
-                const htmlString = sourceElement.innerHTML;
-                let index = 0;
-                targetElement.innerHTML = '';
+                // 1. DOM 트리를 복사하고, 모든 요소를 처음에 투명하게 처리 (잔상 방지)
+                targetElement.innerHTML = sourceElement.innerHTML;
+                const allChildren = targetElement.querySelectorAll('*');
+                allChildren.forEach(child => {
+                    child.style.opacity = '0';
+                    child.style.transition = 'opacity 0.2s ease';
+                });
+                
+                const walker = document.createTreeWalker(
+                    targetElement, 
+                    NodeFilter.SHOW_TEXT, 
+                    {
+                        acceptNode: function(node) {
+                            if (node.parentNode.tagName === 'STYLE' || node.parentNode.tagName === 'SCRIPT') {
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                            if (node.parentNode.classList && node.parentNode.classList.contains('material-symbols-outlined')) {
+                                return NodeFilter.FILTER_SKIP;
+                            }
+                            if (node.textContent.trim().length === 0) {
+                                return NodeFilter.FILTER_SKIP;
+                            }
+                            return NodeFilter.FILTER_ACCEPT;
+                        }
+                    }
+                );
+
+                const textNodes = [];
+                let node;
+                while(node = walker.nextNode()) {
+                    textNodes.push({
+                        node: node,
+                        originalText: node.textContent,
+                    });
+                    node.textContent = ''; 
+                }
+
+                let currentNodeIndex = 0;
+                let charIndex = 0;
 
                 function step() {
-                    if (index < htmlString.length) {
-                        // 기본은 10자, 본문 등 양이 많으면 전달받은 customChunkSize 사용
-                        let chunkSize = customChunkSize || 10;
-                        let nextIndex = Math.min(index + chunkSize, htmlString.length);
+                    let chunkSize = customChunkSize || 5;
+                    let charsProcessed = 0;
 
-                        let currentSub = htmlString.substring(0, nextIndex);
-                        let lastOpen = currentSub.lastIndexOf('<');
-                        let lastClose = currentSub.lastIndexOf('>');
+                    while (charsProcessed < chunkSize && currentNodeIndex < textNodes.length) {
+                        let textInfo = textNodes[currentNodeIndex];
+                        
+                        // 현재 타이핑 중인 노드의 부모들을 보이게 처리
+                        let parent = textInfo.node.parentNode;
+                        while(parent && parent !== targetElement) {
+                            parent.style.opacity = '1';
+                            parent = parent.parentNode;
+                        }
 
-                        if (lastOpen > lastClose) {
-                            const realEnd = htmlString.indexOf('>', lastOpen);
-                            if (realEnd !== -1) {
-                                index = realEnd + 1;
-                            } else {
-                                index = nextIndex;
-                            }
+                        let charsLeft = textInfo.originalText.length - charIndex;
+                        if (charsLeft <= (chunkSize - charsProcessed)) {
+                            charIndex = 0;
+                            textInfo.node.textContent = textInfo.originalText;
+                            currentNodeIndex++;
+                            charsProcessed += charsLeft;
                         } else {
-                            index = nextIndex;
+                            charIndex += (chunkSize - charsProcessed);
+                            textInfo.node.textContent = textInfo.originalText.substring(0, charIndex);
+                            charsProcessed = chunkSize;
                         }
+                    }
 
-                        targetElement.innerHTML = htmlString.substring(0, index);
+                    const appMain = document.querySelector('#chatbot-app-layer main');
+                    if (appMain) {
+                        appMain.scrollTop = appMain.scrollHeight;
+                    }
 
-                        // 자연스러운 스크롤 추적 (메인 컨테이너 하단으로)
-                        const appMain = document.querySelector('#chatbot-app-layer main');
-                        if (appMain) {
-                            appMain.scrollTop = appMain.scrollHeight;
-                        }
-
-                        setTimeout(step, 8);
+                    if (currentNodeIndex < textNodes.length) {
+                        requestAnimationFrame(() => setTimeout(step, 8));
                     } else if (callback) {
+                        // 모든 텍스트 완료 후 혹시 누락된 요소가 있다면 모두 노출
+                        allChildren.forEach(child => child.style.opacity = '1');
                         callback();
                     }
                 }
-                step();
+                
+                if (textNodes.length > 0) {
+                    step();
+                } else {
+                    allChildren.forEach(child => child.style.opacity = '1');
+                    if (callback) callback();
+                }
             }
         })();
     </script>
