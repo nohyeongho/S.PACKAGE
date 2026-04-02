@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 패키지 관리 - P8092241YG / 김은미</title>
+    <!-- 
+        설계 의도: 
+        1. 전문가용 서비스 관리 시스템의 특성상 정보 밀도가 높으면서도 가독성이 좋아야 함.
+        2. LG 브랜드 아이덴티티인 '버건디'와 '라이트 그레이' 톤을 사용하여 프리미엄 느낌 구현.
+        3. 모바일 최적화 레이아웃으로 현장 엔지니어가 한 손으로 조작하기 편리하게 구성.
+        4. 모든 스타일과 스크립트를 하나로 통합하여 배포 및 유지보수 편의성 증대.
+    -->
+    <style>
+        :root {
+            --primary-color: #A50034; /* LG 버건디 */
+            --bg-color: #F8F9FA;
+            --border-color: #E0E0E0;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --accent-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.4;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 메인 컨테이너 - 모바일 뷰 시뮬레이션 */
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* ---------------- 헤더 영역 ---------------- */
+        header {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn {
+            border: 1.5px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            color: #555;
+        }
+
+        .header-icons svg {
+            cursor: pointer;
+        }
+
+        /* ---------------- 요약 정보 ---------------- */
+        .summary-info {
+            padding: 10px 15px;
+            background-color: #fff;
+            font-size: 13px;
+            color: var(--text-sub);
+            border-bottom: 5px solid #eee;
+        }
+
+        .summary-row {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 4px;
+        }
+
+        .summary-row.address {
+            margin-left: 20px;
+        }
+
+        /* ---------------- 탭 메뉴 ---------------- */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            background: white;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-sub);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 2.5px;
+            background-color: var(--primary-color);
+        }
+
+        /* ---------------- 메인 콘텐츠 ---------------- */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 80px; /* 상세 폼 높이 대응 */
+        }
+
+        .section {
+            padding: 15px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+
+        /* 그리드 데이터 테이블 */
+        .data-grid {
+            border-top: 1px solid #ddd;
+        }
+
+        .data-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            min-height: 48px;
+            align-items: center;
+        }
+
+        .label {
+            width: 100px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            color: #444;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .value {
+            flex: 1;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* 입력 및 버튼 스타일 */
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+        .btn-sm {
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 3px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-sm:hover {
+            background-color: #f0f0f0;
+        }
+
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            color: var(--primary-color);
+        }
+
+        /* 상담정보 특정 스타일 */
+        .model-search-box {
+            display: flex;
+            border: 1px solid #999;
+            width: 100%;
+            padding: 5px;
+            align-items: center;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .model-search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+        }
+
+        .action-icon-group {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .barcode-input {
+            position: relative;
+            width: 100%;
+        }
+
+        .barcode-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        /* ---------------- 하단 고정 액션바 ---------------- */
+        .bottom-actions {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: white;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-action.highlight {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ---------------- 챗봇 버튼 ---------------- */
+        .chatbot-fab {
+            position: fixed;
+            bottom: 75px;
+            left: 20px;
+            width: 56px;
+            height: 56px;
+            background: #E60000; /* 원형 이미지의 선명한 빨간색 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 200;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid white; /* 이미지의 테두리 느낌 반영 */
+        }
+
+        .chatbot-fab:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-fab:active {
+            transform: scale(0.9);
+        }
+
+        .chatbot-fab svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        /* 간격 조정 및 미세 스타일 */
+        .divider-v {
+            width: 1px;
+            height: 12px;
+            background: #ccc;
+            margin: 0 5px;
+        }
+
+        .text-red { color: var(--primary-color); }
+        .bg-gray-input { background-color: #f0f0f0; }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- 헤더 -->
+        <header>
+            <div class="header-left">
+                <div class="back-btn" onclick="history.back()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </div>
+                <div class="header-title">P8092241YG / 김은미</div>
+            </div>
+            <div class="header-icons">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+        </header>
+
+        <!-- 요약 정보 -->
+        <div class="summary-info">
+            <div class="summary-row">
+                <span>104동 2402호</span>
+            </div>
+            <div class="summary-row" style="margin-left: 0;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#aaa; vertical-align: middle;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>소음/진동 | 건조 시 소음 | 건조 시 걸리는 소음, 쓰으... | 모델명:RD20EJDE.AKOR, 제조번호:210KWFN2G835</span>
+            </div>
+        </div>
+
+        <!-- 탭 메뉴 -->
+        <nav class="tabs">
+            <div class="tab active">고객정보</div>
+            <div class="tab">상담정보</div>
+            <div class="tab">처리결과</div>
+            <div class="tab">금액확인</div>
+        </nav>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="content">
+            <!-- 고객정보 섹션 -->
+            <div class="section" id="customer-info">
+                <div class="section-title">고객정보</div>
+                <div class="data-grid">
+                    <div class="data-row">
+                        <div class="label">고객명</div>
+                        <div class="value">
+                            <span>김은미</span>
+                            <div class="divider-v"></div>
+                            <span style="color:#666">서비스 유형</span>
+                            <span>출장수리</span>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">전화번호</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span>010-7154-0456</span>
+                                <div style="display:flex; gap:10px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                            </div>
+                            <div class="flex-row">
+                                <span style="color:#aaa">없음</span>
+                                <div style="display:flex; gap:10px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row" id="target-customer-type">
+                        <div class="label">고객유형</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span>일반고객</span>
+                                <button class="btn-sm">임직원 확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">서비스횟수</div>
+                        <div class="value">
+                            <span style="color:#3498db; font-weight:bold">5 건</span>
+                            <div class="divider-v"></div>
+                            <span style="color:#666">고객의소리</span>
+                            <span style="color:#3498db; font-weight:bold">0 건</span>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">추가접수건 여부</div>
+                        <div class="value">N</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">접수유형</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span>출장 / 일반건</span>
+                                <button class="btn-sm">수정</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">약속일시</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span style="color:orange">2025-08-22 09:10</span>
+                                <button class="btn-sm">재약속</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">요구일시</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span style="color:orange">2025-08-22 09:10</span>
+                                <button class="btn-sm">약속이력</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row" style="min-height: 40px;">
+                        <div class="label">요구사항</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label" style="font-size: 11px;">개인정보동의</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span>Y</span>
+                                <div class="divider-v"></div>
+                                <span style="color:#666">ThinQ고객여부</span>
+                                <span>Y</span>
+                                <button class="btn-sm">ThinQ 가입</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">담당SM</div>
+                        <div class="value">
+                            <div class="flex-row">
+                                <span>노영호</span>
+                                <button class="btn-sm">담당자 이력</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 상담정보 섹션 -->
+            <div class="section" id="counseling-info">
+                <div class="section-title">상담정보</div>
+                <div class="data-grid">
+                    <div class="data-row">
+                        <div class="label">제품명</div>
+                        <div class="value">세탁기_트롬</div>
+                    </div>
+                    <div class="data-row" style="align-items: flex-start; padding-top:10px;">
+                        <div class="label">모델</div>
+                        <div class="value">
+                            <div class="model-search-box">
+                                <input type="text" value="FH17VBA.AKOR">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </div>
+                            <div class="action-icon-group">
+                                <button class="btn-sm">OCR</button>
+                                <button class="btn-sm">상담 / PS</button>
+                                <button class="btn-sm">기술교본</button>
+                                <button class="btn-sm">설명서</button>
+                                <button class="btn-sm">기술정보</button>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:5px;"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">모델정보</div>
+                        <div class="value" style="font-size: 11px; color:#666;">
+                            최초생산일자 : 2016-06-15<br>
+                            최종생산일자 : 2018-02-06
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">제조번호</div>
+                        <div class="value">
+                            <div class="barcode-input">
+                                <input type="text" placeholder="">
+                                <svg class="barcode-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">생산년월</div>
+                        <div class="value"><input type="text" class="bg-gray-input" readonly></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">구입년월</div>
+                        <div class="value"><input type="text"></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">보증기간</div>
+                        <div class="value"><input type="text" class="bg-gray-input" readonly></div>
+                    </div>
+                    <div class="data-row" style="border-bottom: none;">
+                        <div class="value" style="font-size: 12px; color:#444;">
+                            ThinQ 연결 가능 모델 : N (간편 추가 불가능)<br>
+                            ThinQ 연결 사용중 모델 : 
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="value">
+                            <div class="model-search-box" style="margin-bottom:0; background:#f5f5f5;">
+                                <span style="flex:1; color:#777; text-align: center;">에러코드/표시창</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 챗봇 플로팅 버튼 -->
+        <div class="chatbot-fab" id="chatbot-btn" title="AI 기술지원 실행">
+            <!-- 제공된 최신 이미지의 말풍선형 로봇 캐릭터 정밀 재현 (SVG) -->
+            <svg viewBox="0 0 100 100" fill="white">
+                <path d="M50 22 C32 22 20 32 20 48 C20 58 25 68 33 73 L28 85 L42 77 C45 77 48 78 50 78 C68 78 80 68 80 48 C80 32 68 22 50 22 Z" />
+                <rect x="30" y="38" width="40" height="20" rx="10" fill="none" stroke="#E60000" stroke-width="1.5" />
+                <circle cx="42" cy="48" r="2.5" fill="#E60000" />
+                <circle cx="58" cy="48" r="2.5" fill="#E60000" />
+                <path d="M46 54 Q50 58 54 54" fill="none" stroke="#E60000" stroke-width="1.5" stroke-linecap="round" />
+                <line x1="50" y1="22" x2="50" y2="14" stroke="white" stroke-width="3" stroke-linecap="round" />
+                <circle cx="50" cy="14" r="3" fill="white" />
+                <rect x="14" y="42" width="10" height="15" rx="5" fill="white" />
+                <rect x="76" y="42" width="10" height="15" rx="5" fill="white" />
+            </svg>
+        </div>
+
+        <!-- 하단 액션바 -->
+        <div class="bottom-actions">
+            <div class="btn-action">저장</div>
+            <div class="btn-action">부품정보</div>
+            <div class="btn-action highlight">처리완료</div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 서비스 패키지 관리 스크립트
+         * 1. 탭 전환 기능: 각 탭 클릭 시 활성화 상태 변경 및 필요 시 섹션 스크롤 (데모용)
+         * 2. 챗봇 버튼 기능: 클릭 시 package.html 재호출 (사용자 요구사항 반영)
+         */
+        
+        // 탭 전환 로직
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // 실제 구현 시에는 각 탭에 맞는 콘텐츠를 보여주거나 스크롤 이동
+                const sectionName = tab.innerText;
+                if(sectionName === '상담정보') {
+                    document.getElementById('counseling-info').scrollIntoView({ behavior: 'smooth' });
+                } else if(sectionName === '고객정보') {
+                    document.getElementById('customer-info').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 챗봇 버튼 클릭 시 메인 앱(pac_sam.html) 실행
+        const chatbotBtn = document.getElementById('chatbot-btn');
+        chatbotBtn.addEventListener('click', () => {
+            console.log('Chatbot clicked - Running pac_sam.html');
+            // 상대 경로를 통해 상위 디렉터리의 pac_sam.html 앱을 실행합니다.
+            window.location.href = '../pac_sam.html';
+        });
+
+        // 기타 버튼 클릭 이벤트 (데모용)
+        document.querySelectorAll('.btn-action, .btn-sm').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.id === 'chatbot-btn') return;
+                alert(this.innerText + ' 기능이 실행되었습니다.');
+            });
+        });
+    </script>
+</body>
+</html>
