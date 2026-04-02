@@ -5166,10 +5166,18 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 </div>
 
                 <div class="p-0 pt-5">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="material-symbols-outlined text-[#9333EA]">auto_awesome</span>
-                        <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
-                            Briefing</span>
+                    <div class="flex items-center justify-between gap-2 mb-4 w-full">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[#9333EA]">auto_awesome</span>
+                            <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
+                                Briefing</span>
+                        </div>
+                        <button id="voice-play-btn"
+                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200"
+                            style="display: none;">
+                            <span class="material-symbols-outlined text-sm" id="voice-play-icon">play_circle</span>
+                            <span id="voice-play-text">음성 재생</span>
+                        </button>
                     </div>
 
                     <!-- 심플 AI 로딩 인디케이터 -->
@@ -5191,27 +5199,29 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                     <div id="ai-briefing-card" class="rounded-2xl p-4"
                         style="display:none; opacity:0; transform: translateY(-10px); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="flex items-center gap-2">
-                                <div class="bg-primary/10 p-1.5 rounded-lg">
-                                    <span class="material-symbols-outlined text-primary text-xl">bolt</span>
+                        <!-- 버튼 영역 상단 타이틀 라인으로 이동됨 -->
+                            <div id="ai-content-wrapper" class="relative transition-all duration-500 overflow-hidden"
+                                style="max-height: none;">
+                                <div id="ai-briefing-content" class="space-y-6 text-[14px] leading-relaxed pb-4">
+                                    <!-- 스트리밍될 대상 (초기 공백) -->
                                 </div>
-                                <h2 class="font-bold text-lg text-slate-900 dark:text-white text-sharp">AI Insight Agent
-                                </h2>
-                            </div>
-                            <button id="voice-play-btn"
-                                class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200">
-                                <span class="material-symbols-outlined text-sm" id="voice-play-icon">play_circle</span>
-                                <span id="voice-play-text">음성 재생</span>
-                            </button>
-                        </div>
-                        <div id="ai-content-wrapper" class="relative transition-all duration-500 overflow-hidden"
-                            style="max-height: none;">
-                            <div id="ai-briefing-content" class="space-y-6 text-[14px] leading-relaxed pb-4">
-                                <!-- 스트리밍될 대상 (초기 공백) -->
+                                <!-- 그라데이션 오버레이 (초기에는 숨김) -->
+                                <div id="content-gradient-overlay"
+                                    class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-slate-800/80 to-transparent pointer-events-none hidden">
+                                </div>
                             </div>
 
-                            <!-- 스트리밍 원본 소스 (풍성한 내용으로 복구) -->
+                            <!-- 버튼 영역: 초기에는 숨김, 스트리밍 완료 후 노출됨 -->
+                            <div id="toggle-button-container" class="mt-2 flex justify-center" style="display: none;">
+                                <button id="toggle-content-btn"
+                                    class="text-primary font-bold flex items-center gap-1 text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-colors">
+                                    <span id="toggle-content-text">내용 접기</span>
+                                    <span id="toggle-content-icon"
+                                        class="material-symbols-outlined text-[20px]">expand_less</span>
+                                </button>
+                            </div>
+
+                            <!-- 스트리밍 원본 소스 (순수 콘텐츠만 포함) -->
                             <div id="ai-briefing-source" style="display:none;">
                                 <div id="repair-stats-section" class="mb-6">
                                     <h3
@@ -5261,20 +5271,17 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 class="text-slate-900 dark:text-white font-bold">90일 이내 재서비스 건</span>이므로 각별한 주의가
                                             필요합니다.
                                         </p>
+                                        <!-- 추가된 LGSC/Argus 안내 문구 -->
+                                        <div class="mt-4 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border-l-4 border-purple-400">
+                                            <div class="text-[13px] font-bold text-slate-900 dark:text-white flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-[16px]">info</span>
+                                                LGSC/Argus
+                                            </div>
+                                            <div class="text-[12px] text-slate-600 dark:text-slate-400 mt-1 pl-5">
+                                                진단이력과 S/W 버전 정보를 확인하세요.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- 그라데이션 오버레이 (접혔을 때만 표시) -->
-                                    <div id="content-gradient-overlay"
-                                        class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-slate-800/50 to-transparent pointer-events-none hidden">
-                                    </div>
-                                </div>
-                                <div
-                                    class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-center">
-                                    <button id="toggle-content-btn"
-                                        class="text-primary font-bold flex items-center gap-1 text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-colors">
-                                        <span id="toggle-content-text">내용 접기</span>
-                                        <span id="toggle-content-icon"
-                                            class="material-symbols-outlined text-[20px]">expand_less</span>
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -5521,6 +5528,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <h3
                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                 AI 추천 질문</h3>
+            <!-- [추가] 스트리밍될 대상 -->
+            <div id="ai-questions-stream-target"></div>
+        </div>
+
+        <!-- [추가] 추천 질문 원본 소스 (숨김 처리하여 스트리밍용으로 사용) -->
+        <div id="ai-questions-source" style="display:none;">
             <div class="space-y-3 px-4">
                 <p class="text-slate-700 dark:text-slate-300 font-medium">
                     드럼세탁기 LE 발생시 고장원인과 조치방법은 뭐니?
@@ -5700,7 +5713,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const deepResearchBtn = document.getElementById('deep-research-btn');
             let isDeepResearchMode = false;
 
-            // 원본 콘텐츠 (초기 상태 HTML 저장)
+            // 원본 콘텐츠
             const originalContentHTML = `
                         <div id="repair-stats-section">
                             <h3
@@ -5747,10 +5760,17 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         class="text-slate-900 dark:text-white font-bold">90일 이내 재서비스 건</span>이므로 각별한 주의가
                                     필요합니다.
                                 </p>
+                                <!-- 추가된 LGSC/Argus 안내 문구 -->
+                                <div class="mt-4 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border-l-4 border-purple-400">
+                                    <div class="text-[13px] font-bold text-slate-900 dark:text-white">LGSC/Argus</div>
+                                    <div class="text-[12px] text-slate-600 dark:text-slate-400 mt-0.5">
+                                        진단이력과 S/W 버전 정보를 확인하세요.
+                                    </div>
+                                </div>
                             </div>
                         </div>`;
 
-            // 상세 콘텐츠 (Deep Research HTML)
+            // 상세 콘텐츠
             const detailedContentHTML = `
                         <div id="repair-stats-section">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
@@ -5827,6 +5847,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         <div class="text-sm">→ 동일 또는 유사 증상으로 재접수된 건으로, 조치의 정확성 및 결과 설명을 더욱 신중히 진행해야 하는 고위험 건입니다.</div>
                                     </div>
                                 </div>
+                                <!-- 추가된 LGSC/Argus 안내 문구 (상세 모드) -->
+                                <div class="mt-4 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border-l-4 border-purple-400">
+                                    <div class="text-[13px] font-bold text-slate-900 dark:text-white">LGSC/Argus</div>
+                                    <div class="text-[12px] text-slate-600 dark:text-slate-400 mt-0.5">
+                                        진단이력과 S/W 버전 정보를 확인하세요.
+                                    </div>
+                                </div>
                             </div>
                         </div>`;
 
@@ -5846,6 +5873,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     this.classList.add('bg-blue-50', 'text-blue-700');
                     isDeepResearchMode = false;
                 }
+
+                // [추가] 콘텐츠가 교체되었으므로 접기 버튼 인터랙션 재연결
+                initDashboardInteractions();
 
                 // 설정 메뉴의 토글 상태 재적용
                 const repairStatsEl = document.getElementById('repair-stats-section');
@@ -5868,19 +5898,14 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 toggleContentBtn.addEventListener('click', function () {
                     if (isContentExpanded) {
                         // 접기
-                        aiContentWrapper.style.maxHeight = '300px';
+                        aiContentWrapper.style.maxHeight = '400px';
                         toggleContentText.textContent = '내용 펼치기';
                         toggleContentIcon.textContent = 'expand_more';
                         contentGradientOverlay.classList.remove('hidden');
                         isContentExpanded = false;
                     } else {
                         // 펼치기
-                        aiContentWrapper.style.maxHeight = aiContentWrapper.scrollHeight + 'px';
-                        // 애니메이션 완료 후 max-height 제거 (내용 변경 대응)
-                        setTimeout(() => {
-                            if (isContentExpanded) aiContentWrapper.style.maxHeight = 'none';
-                        }, 500);
-
+                        aiContentWrapper.style.maxHeight = 'none';
                         toggleContentText.textContent = '내용 접기';
                         toggleContentIcon.textContent = 'expand_less';
                         contentGradientOverlay.classList.add('hidden');
@@ -6547,13 +6572,18 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 const aiQuestionsContainer = document.getElementById('ai-questions-container');
 
                 if (aiTopContainer) aiTopContainer.style.display = 'block';
-                if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
-                if (aiQuestionsContainer) aiQuestionsContainer.style.display = 'block';
+                // aiIconsContainer는 스트리밍 완료 후 노출되도록 아래로 이동
+                // if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
+                // aiQuestionsContainer는 질문 스트리밍 시작 시에 표시하도록 아래로 이동
 
                 if (briefingCard) {
                     briefingCard.style.display = 'block';
                     briefingCard.style.opacity = '1';
                     briefingCard.style.transform = 'translateY(0)';
+                    
+                    // [추가] 타이틀 라인에 위치한 음성 재생 버튼 표시
+                    const voiceBtn = document.getElementById('voice-play-btn');
+                    if (voiceBtn) voiceBtn.style.display = 'flex';
                 }
 
                 if (briefingSource && briefingContent) {
@@ -6564,13 +6594,23 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             streamHTML(dashboardSource, dashboardTarget, () => {
                                 // Stage 3: 추천 질문
                                 if (questionsSource && questionsTarget) {
+                                    // 질문 영역을 스트리밍 시작 시점에 표시
+                                    if (aiQuestionsContainer) aiQuestionsContainer.style.display = 'block';
                                     streamHTML(questionsSource, questionsTarget, () => {
-                                        // 전체 완료 후 인터랙션 재연결
+                                        // [수정] 전체 완료 후 하단 버튼 및 아이콘 노출
+                                        const toggleContainer = document.getElementById('toggle-button-container');
+                                        if (toggleContainer) toggleContainer.style.display = 'flex';
+                                        if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
+                                        
                                         initDashboardInteractions();
                                         window.dispatchEvent(new Event('resize'));
                                     });
                                 } else {
                                     // 질문 영역이 없더라도 인터랙션은 재연결
+                                    const toggleContainer = document.getElementById('toggle-button-container');
+                                    if (toggleContainer) toggleContainer.style.display = 'flex';
+                                    if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
+
                                     initDashboardInteractions();
                                     window.dispatchEvent(new Event('resize'));
                                 }
@@ -6596,9 +6636,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         
                         if (isExpanded) {
                             // 접기 상태로 변경
-                            contentWrapper.style.maxHeight = '140px'; // 일부만 보이도록 제한
+                            contentWrapper.style.maxHeight = '400px'; // 약 50% 정도 보이도록 높이 조정
                             if (gradientOverlay) gradientOverlay.classList.remove('hidden');
-                            if (contentText) contentText.textContent = '내용 더보기';
+                            if (contentText) contentText.textContent = '내용 펼치기';
                             if (contentIcon) contentIcon.textContent = 'expand_more';
                         } else {
                             // 펼치기 상태로 변경
