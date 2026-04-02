@@ -1,4 +1,3 @@
-
 <html lang="ko">
 
 <head>
@@ -9,7 +8,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
     <style>
         /* [대시보드 전용 스타일 - LG CS 포털 스타일] */
         :root {
@@ -46,6 +47,7 @@
             background: #FFF;
             z-index: 100;
         }
+
         .p-header-title {
             font-size: 16px;
             font-weight: 700;
@@ -58,6 +60,7 @@
             border-bottom: 2px solid #EEE;
             background: #FFF;
         }
+
         .p-tab {
             flex: 1;
             padding: 12px 0;
@@ -69,6 +72,7 @@
             border-bottom: 2px solid transparent;
             margin-bottom: -2px;
         }
+
         .p-tab.active {
             color: var(--portal-accent);
             border-bottom: 2px solid var(--portal-accent);
@@ -81,12 +85,14 @@
             font-weight: 700;
             color: var(--portal-accent);
         }
+
         .p-info-row {
             display: flex;
             border-bottom: 1px solid #F3F4F6;
             padding: 10px 16px;
             align-items: center;
         }
+
         .p-label {
             width: 100px;
             font-size: 13px;
@@ -94,12 +100,14 @@
             color: #444;
             flex-shrink: 0;
         }
+
         .p-value {
             flex: 1;
             font-size: 13px;
             font-weight: 500;
             color: #333;
         }
+
         .p-btn-small {
             padding: 4px 12px;
             border: 1px solid #CCC;
@@ -122,6 +130,7 @@
             gap: 8px;
             z-index: 200;
         }
+
         .p-btn-outline {
             flex: 1;
             padding: 10px 0;
@@ -133,6 +142,7 @@
             text-align: center;
             background: #FFF;
         }
+
         .p-btn-fill {
             flex: 1;
             padding: 10px 0;
@@ -157,17 +167,21 @@
             box-shadow: 0 3px 8px rgba(214, 51, 132, 0.3);
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1.5px solid rgba(255,255,255,0.3);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
             margin-top: -5px;
             z-index: 10;
         }
-        #launch-chatbot-btn:hover { 
-            transform: scale(1.1); 
+
+        #launch-chatbot-btn:hover {
+            transform: scale(1.1);
             box-shadow: 0 5px 12px rgba(214, 51, 132, 0.4);
         }
-        #launch-chatbot-btn:active { transform: scale(0.95); }
-        
+
+        #launch-chatbot-btn:active {
+            transform: scale(0.95);
+        }
+
         .ai-chat-label {
             color: #FFFFFF;
             font-size: 7px;
@@ -175,7 +189,7 @@
             margin-top: 0px;
             font-family: 'Inter', sans-serif;
             letter-spacing: -0.02em;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
             line-height: 1;
         }
 
@@ -191,6 +205,7 @@
             background: rgba(131, 58, 180, 0.05);
             border-radius: 50%;
         }
+
         .ai-pulse-ring {
             position: absolute;
             inset: 0;
@@ -198,13 +213,27 @@
             border-radius: 50%;
             animation: ai-simple-pulse 2s infinite;
         }
+
         @keyframes ai-simple-pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.5); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
         }
+
         @keyframes text-gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
         }
 
         /* [런처 애니메이션] */
@@ -222,9 +251,37 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        .launcher-icon { font-size: 90px; color: #E22D1E; margin-bottom: 24px; animation: l-pulse 1.5s infinite; }
-        .launcher-text { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: #EEE; }
-        @keyframes l-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
+
+        .launcher-icon {
+            font-size: 90px;
+            color: #E22D1E;
+            margin-bottom: 24px;
+            animation: l-pulse 1.5s infinite;
+        }
+
+        .launcher-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: #EEE;
+        }
+
+        @keyframes l-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 
         /* [챗봇 컨테이너 스코핑] */
         #chatbot-app-layer {
@@ -4867,7 +4924,9 @@
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased min-h-screen text-sharp" style="margin:0; padding:0; overflow-x:hidden;">
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased min-h-screen text-sharp"
+    style="margin:0; padding:0; overflow-x:hidden;">
     <!-- [레이어 1: 프리미엄 대시보드] -->
     <div id="dashboard-layer">
         <!-- 상단 헤더 -->
@@ -4910,7 +4969,7 @@
                 <div class="p-value">2025-11-14 13:44</div>
                 <button class="p-btn-small">약속이력</button>
             </div>
-            
+
             <div class="p-section-title">요구사항</div>
             <div class="p-info-row" style="height: 50px;"></div>
 
@@ -4932,12 +4991,13 @@
             </div>
             <div class="p-info-row">
                 <div class="p-label">모델</div>
-                <div class="flex-1 px-3 py-2 border border-slate-300 rounded flex justify-between items-center bg-white mr-2">
+                <div
+                    class="flex-1 px-3 py-2 border border-slate-300 rounded flex justify-between items-center bg-white mr-2">
                     <span class="text-[14px] font-bold">F918SS33.AKOR</span>
                     <span class="material-symbols-outlined text-[18px] text-slate-400">close</span>
                 </div>
             </div>
-            
+
             <div class="flex gap-1 p-3 overflow-x-auto no-scrollbar">
                 <button class="p-btn-small whitespace-nowrap">OCR</button>
                 <button class="p-btn-small whitespace-nowrap">상담 / PS</button>
@@ -4964,11 +5024,12 @@
             <!-- 챗봇 실행 버튼 (AI Chat 아이콘) -->
             <div id="launch-chatbot-btn" title="AI 기술 지원 실행">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="white" style="margin-bottom: 2px;">
-                    <path d="M12 2c2.2 0 4 1.8 4 4v1h1c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h1V6c0-2.2 1.8-4 4-4zm0 2c-1.1 0-2 .9-2 2v1h4V6c0-1.1-.9-2-2-2zm-3 7c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm6 0c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm-3 4H9c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2h-3z"/>
+                    <path
+                        d="M12 2c2.2 0 4 1.8 4 4v1h1c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h1V6c0-2.2 1.8-4 4-4zm0 2c-1.1 0-2 .9-2 2v1h4V6c0-1.1-.9-2-2-2zm-3 7c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm6 0c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm-3 4H9c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2h-3z" />
                 </svg>
                 <div class="ai-chat-label">AI Chat</div>
             </div>
-            
+
             <button class="p-btn-outline ml-auto">부품정보</button>
             <button class="p-btn-outline">LGSC</button>
             <button class="p-btn-fill">처리완료</button>
@@ -4981,608 +5042,692 @@
 
 
 
-    <header class="px-6 pt-6 pb-4 flex items-start justify-between 
+        <header class="px-6 pt-6 pb-4 flex items-start justify-between 
 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
 
 
-        <div class="flex items-center gap-3 mt-3">
-            <label for="profile-upload" class="cursor-pointer relative group">
-                <div
-                    class="w-14 h-14 rounded-full overflow-hidden border-2 border-white dark:border-slate-700 shadow-sm flex-shrink-0 group-hover:opacity-80 transition-opacity">
-                    <img id="user-profile-image" alt="User Profile" class="w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGacMgtBzM-yOVWjRh0pzssbC5l8xNPDaHBOCDifiTlsyBgfzmAXXN4aSg0-7UaeD5vsShRc-y3wpBXL4qlg_Z6uPkGmOhHruC0VBgk4hzDhcGsDHgU4KFm2myUAouhwhaKCBjHplsFU00cKoecHPicXsL_dQJmAnik2r8WCx-G2B5M0AivflCQ4tuL8Cbmdna44yswfTcLgIavo5tT0Yh4qJDjppTzjSbWxLXMWViEkRsytovHARhOI2qjAzHKvVOe5XhaY44fx0">
-                </div>
-                <input type="file" id="profile-upload" accept="image/*" class="hidden">
-            </label>
+            <div class="flex items-center gap-3 mt-3">
+                <label for="profile-upload" class="cursor-pointer relative group">
+                    <div
+                        class="w-14 h-14 rounded-full overflow-hidden border-2 border-white dark:border-slate-700 shadow-sm flex-shrink-0 group-hover:opacity-80 transition-opacity">
+                        <img id="user-profile-image" alt="User Profile" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGacMgtBzM-yOVWjRh0pzssbC5l8xNPDaHBOCDifiTlsyBgfzmAXXN4aSg0-7UaeD5vsShRc-y3wpBXL4qlg_Z6uPkGmOhHruC0VBgk4hzDhcGsDHgU4KFm2myUAouhwhaKCBjHplsFU00cKoecHPicXsL_dQJmAnik2r8WCx-G2B5M0AivflCQ4tuL8Cbmdna44yswfTcLgIavo5tT0Yh4qJDjppTzjSbWxLXMWViEkRsytovHARhOI2qjAzHKvVOe5XhaY44fx0">
+                    </div>
+                    <input type="file" id="profile-upload" accept="image/*" class="hidden">
+                </label>
 
-            <div class="flex flex-col">
-                <h1 class="text-[18px] font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-                    안녕하세요! SM님
-                </h1>
-                <div class="mt-1.5 space-y-0">
-                    <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        모델 : FH25VC
-                    </p>
-                    <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        제조번호 : 601KEHX00021
-                    </p>
-                    <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
-                        증상 : 건조가 안될 경우
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex flex-col items-end gap-2">
-            <!-- 상단: 설정 버튼 + 작은 pill 버튼 나란히 -->
-            <div class="flex items-center gap-2">
-                <!-- 설정 버튼 -->
-                <div class="relative">
-                    <button id="settings-btn" class="text-slate-400 hover:text-slate-600 transition-colors mb-1">
-                        <span class="material-symbols-outlined text-[24px] leading-none">settings</span>
-                    </button>
-                    <!-- 설정 메뉴 (팝업) -->
-                    <div id="settings-menu"
-                        class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 z-50 p-2">
-                        <div class="space-y-1">
-                            <label
-                                class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">수리 통계</span>
-                                <input type="checkbox" id="toggle-repair-stats" class="sr-only peer" checked>
-                                <div
-                                    class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">이력 정보</span>
-                                <input type="checkbox" id="toggle-history-info" class="sr-only peer" checked>
-                                <div
-                                    class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                                </div>
-                            </label>
-                        </div>
+                <div class="flex flex-col">
+                    <h1 class="text-[18px] font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        안녕하세요! SM님
+                    </h1>
+                    <div class="mt-1.5 space-y-0">
+                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
+                            모델 : FH25VC
+                        </p>
+                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
+                            제조번호 : 601KEHX00021
+                        </p>
+                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">
+                            증상 : 건조가 안될 경우
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- 작은 pill 버튼 (설정 아이콘 높이와 유사한 크기) -->
-                <button type="button" id="deep-research-btn" class="inline-flex items-center gap-1.5 rounded-full
+
+            <div class="flex flex-col items-end gap-2">
+                <!-- 상단: 설정 버튼 + 작은 pill 버튼 나란히 -->
+                <div class="flex items-center gap-2">
+                    <!-- 설정 버튼 -->
+                    <div class="relative">
+                        <button id="settings-btn" class="text-slate-400 hover:text-slate-600 transition-colors mb-1">
+                            <span class="material-symbols-outlined text-[24px] leading-none">settings</span>
+                        </button>
+                        <!-- 설정 메뉴 (팝업) -->
+                        <div id="settings-menu"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 z-50 p-2">
+                            <div class="space-y-1">
+                                <label
+                                    class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">수리 통계</span>
+                                    <input type="checkbox" id="toggle-repair-stats" class="sr-only peer" checked>
+                                    <div
+                                        class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                    </div>
+                                </label>
+                                <label
+                                    class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg cursor-pointer">
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">이력 정보</span>
+                                    <input type="checkbox" id="toggle-history-info" class="sr-only peer" checked>
+                                    <div
+                                        class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 작은 pill 버튼 (설정 아이콘 높이와 유사한 크기) -->
+                    <button type="button" id="deep-research-btn" class="inline-flex items-center gap-1.5 rounded-full
              bg-blue-50 text-blue-700
              py-[3px] px-3 text-[11px] font-semibold
              hover:bg-blue-100 active:bg-blue-200
              focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300
              shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-colors mb-1">
-                    <span class="material-symbols-outlined text-[16px] leading-none">campaign</span>
-                    Deep research
-                </button>
-            </div>
-
-            <!-- 상태 리스트 -->
-            <div class="space-y-0.5">
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    <span>LGSC : 지원</span>
-                    <span class="ml-auto">&gt;</span>
+                        <span class="material-symbols-outlined text-[16px] leading-none">campaign</span>
+                        Deep research
+                    </button>
                 </div>
 
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    <span>LGSC 중수리 : 지원</span>
-                    <span class="ml-auto">&gt;</span>
-                </div>
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                    <span>ARGUS : 미지원</span>
-                    <span class="ml-auto">&gt;</span>
-                </div>
-
-                <!-- 대시보드 복귀 버튼 (ARGUS 아래 배치) -->
-                <button type="button" id="exit-chatbot-btn" class="mt-4 inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-400 hover:text-primary" title="대시보드로 돌아가기">
-                    <span class="material-symbols-outlined text-[24px]">arrow_back</span>
-                </button>
-            </div>
-        </div>
-
-    </header>
-    <main class="px-4 space-y-6">
-        <div
-            class="bg-white dark:bg-slate-900 rounded-3xl p-1 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-lg">
-
-            <div class="flex border-b border-slate-100 dark:border-slate-800">
-                <button class="flex-1 py-4 text-center text-primary font-bold border-b-2 border-primary text-[15px]">
-                    AI 브리핑
-                </button>
-                <button class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
-                </button>
-                <button class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
-                </button>
-            </div>
-
-            <div class="p-5">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-[#9333EA]">auto_awesome</span>
-                    <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
-                        Briefing</span>
-                </div>
-                
-                <!-- 심플 AI 로딩 인디케이터 -->
-                <div id="ai-loading-container" class="hidden flex-col items-center justify-center py-24 mb-6 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/40 shadow-sm transition-all duration-300">
-                    <div class="ai-simple-orb">
-                        <div class="ai-pulse-ring"></div>
-                        <span class="material-symbols-outlined text-purple-600 text-5xl font-black relative z-10">auto_awesome</span>
+                <!-- 상태 리스트 -->
+                <div class="space-y-0.5">
+                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <span>LGSC : 지원</span>
+                        <span class="ml-auto">&gt;</span>
                     </div>
-                    <div class="text-center relative z-10 px-6">
-                        <p class="text-[19px] font-black tracking-tighter mb-2" style="background: linear-gradient(90deg, #833AB4, #3498db, #833AB4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: text-gradient 3s linear infinite; font-family: 'Inter', sans-serif;">Deep Intelligence Analyzing...</p>
-                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-bold leading-relaxed">최신 기술 정보 및 빅데이터 패턴을 정밀 분석 중입니다.</p>
+
+                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <span>LGSC 중수리 : 지원</span>
+                        <span class="ml-auto">&gt;</span>
                     </div>
+                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                        <span>ARGUS : 미지원</span>
+                        <span class="ml-auto">&gt;</span>
+                    </div>
+
+                    <!-- 대시보드 복귀 버튼 (ARGUS 아래 배치) -->
+                    <button type="button" id="exit-chatbot-btn"
+                        class="mt-4 inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-400 hover:text-primary"
+                        title="대시보드로 돌아가기">
+                        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+                    </button>
+                </div>
+            </div>
+
+        </header>
+        <main class="px-4 space-y-6">
+            <div id="ai-top-container" class="rounded-3xl p-0 overflow-hidden" style="display: none;">
+
+                <div class="flex border-b border-slate-100 dark:border-slate-800">
+                    <button
+                        class="flex-1 py-4 text-center text-primary font-bold border-b-2 border-primary text-[15px] bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-t-2xl">
+                        AI 브리핑
+                    </button>
+                    <button
+                        class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
+                    </button>
+                    <button
+                        class="flex-1 py-4 text-center text-slate-500 dark:text-slate-500 font-semibold text-[15px]">
+                    </button>
                 </div>
 
-                <div id="ai-briefing-card"
-                    class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/50"
-                    style="display:none; opacity:0; transform: translateY(-10px); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="bg-primary/10 p-1.5 rounded-lg">
-                                <span class="material-symbols-outlined text-primary text-xl">bolt</span>
-                            </div>
-                            <h2 class="font-bold text-lg text-slate-900 dark:text-white text-sharp">AI Insight Agent
-                            </h2>
+                <div class="p-0 pt-5">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-[#9333EA]">auto_awesome</span>
+                        <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
+                            Briefing</span>
+                    </div>
+
+                    <!-- 심플 AI 로딩 인디케이터 -->
+                    <div id="ai-loading-container"
+                        class="hidden flex-col items-center justify-center py-24 mb-6 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/40 shadow-sm transition-all duration-300">
+                        <div class="ai-simple-orb">
+                            <div class="ai-pulse-ring"></div>
+                            <span
+                                class="material-symbols-outlined text-purple-600 text-5xl font-black relative z-10">auto_awesome</span>
                         </div>
-                        <button id="voice-play-btn"
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200">
-                            <span class="material-symbols-outlined text-sm" id="voice-play-icon">play_circle</span>
-                            <span id="voice-play-text">음성 재생</span>
-                        </button>
-                    </div>
-                    <div id="ai-content-wrapper" class="relative transition-all duration-500 overflow-hidden"
-                        style="max-height: none;">
-                        <div id="ai-briefing-content" class="space-y-6 text-[14px] leading-relaxed pb-4">
-                            <!-- 스트리밍될 대상 (초기 공백) -->
+                        <div class="text-center relative z-10 px-6">
+                            <p class="text-[19px] font-black tracking-tighter mb-2"
+                                style="background: linear-gradient(90deg, #833AB4, #3498db, #833AB4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: text-gradient 3s linear infinite; font-family: 'Inter', sans-serif;">
+                                Deep Intelligence Analyzing...</p>
+                            <p class="text-[13px] text-slate-500 dark:text-slate-400 font-bold leading-relaxed">최신 기술 정보
+                                및 빅데이터 패턴을 정밀 분석 중입니다.</p>
                         </div>
-                        
-                        <!-- 스트리밍 원본 소스 (풍성한 내용으로 복구) -->
-                        <div id="ai-briefing-source" style="display:none;">
-                            <div id="repair-stats-section" class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">1. 수리 통계 분석</h3>
-                                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
-                                    드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span class="text-slate-900 dark:text-white font-bold">부품 교체가 전체의 64%</span>를 차지하고 있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.
-                                </p>
-                                <ul class="space-y-2 mb-4 ml-1">
-                                    <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                        <span class="text-primary mt-1">●</span>
-                                        <span><span class="font-bold text-slate-900 dark:text-white">조정 수리 10%:</span> 배선 재결선, 커넥터 접촉 불량 조치 등 비교적 경미한 조치입니다.</span>
-                                    </li>
-                                    <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                        <span class="text-primary mt-1">●</span>
-                                        <span><span class="font-bold text-slate-900 dark:text-white">설명 처리 2%:</span> 세탁물 과다 적재 등 고객 안내만으로 해결되는 경우로 드문 편입니다.</span>
-                                    </li>
-                                </ul>
-                                <div class="bg-blue-50/50 dark:bg-blue-900/10 p-3 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
-                                    <p class="text-slate-800 dark:text-slate-200 font-bold text-[13px] mb-1">부품 교체 중 MAIN PCB 비중 72%</p>
-                                    <p class="text-slate-600 dark:text-slate-400 text-[12px]">LE 에러의 주요 원인이 모터 자체보다는 PCB 제어 이상에 집중되어 있음을 시사합니다.</p>
+                    </div>
+
+                    <div id="ai-briefing-card" class="rounded-2xl p-4"
+                        style="display:none; opacity:0; transform: translateY(-10px); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-2">
+                                <div class="bg-primary/10 p-1.5 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary text-xl">bolt</span>
                                 </div>
+                                <h2 class="font-bold text-lg text-slate-900 dark:text-white text-sharp">AI Insight Agent
+                                </h2>
+                            </div>
+                            <button id="voice-play-btn"
+                                class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200">
+                                <span class="material-symbols-outlined text-sm" id="voice-play-icon">play_circle</span>
+                                <span id="voice-play-text">음성 재생</span>
+                            </button>
+                        </div>
+                        <div id="ai-content-wrapper" class="relative transition-all duration-500 overflow-hidden"
+                            style="max-height: none;">
+                            <div id="ai-briefing-content" class="space-y-6 text-[14px] leading-relaxed pb-4">
+                                <!-- 스트리밍될 대상 (초기 공백) -->
                             </div>
 
-                            <div class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">2. 업무 기준 안내 (무상 적용 조건)</h3>
-                                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
-                                    해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년 무상 보증</span>이 적용되는 모델입니다.
-                                </p>
-                                <div class="bg-slate-100/50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200/50 dark:border-slate-700/50 space-y-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                        <span class="text-[13px] text-slate-700 dark:text-slate-300"><span class="font-bold">생산 기간:</span> 2018년 5월 ~ 2019년 11월</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                        <span class="text-[13px] text-slate-700 dark:text-slate-300"><span class="font-bold">적용 범위:</span> LE 에러 발생 시 MAIN PCB 교체 건</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-6">
-                                <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">3. 기술 정보</h3>
-                                <p class="text-slate-700 dark:text-slate-300 font-medium">
-                                    현장 점검 시 <span class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위</span>로 우선 측정하십시오. 기준치 이내라면 PCB 제어 로직 이상일 확률이 90% 이상입니다.
-                                </p>
-                            </div>
-
-                            <div class="pt-2">
-                                <h3 class="flex items-center gap-2 font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">4. 이력 정보</h3>
-                                <div class="bg-purple-50/30 dark:bg-purple-900/10 p-3 rounded-xl border border-purple-100/30 dark:border-purple-800/20 space-y-2">
-                                    <p class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">
-                                        고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>이며, 해당 제품은 2028-05-31까지 무상 케어 대상입니다. 과거 90일 이내 재서비스 건이므로 세심한 배려가 필요합니다.
+                            <!-- 스트리밍 원본 소스 (풍성한 내용으로 복구) -->
+                            <div id="ai-briefing-source" style="display:none;">
+                                <div id="repair-stats-section" class="mb-6">
+                                    <h3
+                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        1. 수리 통계 분석</h3>
+                                    <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
+                                        드럼세탁기에서 LE 에러가 발생하는 경우, 실제 서비스 이력 기준으로 <span
+                                            class="text-slate-900 dark:text-white font-bold">부품 교체가 전체의 64%</span>를 차지하고
+                                        있어 단순 사용 안내나 조정만으로 해결되는 비중은 낮은 편입니다.
                                     </p>
-                </div>
-                        <!-- 그라데이션 오버레이 (접혔을 때만 표시) -->
-                        <div id="content-gradient-overlay"
-                            class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-slate-800/50 to-transparent pointer-events-none hidden">
-                        </div>
-                    </div>
-                    <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-center">
-                        <button id="toggle-content-btn"
-                            class="text-primary font-bold flex items-center gap-1 text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-colors">
-                            <span id="toggle-content-text">내용 접기</span>
-                            <span id="toggle-content-icon"
-                                class="material-symbols-outlined text-[20px]">expand_less</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                    <ul class="space-y-2 mb-4 ml-1">
+                                        <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+                                            <span class="text-primary mt-1">●</span>
+                                            <span><span class="font-bold text-slate-900 dark:text-white">조정 수리
+                                                    10%:</span> 배선 재결선, 커넥터 접촉 불량 조치 등 비교적 경미한 조치입니다.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+                                            <span class="text-primary mt-1">●</span>
+                                            <span><span class="font-bold text-slate-900 dark:text-white">설명 처리
+                                                    2%:</span> 세탁물 과다 적재 등 고객 안내만으로 해결되는 경우로 드문 편입니다.</span>
+                                        </li>
+                                    </ul>
+                                    <div
+                                        class="bg-blue-50/50 dark:bg-blue-900/10 p-3 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
+                                        <p class="text-slate-800 dark:text-slate-200 font-bold text-[13px] mb-1">부품 교체 중
+                                            MAIN PCB 비중 72%</p>
+                                        <p class="text-slate-600 dark:text-slate-400 text-[12px]">LE 에러의 주요 원인이 모터 자체보다는
+                                            PCB 제어 이상에 집중되어 있음을 시사합니다.</p>
+                                    </div>
+                                </div>
 
-        <!-- 상호작용 아이콘 (좋아요, 싫어요, 복사) -->
-        <div class="flex justify-end gap-4 mb-2 px-2">
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="좋아요">
-                <span class="material-symbols-outlined text-[20px]">thumb_up</span>
-            </button>
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="싫어요">
-                <span class="material-symbols-outlined text-[20px]">thumb_down</span>
-            </button>
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-                title="복사하기">
-                <span class="material-symbols-outlined text-[20px]">bookmark</span>
-            </button>
-        </div>
+                                <div class="mb-6">
+                                    <h3
+                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        2. 업무 기준 안내 (무상 적용 조건)</h3>
+                                    <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
+                                        해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN
+                                            PCB에 대해 7년 무상 보증</span>이 적용되는 모델입니다.
+                                    </p>
+                                    <div
+                                        class="bg-slate-100/50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200/50 dark:border-slate-700/50 space-y-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
+                                            <span class="text-[13px] text-slate-700 dark:text-slate-300"><span
+                                                    class="font-bold">생산 기간:</span> 2018년 5월 ~ 2019년 11월</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
+                                            <span class="text-[13px] text-slate-700 dark:text-slate-300"><span
+                                                    class="font-bold">적용 범위:</span> LE 에러 발생 시 MAIN PCB 교체 건</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-    </header>
-    <main class="flex-1 overflow-y-auto px-4 pb-32 pt-2 custom-scrollbar">
-        <!-- 스트리밍될 대시보드 하단 분석 영역 (초기 공백) -->
-        <div id="dashboard-stream-target" class="space-y-6"></div>
-        
-        <!-- 대시보드 원본 소스 (숨김 처리) -->
-        <div id="dashboard-source" style="display:none;">
-            <section class="space-y-6">
-                <!-- 통계 정보 -->
-                <div class="space-y-3">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1 h-5 bg-red-500 rounded-full"></span>
-                        <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">통계 정보</h2>
-                    </div>
-                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-                        <table class="w-full text-center text-[13px] border-collapse">
-                            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                <tr>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">고장원인</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">비중</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">조정</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">설명</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">방문 취소</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">비용계</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품대</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">수리비</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">출장비</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">소계</td>
-                                    <td class="px-3 py-2">79%</td>
-                                    <td class="px-3 py-2">11%</td>
-                                    <td class="px-3 py-2">48%</td>
-                                    <td class="px-3 py-2">19%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2">-</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">건조덕트이물</td>
-                                    <td class="px-3 py-2 font-bold bg-[#63b39c] text-white">39%</td>
-                                    <td class="px-3 py-2">7%</td>
-                                    <td class="px-3 py-2">24%</td>
-                                    <td class="px-3 py-2">7%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">83,500</td>
-                                    <td class="px-3 py-2">44,500</td>
-                                    <td class="px-3 py-2">11,000</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">기능이해/설정미숙</td>
-                                    <td class="px-3 py-2 font-bold bg-[#e0f2f1] text-slate-700 dark:bg-[#e0f2f1]/10 dark:text-slate-200">25%</td>
-                                    <td class="px-3 py-2">1%</td>
-                                    <td class="px-3 py-2">13%</td>
-                                    <td class="px-3 py-2">11%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">72,500</td>
-                                    <td class="px-3 py-2">44,500</td>
-                                    <td class="px-3 py-2">0</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold">메인보드</td>
-                                    <td class="px-3 py-2">14%</td>
-                                    <td class="px-3 py-2">3%</td>
-                                    <td class="px-3 py-2">10%</td>
-                                    <td class="px-3 py-2">1%</td>
-                                    <td class="px-3 py-2">-</td>
-                                    <td class="px-3 py-2 font-bold">103,000</td>
-                                    <td class="px-3 py-2">64,000</td>
-                                    <td class="px-3 py-2">11,000</td>
-                                    <td class="px-3 py-2">28,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                <div class="mb-6">
+                                    <h3
+                                        class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        3. 기술 정보</h3>
+                                    <p class="text-slate-700 dark:text-slate-300 font-medium">
+                                        현장 점검 시 <span class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω
+                                            범위</span>로 우선 측정하십시오. 기준치 이내라면 PCB 제어 로직 이상일 확률이 90% 이상입니다.
+                                    </p>
+                                </div>
 
-                <!-- 증상별 부품 TOP 10 -->
-                <section class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-1 h-5 bg-red-500 rounded-full"></span>
-                            <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">증상별 부품 TOP 10</h2>
-                        </div>
-                        <button id="toggle-parts-btn" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                            <span id="toggle-parts-icon" class="material-symbols-outlined text-red-500">expand_less</span>
-                        </button>
-                    </div>
-                    <div id="parts-table-wrapper" class="overflow-hidden transition-all duration-300 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm rounded-xl">
-                        <table class="w-full text-left text-[13px] border-collapse">
-                            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                <tr>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">부품명</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">PN</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">건수</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">가격</th>
-                                    <th class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">재고</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr>
-                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">Pure Chem,R-600A</td>
-                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">RAC30248901</td>
-                                    <td class="px-3 py-2">193 (22%)</td>
-                                    <td class="px-3 py-2 text-right font-semibold">6,500</td>
-                                    <td class="px-3 py-2 text-right font-black text-slate-400">11</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">Compressor,Assy</td>
-                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">AGM30077605</td>
-                                    <td class="px-3 py-2">107 (12%)</td>
-                                    <td class="px-3 py-2 text-right font-semibold">341,000</td>
-                                    <td class="px-3 py-2 text-right font-black text-slate-400">3</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section class="space-y-3">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-slate-600 text-xl">smart_display</span>
-                        <h2 class="font-bold text-lg text-slate-900 dark:text-white">학습용 영상 컨텐츠</h2>
-                    </div>
-                    <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
-                        <div class="flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                            <div class="h-28 bg-slate-200 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-slate-400 text-3xl">play_circle</span>
+                                <div class="pt-2">
+                                    <h3
+                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        4. 이력 정보</h3>
+                                    <div
+                                        class="bg-purple-50/30 dark:bg-purple-900/10 p-3 rounded-xl border border-purple-100/30 dark:border-purple-800/20 space-y-2">
+                                        <p class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">
+                                            고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십
+                                                등급</span>이며, 해당 제품은 2028-05-31까지 무상 케어 대상입니다. 과거 90일 이내 재서비스 건이므로 세심한
+                                            배려가 필요합니다.
+                                        </p>
+                                    </div>
+                                    <!-- 그라데이션 오버레이 (접혔을 때만 표시) -->
+                                    <div id="content-gradient-overlay"
+                                        class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-slate-800/50 to-transparent pointer-events-none hidden">
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-center">
+                                    <button id="toggle-content-btn"
+                                        class="text-primary font-bold flex items-center gap-1 text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-colors">
+                                        <span id="toggle-content-text">내용 접기</span>
+                                        <span id="toggle-content-icon"
+                                            class="material-symbols-outlined text-[20px]">expand_less</span>
+                                    </button>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- 상호작용 아이콘 (좋아요, 싫어요, 복사) -->
+                    <div id="ai-icons-container" class="flex justify-end gap-4 mb-2 px-2" style="display: none;">
+                        <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                            title="좋아요">
+                            <span class="material-symbols-outlined text-[20px]">thumb_up</span>
+                        </button>
+                        <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                            title="싫어요">
+                            <span class="material-symbols-outlined text-[20px]">thumb_down</span>
+                        </button>
+                        <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                            title="복사하기">
+                            <span class="material-symbols-outlined text-[20px]">bookmark</span>
+                        </button>
+                    </div>
+
+                    </header>
+                    <main class="flex-1 overflow-y-auto px-4 pb-32 pt-2 custom-scrollbar">
+                        <!-- 스트리밍될 대시보드 하단 분석 영역 (초기 공백) -->
+                        <div id="dashboard-stream-target" class="space-y-6"></div>
+
+                        <!-- 대시보드 원본 소스 (숨김 처리) -->
+                        <div id="dashboard-source" style="display:none;">
+                            <section class="space-y-6">
+                                <!-- 통계 정보 -->
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-1 h-5 bg-red-500 rounded-full"></span>
+                                        <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">통계 정보</h2>
+                                    </div>
+                                    <div
+                                        class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                                        <table class="w-full text-center text-[13px] border-collapse">
+                                            <thead
+                                                class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                                <tr>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        고장원인</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        비중</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        부품</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        조정</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        설명</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        방문 취소</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        비용계</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        부품대</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        수리비</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        출장비</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold">소계</td>
+                                                    <td class="px-3 py-2">79%</td>
+                                                    <td class="px-3 py-2">11%</td>
+                                                    <td class="px-3 py-2">48%</td>
+                                                    <td class="px-3 py-2">19%</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold">건조덕트이물</td>
+                                                    <td class="px-3 py-2 font-bold bg-[#63b39c] text-white">39%</td>
+                                                    <td class="px-3 py-2">7%</td>
+                                                    <td class="px-3 py-2">24%</td>
+                                                    <td class="px-3 py-2">7%</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2 font-bold">83,500</td>
+                                                    <td class="px-3 py-2">44,500</td>
+                                                    <td class="px-3 py-2">11,000</td>
+                                                    <td class="px-3 py-2">28,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold">기능이해/설정미숙</td>
+                                                    <td
+                                                        class="px-3 py-2 font-bold bg-[#e0f2f1] text-slate-700 dark:bg-[#e0f2f1]/10 dark:text-slate-200">
+                                                        25%</td>
+                                                    <td class="px-3 py-2">1%</td>
+                                                    <td class="px-3 py-2">13%</td>
+                                                    <td class="px-3 py-2">11%</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2 font-bold">72,500</td>
+                                                    <td class="px-3 py-2">44,500</td>
+                                                    <td class="px-3 py-2">0</td>
+                                                    <td class="px-3 py-2">28,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold">메인보드</td>
+                                                    <td class="px-3 py-2">14%</td>
+                                                    <td class="px-3 py-2">3%</td>
+                                                    <td class="px-3 py-2">10%</td>
+                                                    <td class="px-3 py-2">1%</td>
+                                                    <td class="px-3 py-2">-</td>
+                                                    <td class="px-3 py-2 font-bold">103,000</td>
+                                                    <td class="px-3 py-2">64,000</td>
+                                                    <td class="px-3 py-2">11,000</td>
+                                                    <td class="px-3 py-2">28,000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- 증상별 부품 TOP 10 -->
+                                <section class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-1.5">
+                                            <span class="w-1 h-5 bg-red-500 rounded-full"></span>
+                                            <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">증상별 부품 TOP
+                                                10</h2>
+                                        </div>
+                                        <button id="toggle-parts-btn"
+                                            class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+                                            <span id="toggle-parts-icon"
+                                                class="material-symbols-outlined text-red-500">expand_less</span>
+                                        </button>
+                                    </div>
+                                    <div id="parts-table-wrapper"
+                                        class="overflow-hidden transition-all duration-300 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm rounded-xl">
+                                        <table class="w-full text-left text-[13px] border-collapse">
+                                            <thead
+                                                class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                                <tr>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        부품명</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        PN</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        건수</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">
+                                                        가격</th>
+                                                    <th
+                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700 text-right">
+                                                        재고</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">
+                                                        Pure Chem,R-600A</td>
+                                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">
+                                                        RAC30248901</td>
+                                                    <td class="px-3 py-2">193 (22%)</td>
+                                                    <td class="px-3 py-2 text-right font-semibold">6,500</td>
+                                                    <td class="px-3 py-2 text-right font-black text-slate-400">11</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">
+                                                        Compressor,Assy</td>
+                                                    <td class="px-3 py-2 font-mono text-slate-600 dark:text-slate-400">
+                                                        AGM30077605</td>
+                                                    <td class="px-3 py-2">107 (12%)</td>
+                                                    <td class="px-3 py-2 text-right font-semibold">341,000</td>
+                                                    <td class="px-3 py-2 text-right font-black text-slate-400">3</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+
+                                <section class="space-y-3">
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-slate-600 text-xl">smart_display</span>
+                                        <h2 class="font-bold text-lg text-slate-900 dark:text-white">학습용 영상 컨텐츠</h2>
+                                    </div>
+                                    <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+                                        <div
+                                            class="flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                                            <div class="h-28 bg-slate-200 flex items-center justify-center">
+                                                <span
+                                                    class="material-symbols-outlined text-slate-400 text-3xl">play_circle</span>
+                                            </div>
+                                            <div class="p-3">
+                                                <h3
+                                                    class="text-slate-900 dark:text-white font-bold text-xs line-clamp-2">
+                                                    세탁기 완전 분해 청소방법!</h3>
+                                                <p class="text-[10px] text-slate-500 mt-1">Verified Video • 788.3K Views
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>
+
+                            <!-- Content Area -->
                             <div class="p-3">
-                                <h3 class="text-slate-900 dark:text-white font-bold text-xs line-clamp-2">세탁기 완전 분해 청소방법!</h3>
-                                <p class="text-[10px] text-slate-500 mt-1">Verified Video • 788.3K Views</p>
+                                <p class="text-[10px] text-slate-500 font-bold mb-1">lge.co.kr</p>
+                                <h3
+                                    class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2 mb-2">
+                                    세탁기 분해 청소 방법 전체영상 세탁조 통돌이 분해 청소 풀영상
+                                </h3>
+                                <div class="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
+                                    <span class="text-green-600 flex items-center gap-0.5">
+                                        <span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                        Verified
+                                    </span>
+                                    <span>•</span>
+                                    <span>Mar 6, 2020</span>
+                                    <span>•</span>
+                                    <span>51.5K Views</span>
+                                </div>
                             </div>
+                            </a>
+
+
                         </div>
-                    </div>
-                </section>
-            </section>
-
-                        <!-- Content Area -->
-                        <div class="p-3">
-                            <p class="text-[10px] text-slate-500 font-bold mb-1">lge.co.kr</p>
-                            <h3 class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2 mb-2">
-                                세탁기 분해 청소 방법 전체영상 세탁조 통돌이 분해 청소 풀영상
-                            </h3>
-                            <div class="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
-                                <span class="text-green-600 flex items-center gap-0.5">
-                                    <span class="material-symbols-outlined text-[12px]">check_circle</span>
-                                    Verified
-                                </span>
-                                <span>•</span>
-                                <span>Mar 6, 2020</span>
-                                <span>•</span>
-                                <span>51.5K Views</span>
-                            </div>
-                        </div>
-                    </a>
-
-
                 </div>
+
+
+                </section>
+        </main>
+        <div id="ai-questions-container" class="pt-2 px-4" style="display: none;">
+            <h3
+                class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
+                AI 추천 질문</h3>
+            <div class="space-y-3 px-4">
+                <p class="text-slate-700 dark:text-slate-300 font-medium">
+                    드럼세탁기 LE 발생시 고장원인과 조치방법은 뭐니?
+                </p>
+                <p class="text-slate-700 dark:text-slate-300 font-medium">
+                    드럼세탁기 Main pcb 점검방법을 알려줘
+                </p>
             </div>
-
-
-        </section>
-    </main>
-    <div class="pt-2 px-4">
-        <h3
-            class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
-            AI 추천 질문</h3>
-        <div class="space-y-3 px-4">
-            <p class="text-slate-700 dark:text-slate-300 font-medium">
-                드럼세탁기 LE 발생시 고장원인과 조치방법은 뭐니?
-            </p>
-            <p class="text-slate-700 dark:text-slate-300 font-medium">
-                드럼세탁기 Main pcb 점검방법을 알려줘
-            </p>
         </div>
-    </div>
 
-    <footer
-        class="fixed bottom-0 left-0 right-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-4 z-40 border-t border-slate-200 dark:border-slate-800">
-        <div class="flex items-center gap-3 max-w-lg mx-auto">
-            <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
-                <span class="material-symbols-outlined font-bold">grid_view</span>
-            </button>
-            <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
-                <span class="material-symbols-outlined font-bold">photo_camera</span>
-            </button>
-            <div class="relative flex flex-1 items-center gap-1">
-                <input
-                    class="w-full rounded-full bg-white px-5 py-2.5 text-[14px] font-semibold placeholder-slate-500 focus:outline-none dark:bg-slate-800 dark:text-white pink-input-border"
-                    placeholder="무엇이든 물어보세요" type="text">
-                <button class="absolute right-3 p-1">
-                    <span class="material-symbols-outlined text-xl font-bold text-slate-600">mic</span>
+        <footer
+            class="fixed bottom-0 left-0 right-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-4 z-40 border-t border-slate-200 dark:border-slate-800">
+            <div class="flex items-center gap-3 max-w-lg mx-auto">
+                <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
+                    <span class="material-symbols-outlined font-bold">grid_view</span>
+                </button>
+                <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
+                    <span class="material-symbols-outlined font-bold">photo_camera</span>
+                </button>
+                <div class="relative flex flex-1 items-center gap-1">
+                    <input
+                        class="w-full rounded-full bg-white px-5 py-2.5 text-[14px] font-semibold placeholder-slate-500 focus:outline-none dark:bg-slate-800 dark:text-white pink-input-border"
+                        placeholder="무엇이든 물어보세요" type="text">
+                    <button class="absolute right-3 p-1">
+                        <span class="material-symbols-outlined text-xl font-bold text-slate-600">mic</span>
+                    </button>
+                </div>
+                <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
+                    <span class="material-symbols-outlined font-bold">analytics</span>
                 </button>
             </div>
-            <button class="text-slate-600 dark:text-slate-400 flex-shrink-0">
-                <span class="material-symbols-outlined font-bold">analytics</span>
-            </button>
+        </footer>
+
+        <!-- 복사 완료 알림 (Toast) -->
+        <div id="copy-toast"
+            class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-[100]">
+            복사되었습니다
         </div>
-    </footer>
 
-    <!-- 복사 완료 알림 (Toast) -->
-    <div id="copy-toast"
-        class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-[100]">
-        복사되었습니다
-    </div>
-
-    <!-- Code injected by live-server -->
-    <script>
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+        <!-- Code injected by live-server -->
+        <script>
+            // <![CDATA[  <-- For SVG support
+            if ('WebSocket' in window) {
+                (function () {
+                    function refreshCSS() {
+                        var sheets = [].slice.call(document.getElementsByTagName("link"));
+                        var head = document.getElementsByTagName("head")[0];
+                        for (var i = 0; i < sheets.length; ++i) {
+                            var elem = sheets[i];
+                            var parent = elem.parentElement || head;
+                            parent.removeChild(elem);
+                            var rel = elem.rel;
+                            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                                elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                            }
+                            parent.appendChild(elem);
                         }
-                        parent.appendChild(elem);
                     }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
-    </script>
-    <script>
-        document.getElementById('profile-upload').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('user-profile-image').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
+                    var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                    var address = protocol + window.location.host + window.location.pathname + '/ws';
+                    var socket = new WebSocket(address);
+                    socket.onmessage = function (msg) {
+                        if (msg.data == 'reload') window.location.reload();
+                        else if (msg.data == 'refreshcss') refreshCSS();
+                    };
+                    if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                        console.log('Live reload enabled.');
+                        sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                    }
+                })();
             }
-        });
-
-        // Voice Play Functionality
-        const voiceBtn = document.getElementById('voice-play-btn');
-        const voiceText = document.getElementById('voice-play-text');
-        const voiceIcon = document.getElementById('voice-play-icon');
-        const briefingContent = document.getElementById('ai-briefing-content');
-        let isSpeaking = false;
-
-        voiceBtn.addEventListener('click', function () {
-            if (isSpeaking) {
-                window.speechSynthesis.cancel();
-                isSpeaking = false;
-                voiceText.textContent = '음성 재생';
-                voiceIcon.textContent = 'play_circle';
-                voiceBtn.classList.remove('text-primary', 'border-primary');
-            } else {
-                // 텍스트 가져오기 및 자연스러운 끊어 읽기를 위한 전처리
-                let text = briefingContent.innerText;
-                // 줄바꿈이 있는 곳에 마침표를 추가하여 확실히 쉬어가도록 처리 (띄어쓰기/레이아웃 인식)
-                text = text.replace(/\n+/g, '. ');
-
-                const utterance = new SpeechSynthesisUtterance(text);
-
-                // 한국어 음성 선택 (Google 음성 선호)
-                const voices = window.speechSynthesis.getVoices();
-                const koVoice = voices.find(v => v.lang.includes('ko') && v.name.includes('Google')) ||
-                    voices.find(v => v.lang.includes('ko'));
-
-                if (koVoice) {
-                    utterance.voice = koVoice;
+            else {
+                console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+            }
+            // ]]>
+        </script>
+        <script>
+            document.getElementById('profile-upload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById('user-profile-image').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
                 }
+            });
 
-                // 젊고 밝은 목소리 설정
-                utterance.pitch = 1.2; // 피치를 높여서 젊고 밝은 느낌
-                utterance.rate = 1.0;  // 속도는 보통
+            // Voice Play Functionality
+            const voiceBtn = document.getElementById('voice-play-btn');
+            const voiceText = document.getElementById('voice-play-text');
+            const voiceIcon = document.getElementById('voice-play-icon');
+            const briefingContent = document.getElementById('ai-briefing-content');
+            let isSpeaking = false;
 
-                utterance.onend = function () {
+            voiceBtn.addEventListener('click', function () {
+                if (isSpeaking) {
+                    window.speechSynthesis.cancel();
                     isSpeaking = false;
                     voiceText.textContent = '음성 재생';
                     voiceIcon.textContent = 'play_circle';
                     voiceBtn.classList.remove('text-primary', 'border-primary');
-                };
+                } else {
+                    // 텍스트 가져오기 및 자연스러운 끊어 읽기를 위한 전처리
+                    let text = briefingContent.innerText;
+                    // 줄바꿈이 있는 곳에 마침표를 추가하여 확실히 쉬어가도록 처리 (띄어쓰기/레이아웃 인식)
+                    text = text.replace(/\n+/g, '. ');
 
-                window.speechSynthesis.speak(utterance);
-                isSpeaking = true;
-                voiceText.textContent = '재생 중지';
-                voiceIcon.textContent = 'stop_circle';
-                voiceBtn.classList.add('text-primary', 'border-primary');
-            }
-        });
+                    const utterance = new SpeechSynthesisUtterance(text);
 
-        // Settings Toggle Functionality
-        const settingsBtn = document.getElementById('settings-btn');
-        const settingsMenu = document.getElementById('settings-menu');
-        const toggleRepairStats = document.getElementById('toggle-repair-stats');
-        const toggleHistoryInfo = document.getElementById('toggle-history-info');
-        const repairStatsSection = document.getElementById('repair-stats-section');
-        const historyInfoSection = document.getElementById('history-info-section');
+                    // 한국어 음성 선택 (Google 음성 선호)
+                    const voices = window.speechSynthesis.getVoices();
+                    const koVoice = voices.find(v => v.lang.includes('ko') && v.name.includes('Google')) ||
+                        voices.find(v => v.lang.includes('ko'));
 
-        // Toggle Settings Menu
-        settingsBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            settingsMenu.classList.toggle('hidden');
-        });
+                    if (koVoice) {
+                        utterance.voice = koVoice;
+                    }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function (e) {
-            if (!settingsBtn.contains(e.target) && !settingsMenu.contains(e.target)) {
-                settingsMenu.classList.add('hidden');
-            }
-        });
+                    // 젊고 밝은 목소리 설정
+                    utterance.pitch = 1.2; // 피치를 높여서 젊고 밝은 느낌
+                    utterance.rate = 1.0;  // 속도는 보통
 
-        // Toggle Sections
-        toggleRepairStats.addEventListener('change', function () {
-            const currentRepairStatsSection = document.getElementById('repair-stats-section');
-            if (currentRepairStatsSection) {
-                currentRepairStatsSection.style.display = this.checked ? 'block' : 'none';
-            }
-        });
+                    utterance.onend = function () {
+                        isSpeaking = false;
+                        voiceText.textContent = '음성 재생';
+                        voiceIcon.textContent = 'play_circle';
+                        voiceBtn.classList.remove('text-primary', 'border-primary');
+                    };
 
-        toggleHistoryInfo.addEventListener('change', function () {
-            const currentHistoryInfoSection = document.getElementById('history-info-section');
-            if (currentHistoryInfoSection) {
-                currentHistoryInfoSection.style.display = this.checked ? 'block' : 'none';
-            }
-        });
+                    window.speechSynthesis.speak(utterance);
+                    isSpeaking = true;
+                    voiceText.textContent = '재생 중지';
+                    voiceIcon.textContent = 'stop_circle';
+                    voiceBtn.classList.add('text-primary', 'border-primary');
+                }
+            });
 
-        // Deep Research Functionality
-        const deepResearchBtn = document.getElementById('deep-research-btn');
-        let isDeepResearchMode = false;
+            // Settings Toggle Functionality
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsMenu = document.getElementById('settings-menu');
+            const toggleRepairStats = document.getElementById('toggle-repair-stats');
+            const toggleHistoryInfo = document.getElementById('toggle-history-info');
+            const repairStatsSection = document.getElementById('repair-stats-section');
+            const historyInfoSection = document.getElementById('history-info-section');
 
-        // 원본 콘텐츠 (초기 상태 HTML 저장)
-        const originalContentHTML = `
+            // Toggle Settings Menu
+            settingsBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                settingsMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!settingsBtn.contains(e.target) && !settingsMenu.contains(e.target)) {
+                    settingsMenu.classList.add('hidden');
+                }
+            });
+
+            // Toggle Sections
+            toggleRepairStats.addEventListener('change', function () {
+                const currentRepairStatsSection = document.getElementById('repair-stats-section');
+                if (currentRepairStatsSection) {
+                    currentRepairStatsSection.style.display = this.checked ? 'block' : 'none';
+                }
+            });
+
+            toggleHistoryInfo.addEventListener('change', function () {
+                const currentHistoryInfoSection = document.getElementById('history-info-section');
+                if (currentHistoryInfoSection) {
+                    currentHistoryInfoSection.style.display = this.checked ? 'block' : 'none';
+                }
+            });
+
+            // Deep Research Functionality
+            const deepResearchBtn = document.getElementById('deep-research-btn');
+            let isDeepResearchMode = false;
+
+            // 원본 콘텐츠 (초기 상태 HTML 저장)
+            const originalContentHTML = `
                         <div id="repair-stats-section">
                             <h3
                                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
@@ -5631,8 +5776,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>`;
 
-        // 상세 콘텐츠 (Deep Research HTML)
-        const detailedContentHTML = `
+            // 상세 콘텐츠 (Deep Research HTML)
+            const detailedContentHTML = `
                         <div id="repair-stats-section">
                             <h3 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 1. 수리 통계 분석</h3>
@@ -5711,415 +5856,419 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>`;
 
-        deepResearchBtn.addEventListener('click', function () {
-            const briefingContent = document.getElementById('ai-briefing-content');
+            deepResearchBtn.addEventListener('click', function () {
+                const briefingContent = document.getElementById('ai-briefing-content');
 
-            if (!isDeepResearchMode) {
-                // 상세 모드로 전환
-                briefingContent.innerHTML = detailedContentHTML;
-                this.classList.remove('bg-blue-50', 'text-blue-700');
-                this.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-                isDeepResearchMode = true;
-            } else {
-                // 원래 모드로 복귀
-                briefingContent.innerHTML = originalContentHTML;
-                this.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-                this.classList.add('bg-blue-50', 'text-blue-700');
-                isDeepResearchMode = false;
-            }
-
-            // 설정 메뉴의 토글 상태 재적용
-            const repairStatsEl = document.getElementById('repair-stats-section');
-            const historyInfoEl = document.getElementById('history-info-section');
-
-            if (repairStatsEl) repairStatsEl.style.display = document.getElementById('toggle-repair-stats').checked ? 'block' : 'none';
-            if (historyInfoEl) historyInfoEl.style.display = document.getElementById('toggle-history-info').checked ? 'block' : 'none';
-        });
-
-        // Content Toggle Functionality
-        const toggleContentBtn = document.getElementById('toggle-content-btn');
-        const aiContentWrapper = document.getElementById('ai-content-wrapper');
-        const toggleContentText = document.getElementById('toggle-content-text');
-        const toggleContentIcon = document.getElementById('toggle-content-icon');
-        const contentGradientOverlay = document.getElementById('content-gradient-overlay');
-
-        let isContentExpanded = true;
-
-        if (toggleContentBtn) {
-            toggleContentBtn.addEventListener('click', function () {
-                if (isContentExpanded) {
-                    // 접기
-                    aiContentWrapper.style.maxHeight = '300px';
-                    toggleContentText.textContent = '내용 펼치기';
-                    toggleContentIcon.textContent = 'expand_more';
-                    contentGradientOverlay.classList.remove('hidden');
-                    isContentExpanded = false;
+                if (!isDeepResearchMode) {
+                    // 상세 모드로 전환
+                    briefingContent.innerHTML = detailedContentHTML;
+                    this.classList.remove('bg-blue-50', 'text-blue-700');
+                    this.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+                    isDeepResearchMode = true;
                 } else {
-                    // 펼치기
-                    aiContentWrapper.style.maxHeight = aiContentWrapper.scrollHeight + 'px';
-                    // 애니메이션 완료 후 max-height 제거 (내용 변경 대응)
-                    setTimeout(() => {
-                        if (isContentExpanded) aiContentWrapper.style.maxHeight = 'none';
-                    }, 500);
-
-                    toggleContentText.textContent = '내용 접기';
-                    toggleContentIcon.textContent = 'expand_less';
-                    contentGradientOverlay.classList.add('hidden');
-                    isContentExpanded = true;
+                    // 원래 모드로 복귀
+                    briefingContent.innerHTML = originalContentHTML;
+                    this.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                    this.classList.add('bg-blue-50', 'text-blue-700');
+                    isDeepResearchMode = false;
                 }
+
+                // 설정 메뉴의 토글 상태 재적용
+                const repairStatsEl = document.getElementById('repair-stats-section');
+                const historyInfoEl = document.getElementById('history-info-section');
+
+                if (repairStatsEl) repairStatsEl.style.display = document.getElementById('toggle-repair-stats').checked ? 'block' : 'none';
+                if (historyInfoEl) historyInfoEl.style.display = document.getElementById('toggle-history-info').checked ? 'block' : 'none';
             });
-        }
 
-        // Parts Table Toggle Functionality
-        const togglePartsBtn = document.getElementById('toggle-parts-btn');
-        const partsTableWrapper = document.getElementById('parts-table-wrapper');
-        const togglePartsIcon = document.getElementById('toggle-parts-icon');
+            // Content Toggle Functionality
+            const toggleContentBtn = document.getElementById('toggle-content-btn');
+            const aiContentWrapper = document.getElementById('ai-content-wrapper');
+            const toggleContentText = document.getElementById('toggle-content-text');
+            const toggleContentIcon = document.getElementById('toggle-content-icon');
+            const contentGradientOverlay = document.getElementById('content-gradient-overlay');
 
-        let isPartsExpanded = true;
+            let isContentExpanded = true;
 
-        if (togglePartsBtn) {
-            togglePartsBtn.addEventListener('click', function () {
-                if (isPartsExpanded) {
-                    // 접기
-                    partsTableWrapper.style.maxHeight = '0px';
-                    partsTableWrapper.style.opacity = '0';
-                    partsTableWrapper.style.borderWidth = '0px';
-                    partsTableWrapper.style.marginBottom = '0px';
-                    togglePartsIcon.textContent = 'expand_more';
-                    isPartsExpanded = false;
-                } else {
-                    // 펼치기
-                    partsTableWrapper.style.display = 'block'; // Ensure it flows
-                    partsTableWrapper.style.maxHeight = partsTableWrapper.scrollHeight + 'px';
-                    partsTableWrapper.style.opacity = '1';
-                    partsTableWrapper.style.borderWidth = '1px';
-                    partsTableWrapper.style.marginBottom = '0px'; // Reset if needed
-                    togglePartsIcon.textContent = 'expand_less';
-                    isPartsExpanded = true;
+            if (toggleContentBtn) {
+                toggleContentBtn.addEventListener('click', function () {
+                    if (isContentExpanded) {
+                        // 접기
+                        aiContentWrapper.style.maxHeight = '300px';
+                        toggleContentText.textContent = '내용 펼치기';
+                        toggleContentIcon.textContent = 'expand_more';
+                        contentGradientOverlay.classList.remove('hidden');
+                        isContentExpanded = false;
+                    } else {
+                        // 펼치기
+                        aiContentWrapper.style.maxHeight = aiContentWrapper.scrollHeight + 'px';
+                        // 애니메이션 완료 후 max-height 제거 (내용 변경 대응)
+                        setTimeout(() => {
+                            if (isContentExpanded) aiContentWrapper.style.maxHeight = 'none';
+                        }, 500);
 
-                    // Remove max-height after transition to allow dynamic content
-                    setTimeout(() => {
-                        if (isPartsExpanded) partsTableWrapper.style.maxHeight = 'none';
-                    }, 300);
-                }
-            });
-        }
-
-        // Copy to Clipboard
-        const copyToast = document.getElementById('copy-toast');
-        function copyToClipboard(text, event) {
-            if (event) event.stopPropagation();
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showToast();
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                    fallbackCopyTextToClipboard(text);
+                        toggleContentText.textContent = '내용 접기';
+                        toggleContentIcon.textContent = 'expand_less';
+                        contentGradientOverlay.classList.add('hidden');
+                        isContentExpanded = true;
+                    }
                 });
-            } else {
-                fallbackCopyTextToClipboard(text);
             }
-        }
 
-        function fallbackCopyTextToClipboard(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand("Copy");
-                showToast();
-            } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
+            // Parts Table Toggle Functionality
+            const togglePartsBtn = document.getElementById('toggle-parts-btn');
+            const partsTableWrapper = document.getElementById('parts-table-wrapper');
+            const togglePartsIcon = document.getElementById('toggle-parts-icon');
+
+            let isPartsExpanded = true;
+
+            if (togglePartsBtn) {
+                togglePartsBtn.addEventListener('click', function () {
+                    if (isPartsExpanded) {
+                        // 접기
+                        partsTableWrapper.style.maxHeight = '0px';
+                        partsTableWrapper.style.opacity = '0';
+                        partsTableWrapper.style.borderWidth = '0px';
+                        partsTableWrapper.style.marginBottom = '0px';
+                        togglePartsIcon.textContent = 'expand_more';
+                        isPartsExpanded = false;
+                    } else {
+                        // 펼치기
+                        partsTableWrapper.style.display = 'block'; // Ensure it flows
+                        partsTableWrapper.style.maxHeight = partsTableWrapper.scrollHeight + 'px';
+                        partsTableWrapper.style.opacity = '1';
+                        partsTableWrapper.style.borderWidth = '1px';
+                        partsTableWrapper.style.marginBottom = '0px'; // Reset if needed
+                        togglePartsIcon.textContent = 'expand_less';
+                        isPartsExpanded = true;
+
+                        // Remove max-height after transition to allow dynamic content
+                        setTimeout(() => {
+                            if (isPartsExpanded) partsTableWrapper.style.maxHeight = 'none';
+                        }, 300);
+                    }
+                });
             }
-            document.body.removeChild(textArea);
-        }
 
-        function showToast() {
-            if (copyToast) {
-                copyToast.classList.remove('opacity-0', 'pointer-events-none');
-                setTimeout(() => {
-                    copyToast.classList.add('opacity-0', 'pointer-events-none');
-                }, 2000);
+            // Copy to Clipboard
+            const copyToast = document.getElementById('copy-toast');
+            function copyToClipboard(text, event) {
+                if (event) event.stopPropagation();
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        showToast();
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                        fallbackCopyTextToClipboard(text);
+                    });
+                } else {
+                    fallbackCopyTextToClipboard(text);
+                }
             }
-        }
-    </script>
 
-    <!-- 부품 담기 팝업 -->
-    <div id="add-parts-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
-        <!-- 배경 오버레이 -->
-        <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
+            function fallbackCopyTextToClipboard(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand("Copy");
+                    showToast();
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                document.body.removeChild(textArea);
+            }
 
-        <!-- 팝업 패널 -->
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div
-                    class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    <!-- 헤더 -->
-                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-slate-100 dark:border-slate-700">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <button type="button" id="close-modal-btn-x"
-                                    class="text-slate-400 hover:text-slate-500">
-                                    <span class="material-symbols-outlined">close</span>
-                                </button>
-                                <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">부품 담기</h3>
-                            </div>
-                            <div class="flex items-center gap-2 text-slate-400">
-                                <span class="material-symbols-outlined">shopping_cart</span>
-                                <span class="material-symbols-outlined">notifications</span>
-                            </div>
-                        </div>
-                        <div class="mt-4 pb-2 border-b-2 border-slate-800 w-full">
-                            <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
-                        </div>
-                    </div>
+            function showToast() {
+                if (copyToast) {
+                    copyToast.classList.remove('opacity-0', 'pointer-events-none');
+                    setTimeout(() => {
+                        copyToast.classList.add('opacity-0', 'pointer-events-none');
+                    }, 2000);
+                }
+            }
+        </script>
 
-                    <!-- 컨텐츠 -->
-                    <div class="bg-white px-4 py-4">
-                        <table class="w-full text-center text-sm border-collapse">
-                            <thead class="bg-slate-50 text-slate-600 font-bold border-t border-slate-200">
-                                <tr>
-                                    <th class="py-3 w-12 pl-4">
-                                        <!-- 전체 선택 체크박스 (비활성 예시) -->
-                                        <div id="add-parts-select-all"
-                                            class="w-6 h-6 rounded-full border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
-                                        </div>
-                                    </th>
-                                    <th class="py-3">부품명</th>
-                                    <th class="py-3">PN</th>
-                                    <th class="py-3">건수</th>
-                                    <th class="py-3">가격</th>
-                                </tr>
-                            </thead>
-                            <tbody id="modal-parts-list" class="divide-y divide-slate-100 text-slate-700 text-[13px]">
-                                <!-- JavaScript로 동적 추가될 영역 -->
-                            </tbody>
-                        </table>
-                    </div>
+        <!-- 부품 담기 팝업 -->
+        <div id="add-parts-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <!-- 배경 오버레이 -->
+            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
 
-                    <!-- 푸터 -->
-                    <div class="bg-white px-4 py-3 pb-6 sm:flex sm:flex-row-reverse sm:px-6 gap-2">
-                        <button type="button" id="confirm-add-btn"
-                            class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                            담기
-                        </button>
-                        <button type="button" id="cancel-modal-btn"
-                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                            취소
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 확인 팝업 (페이지 이동 확인) -->
-    <div id="confirm-move-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
-        <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div
-                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
-                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div class="mt-2 text-center">
-                            <h3 class="text-base font-semibold leading-6 text-slate-900" id="modal-title">
-                                부품주문 화면으로 이동 하시겠습니까?
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="bg-white px-4 py-3 pb-6 flex justify-center gap-8 sm:px-6">
-                        <button type="button" id="confirm-move-cancel-btn"
-                            class="text-slate-500 hover:text-slate-700 font-bold text-sm">
-                            취소
-                        </button>
-                        <button type="button" id="confirm-move-ok-btn"
-                            class="text-slate-900 hover:text-black font-bold text-sm">
-                            확인
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 부품 주문 팝업 -->
-    <div id="order-parts-modal" class="fixed inset-0 z-[70] hidden" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
-        <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div
-                    class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
-                    <!-- 헤더 -->
-                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div class="flex items-center justify-between mb-4">
-                            <button type="button" id="close-order-modal-btn-x" class="text-slate-900">
-                                <span class="material-symbols-outlined font-bold">close</span>
-                            </button>
-                            <h3 class="text-xl font-bold leading-6 text-slate-900">부품 주문</h3>
-                            <div class="flex items-center gap-3">
-                                <div class="relative">
-                                    <span class="material-symbols-outlined text-slate-900">shopping_cart</span>
-                                    <span
-                                        class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white ring-2 ring-white">1</span>
+            <!-- 팝업 패널 -->
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <!-- 헤더 -->
+                        <div
+                            class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-slate-100 dark:border-slate-700">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <button type="button" id="close-modal-btn-x"
+                                        class="text-slate-400 hover:text-slate-500">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                    <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">부품 담기</h3>
                                 </div>
-                                <span class="material-symbols-outlined text-slate-900">notifications</span>
+                                <div class="flex items-center gap-2 text-slate-400">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                    <span class="material-symbols-outlined">notifications</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 pb-2 border-b-2 border-slate-800 w-full">
+                                <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
                             </div>
                         </div>
-                        <div class="pb-2 border-b border-slate-400 w-full">
-                            <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
-                        </div>
-                    </div>
 
-                    <!-- 전체선택 -->
-                    <div class="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center gap-3">
-                        <div id="order-select-all-btn"
-                            class="w-6 h-6 rounded border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
-                            <!-- 체크박스 UI -->
+                        <!-- 컨텐츠 -->
+                        <div class="bg-white px-4 py-4">
+                            <table class="w-full text-center text-sm border-collapse">
+                                <thead class="bg-slate-50 text-slate-600 font-bold border-t border-slate-200">
+                                    <tr>
+                                        <th class="py-3 w-12 pl-4">
+                                            <!-- 전체 선택 체크박스 (비활성 예시) -->
+                                            <div id="add-parts-select-all"
+                                                class="w-6 h-6 rounded-full border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
+                                            </div>
+                                        </th>
+                                        <th class="py-3">부품명</th>
+                                        <th class="py-3">PN</th>
+                                        <th class="py-3">건수</th>
+                                        <th class="py-3">가격</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modal-parts-list"
+                                    class="divide-y divide-slate-100 text-slate-700 text-[13px]">
+                                    <!-- JavaScript로 동적 추가될 영역 -->
+                                </tbody>
+                            </table>
                         </div>
-                        <span class="font-bold text-slate-900 text-sm">전체선택</span>
-                    </div>
 
-                    <!-- 주문 목록 -->
-                    <div class="bg-white px-6 py-4 max-h-[60vh] overflow-y-auto">
-                        <div id="order-parts-list" class="space-y-6">
-                            <!-- 동적 추가 -->
+                        <!-- 푸터 -->
+                        <div class="bg-white px-4 py-3 pb-6 sm:flex sm:flex-row-reverse sm:px-6 gap-2">
+                            <button type="button" id="confirm-add-btn"
+                                class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
+                                담기
+                            </button>
+                            <button type="button" id="cancel-modal-btn"
+                                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
+                                취소
+                            </button>
                         </div>
-                    </div>
-
-                    <!-- 푸터 -->
-                    <div class="bg-white px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 gap-2 border-t border-slate-100">
-                        <button type="button" id="final-order-btn"
-                            class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                            주문
-                        </button>
-                        <button type="button" id="cancel-order-btn"
-                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                            취소
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 주문 완료 팝업 -->
-    <div id="order-complete-modal" class="fixed inset-0 z-[80] hidden" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
-        <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div
-                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
-                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div class="mt-2 text-center">
-                            <div
-                                class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
-                                <span class="material-symbols-outlined text-green-600 text-2xl font-bold">check</span>
+        <!-- 확인 팝업 (페이지 이동 확인) -->
+        <div id="confirm-move-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <div class="mt-2 text-center">
+                                <h3 class="text-base font-semibold leading-6 text-slate-900" id="modal-title">
+                                    부품주문 화면으로 이동 하시겠습니까?
+                                </h3>
                             </div>
-                            <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">
-                                주문이 완료되었습니다
-                            </h3>
-                            <p class="text-sm text-slate-500 mt-2">
-                                선택하신 부품 주문이 정상적으로 접수되었습니다.
-                            </p>
                         </div>
-                    </div>
-                    <div class="bg-white px-4 py-3 pb-6 flex justify-center sm:px-6">
-                        <button type="button" id="order-complete-ok-btn"
-                            class="inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[100px]">
-                            확인
-                        </button>
+                        <div class="bg-white px-4 py-3 pb-6 flex justify-center gap-8 sm:px-6">
+                            <button type="button" id="confirm-move-cancel-btn"
+                                class="text-slate-500 hover:text-slate-700 font-bold text-sm">
+                                취소
+                            </button>
+                            <button type="button" id="confirm-move-ok-btn"
+                                class="text-slate-900 hover:text-black font-bold text-sm">
+                                확인
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- 부품 주문 팝업 -->
+        <div id="order-parts-modal" class="fixed inset-0 z-[70] hidden" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
+                        <!-- 헤더 -->
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <button type="button" id="close-order-modal-btn-x" class="text-slate-900">
+                                    <span class="material-symbols-outlined font-bold">close</span>
+                                </button>
+                                <h3 class="text-xl font-bold leading-6 text-slate-900">부품 주문</h3>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <span class="material-symbols-outlined text-slate-900">shopping_cart</span>
+                                        <span
+                                            class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white ring-2 ring-white">1</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-slate-900">notifications</span>
+                                </div>
+                            </div>
+                            <div class="pb-2 border-b border-slate-400 w-full">
+                                <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
+                            </div>
+                        </div>
+
+                        <!-- 전체선택 -->
+                        <div class="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center gap-3">
+                            <div id="order-select-all-btn"
+                                class="w-6 h-6 rounded border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
+                                <!-- 체크박스 UI -->
+                            </div>
+                            <span class="font-bold text-slate-900 text-sm">전체선택</span>
+                        </div>
+
+                        <!-- 주문 목록 -->
+                        <div class="bg-white px-6 py-4 max-h-[60vh] overflow-y-auto">
+                            <div id="order-parts-list" class="space-y-6">
+                                <!-- 동적 추가 -->
+                            </div>
+                        </div>
+
+                        <!-- 푸터 -->
+                        <div
+                            class="bg-white px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 gap-2 border-t border-slate-100">
+                            <button type="button" id="final-order-btn"
+                                class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
+                                주문
+                            </button>
+                            <button type="button" id="cancel-order-btn"
+                                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
+                                취소
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주문 완료 팝업 -->
+        <div id="order-complete-modal" class="fixed inset-0 z-[80] hidden" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <div class="mt-2 text-center">
+                                <div
+                                    class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-green-600 text-2xl font-bold">check</span>
+                                </div>
+                                <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">
+                                    주문이 완료되었습니다
+                                </h3>
+                                <p class="text-sm text-slate-500 mt-2">
+                                    선택하신 부품 주문이 정상적으로 접수되었습니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-white px-4 py-3 pb-6 flex justify-center sm:px-6">
+                            <button type="button" id="order-complete-ok-btn"
+                                class="inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[100px]">
+                                확인
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-    <!-- 복사 완료 알림 (Toast) -->
+        <!-- 복사 완료 알림 (Toast) -->
 
 
-    <script>
-        // ... (기존 스크립트) ...
+        <script>
+            // ... (기존 스크립트) ...
 
-        // Parts Popup Functionality & Flow
-        const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
-        const partsRows = popupPartsTableWrapper ? popupPartsTableWrapper.querySelectorAll('tbody tr') : [];
+            // Parts Popup Functionality & Flow
+            const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
+            const partsRows = popupPartsTableWrapper ? popupPartsTableWrapper.querySelectorAll('tbody tr') : [];
 
-        // Modal Elements
-        const addPartsModal = document.getElementById('add-parts-modal');
-        const confirmMoveModal = document.getElementById('confirm-move-modal');
-        const orderPartsModal = document.getElementById('order-parts-modal');
-        const orderCompleteModal = document.getElementById('order-complete-modal');
+            // Modal Elements
+            const addPartsModal = document.getElementById('add-parts-modal');
+            const confirmMoveModal = document.getElementById('confirm-move-modal');
+            const orderPartsModal = document.getElementById('order-parts-modal');
+            const orderCompleteModal = document.getElementById('order-complete-modal');
 
-        // Modal Content Containers
-        const modalPartsList = document.getElementById('modal-parts-list');
-        const orderPartsList = document.getElementById('order-parts-list');
+            // Modal Content Containers
+            const modalPartsList = document.getElementById('modal-parts-list');
+            const orderPartsList = document.getElementById('order-parts-list');
 
-        // State
-        let currentPartsList = []; // Array to store parts data in the Add Modal
-        let orderPopupItems = []; // Array to store parts state in the Order Modal
+            // State
+            let currentPartsList = []; // Array to store parts data in the Add Modal
+            let orderPopupItems = []; // Array to store parts state in the Order Modal
 
-        // 1. Open Add Parts Modal
-        function openModal(partData) {
-            // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
-            // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
-            // 여기서는 UI 시나리오대로 기존 예시와 합침.
+            // 1. Open Add Parts Modal
+            function openModal(partData) {
+                // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
+                // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
+                // 여기서는 UI 시나리오대로 기존 예시와 합침.
 
-            const otherPart = {
-                id: 'part-1',
-                name: 'Compressor,Parts Assembly,SVC',
-                pn: 'AGM30128802\n(원품)',
-                pnRaw: 'AGM30128802',
-                count: '235건\n(55%)',
-                price: '310,000원',
-                priceRaw: 310000,
-                checked: true
-            };
+                const otherPart = {
+                    id: 'part-1',
+                    name: 'Compressor,Parts Assembly,SVC',
+                    pn: 'AGM30128802\n(원품)',
+                    pnRaw: 'AGM30128802',
+                    count: '235건\n(55%)',
+                    price: '310,000원',
+                    priceRaw: 310000,
+                    checked: true
+                };
 
-            const selectedPart = {
-                id: 'part-2',
-                name: (partData.name || '').replace(',', ',<br>'),
-                pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
-                pnRaw: (partData.pn || '').split(' ')[0],
-                count: (partData.count || '').replace(' ', '<br>'),
-                price: (partData.price || '') + '원',
-                priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
-                checked: false // 기본 선택 안됨
-            };
+                const selectedPart = {
+                    id: 'part-2',
+                    name: (partData.name || '').replace(',', ',<br>'),
+                    pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
+                    pnRaw: (partData.pn || '').split(' ')[0],
+                    count: (partData.count || '').replace(' ', '<br>'),
+                    price: (partData.price || '') + '원',
+                    priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
+                    checked: false // 기본 선택 안됨
+                };
 
-            currentPartsList = [otherPart, selectedPart];
-            renderAddPartsList();
-            addPartsModal.classList.remove('hidden');
-        }
-
-        function renderAddPartsList() {
-            // Check Select All State
-            const allChecked = currentPartsList.length > 0 && currentPartsList.every(p => p.checked);
-            const selectAllBtn = document.getElementById('add-parts-select-all');
-
-            if (selectAllBtn) {
-                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = allChecked ? '' : 'hidden';
-
-                selectAllBtn.className = `w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>`;
-
-                // Remove old listener to avoid duplicates if any (though cleaner to just assign logic here as it's simple)
-                selectAllBtn.onclick = function () { toggleAddSelectAll(!allChecked); };
+                currentPartsList = [otherPart, selectedPart];
+                renderAddPartsList();
+                addPartsModal.classList.remove('hidden');
             }
 
-            let html = '';
-            currentPartsList.forEach((part, index) => {
-                const checkClass = part.checked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = part.checked ? '' : 'hidden';
+            function renderAddPartsList() {
+                // Check Select All State
+                const allChecked = currentPartsList.length > 0 && currentPartsList.every(p => p.checked);
+                const selectAllBtn = document.getElementById('add-parts-select-all');
 
-                html += `
+                if (selectAllBtn) {
+                    const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                    const iconClass = allChecked ? '' : 'hidden';
+
+                    selectAllBtn.className = `w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
+                    selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>`;
+
+                    // Remove old listener to avoid duplicates if any (though cleaner to just assign logic here as it's simple)
+                    selectAllBtn.onclick = function () { toggleAddSelectAll(!allChecked); };
+                }
+
+                let html = '';
+                currentPartsList.forEach((part, index) => {
+                    const checkClass = part.checked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                    const iconClass = part.checked ? '' : 'hidden';
+
+                    html += `
                 <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleAddCheckbox(${index})">
                     <td class="py-4 pl-4 w-12 text-center">
                         <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center transition-all duration-200">
@@ -6132,94 +6281,94 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     <td class="py-4 px-2 pr-4 text-right font-bold text-slate-900">${part.price}</td>
                 </tr>
             `;
+                });
+                modalPartsList.innerHTML = html;
+            }
+
+            function toggleAddCheckbox(index) {
+                if (currentPartsList[index]) {
+                    currentPartsList[index].checked = !currentPartsList[index].checked;
+                    renderAddPartsList(); // Re-render to update UI
+                }
+            }
+
+            function toggleAddSelectAll(checked) {
+                currentPartsList.forEach(p => p.checked = checked);
+                renderAddPartsList();
+            }
+
+            // Close Functions
+            function closeModal() {
+                addPartsModal.classList.add('hidden');
+            }
+            function closeConfirmModal() {
+                confirmMoveModal.classList.add('hidden');
+            }
+            function closeOrderModal() {
+                orderPartsModal.classList.add('hidden');
+            }
+            function closeOrderCompleteModal() {
+                orderCompleteModal.classList.add('hidden');
+            }
+
+            // Event Listeners for Add Parts Modal
+            document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
+            document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
+
+            // "담기" Click -> Show Confirmation
+            document.getElementById('confirm-add-btn').addEventListener('click', function () {
+                // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
+                closeModal(); // 1번 닫고
+                confirmMoveModal.classList.remove('hidden'); // 2번 열기
             });
-            modalPartsList.innerHTML = html;
-        }
-
-        function toggleAddCheckbox(index) {
-            if (currentPartsList[index]) {
-                currentPartsList[index].checked = !currentPartsList[index].checked;
-                renderAddPartsList(); // Re-render to update UI
-            }
-        }
-
-        function toggleAddSelectAll(checked) {
-            currentPartsList.forEach(p => p.checked = checked);
-            renderAddPartsList();
-        }
-
-        // Close Functions
-        function closeModal() {
-            addPartsModal.classList.add('hidden');
-        }
-        function closeConfirmModal() {
-            confirmMoveModal.classList.add('hidden');
-        }
-        function closeOrderModal() {
-            orderPartsModal.classList.add('hidden');
-        }
-        function closeOrderCompleteModal() {
-            orderCompleteModal.classList.add('hidden');
-        }
-
-        // Event Listeners for Add Parts Modal
-        document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
-        document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
-
-        // "담기" Click -> Show Confirmation
-        document.getElementById('confirm-add-btn').addEventListener('click', function () {
-            // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
-            closeModal(); // 1번 닫고
-            confirmMoveModal.classList.remove('hidden'); // 2번 열기
-        });
 
 
-        // Event Listeners for Confirmation Modal
-        document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
-            closeConfirmModal();
-            addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
-        });
+            // Event Listeners for Confirmation Modal
+            document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
+                closeConfirmModal();
+                addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
+            });
 
-        document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
-            closeConfirmModal();
-            openOrderModal(); // 3번 열기
-        });
+            document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
+                closeConfirmModal();
+                openOrderModal(); // 3번 열기
+            });
 
 
-        // 3. Open Order Modal Logic
-        function openOrderModal() {
-            // Filter only checked items from Add Modal to init Order Modal
-            // We use a separate state `orderPopupItems` to manage checkboxes inside Order Modal
-            orderPopupItems = currentPartsList.filter(p => p.checked).map(p => ({ ...p, orderChecked: true, qty: 1 }));
+            // 3. Open Order Modal Logic
+            function openOrderModal() {
+                // Filter only checked items from Add Modal to init Order Modal
+                // We use a separate state `orderPopupItems` to manage checkboxes inside Order Modal
+                orderPopupItems = currentPartsList.filter(p => p.checked).map(p => ({ ...p, orderChecked: true, qty: 1 }));
 
-            renderOrderPopup();
-            orderPartsModal.classList.remove('hidden');
-        }
-
-        function renderOrderPopup() {
-            // Check if all are selected for "Select All" state
-            const allChecked = orderPopupItems.length > 0 && orderPopupItems.every(p => p.orderChecked);
-            const selectAllBtn = document.getElementById('order-select-all-btn');
-
-            if (selectAllBtn) {
-                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = allChecked ? '' : 'hidden'; // using hidden class for visibility
-
-                selectAllBtn.className = `w-6 h-6 rounded border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-sm font-bold ${iconClass}">check</span>`;
-
-                selectAllBtn.onclick = function () { toggleOrderSelectAll(!allChecked); };
+                renderOrderPopup();
+                orderPartsModal.classList.remove('hidden');
             }
 
-            let html = '';
-            if (orderPopupItems.length === 0) {
-                html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
-            } else {
-                orderPopupItems.forEach((part, index) => {
-                    const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                    const iconClass = part.orderChecked ? '' : 'hidden';
+            function renderOrderPopup() {
+                // Check if all are selected for "Select All" state
+                const allChecked = orderPopupItems.length > 0 && orderPopupItems.every(p => p.orderChecked);
+                const selectAllBtn = document.getElementById('order-select-all-btn');
 
-                    html += `
+                if (selectAllBtn) {
+                    const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                    const iconClass = allChecked ? '' : 'hidden'; // using hidden class for visibility
+
+                    selectAllBtn.className = `w-6 h-6 rounded border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
+                    selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-sm font-bold ${iconClass}">check</span>`;
+
+                    selectAllBtn.onclick = function () { toggleOrderSelectAll(!allChecked); };
+                }
+
+                let html = '';
+                if (orderPopupItems.length === 0) {
+                    html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
+                } else {
+                    orderPopupItems.forEach((part, index) => {
+                        const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                        const iconClass = part.orderChecked ? '' : 'hidden';
+
+                        html += `
                         <div class="flex items-start gap-4">
                             <div class="pt-1">
                                 <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200" onclick="toggleOrderCheckbox(${index})">
@@ -6254,69 +6403,69 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>
                     `;
-                });
+                    });
+                }
+                orderPartsList.innerHTML = html;
             }
-            orderPartsList.innerHTML = html;
-        }
 
-        function toggleOrderCheckbox(index) {
-            if (orderPopupItems[index]) {
-                orderPopupItems[index].orderChecked = !orderPopupItems[index].orderChecked;
+            function toggleOrderCheckbox(index) {
+                if (orderPopupItems[index]) {
+                    orderPopupItems[index].orderChecked = !orderPopupItems[index].orderChecked;
+                    renderOrderPopup();
+                }
+            }
+
+            function toggleOrderSelectAll(checked) {
+                orderPopupItems.forEach(p => p.orderChecked = checked);
                 renderOrderPopup();
             }
-        }
 
-        function toggleOrderSelectAll(checked) {
-            orderPopupItems.forEach(p => p.orderChecked = checked);
-            renderOrderPopup();
-        }
-
-        function updateOrderQty(index, value) {
-            if (orderPopupItems[index]) {
-                const newQty = parseInt(value, 10);
-                if (!isNaN(newQty) && newQty >= 1) {
-                    orderPopupItems[index].qty = newQty;
-                    // No need to re-render the whole list for quantity change,
-                    // but if total price or other derived values are shown,
-                    // a partial update or re-render might be needed.
-                    // For now, just update the state.
+            function updateOrderQty(index, value) {
+                if (orderPopupItems[index]) {
+                    const newQty = parseInt(value, 10);
+                    if (!isNaN(newQty) && newQty >= 1) {
+                        orderPopupItems[index].qty = newQty;
+                        // No need to re-render the whole list for quantity change,
+                        // but if total price or other derived values are shown,
+                        // a partial update or re-render might be needed.
+                        // For now, just update the state.
+                    }
                 }
             }
-        }
 
-        // Event Listeners for Order Modal
-        document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
-        document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
-        document.getElementById('final-order-btn').addEventListener('click', function () {
-            alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
-            closeOrderModal();
-        });
-
-
-        // ... (기존 테이블 행 클릭 이벤트 유지) ...
-        partsRows.forEach(row => {
-            row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-            row.addEventListener('click', function () {
-                const cells = this.querySelectorAll('td');
-                if (cells.length >= 4) {
-                    const partData = {
-                        name: cells[0].innerText.trim(),
-                        pn: cells[1].innerText.trim(),
-                        count: cells[2].innerText.trim(),
-                        price: cells[3].innerText.trim()
-                    };
-                    openModal(partData);
-                }
+            // Event Listeners for Order Modal
+            document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
+            document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
+            document.getElementById('final-order-btn').addEventListener('click', function () {
+                alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
+                closeOrderModal();
             });
-        });
 
 
-    </script>
+            // ... (기존 테이블 행 클릭 이벤트 유지) ...
+            partsRows.forEach(row => {
+                row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
+                row.addEventListener('click', function () {
+                    const cells = this.querySelectorAll('td');
+                    if (cells.length >= 4) {
+                        const partData = {
+                            name: cells[0].innerText.trim(),
+                            pn: cells[1].innerText.trim(),
+                            count: cells[2].innerText.trim(),
+                            price: cells[3].innerText.trim()
+                        };
+                        openModal(partData);
+                    }
+                });
+            });
+
+
+        </script>
     </div><!-- #chatbot-app-layer END -->
 
     <script>
         // [레이어 전환 및 실행 로직]
-        (function() {
+        (function () {
             const launchBtn = document.getElementById('launch-chatbot-btn');
             const exitBtn = document.getElementById('exit-chatbot-btn');
             const dashboard = document.getElementById('dashboard-layer');
@@ -6331,16 +6480,21 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 // 대시보드 페이드 아웃 (즉시 전환을 위해 시간 단축)
                 dashboard.style.transition = 'opacity 0.2s ease';
                 dashboard.style.opacity = '0';
-                
+
                 setTimeout(() => {
                     dashboard.style.display = 'none';
-                    
+
                     // 로딩 화면(런처)을 건너뛰고 챗봇 앱 컨테이너를 즉시 표시
                     chatbotApp.style.display = 'block';
-                    setTimeout(() => { 
-                        chatbotApp.style.opacity = '1'; 
+                    setTimeout(() => {
+                        chatbotApp.style.opacity = '1';
                         // 차트 및 레이아웃 갱신을 위해 리사이즈 이벤트 발생
                         window.dispatchEvent(new Event('resize'));
+
+                        // [추가] Qbot 진입 시 자동 스트리밍 시작
+                        setTimeout(() => {
+                            runStreamingSequence();
+                        }, 300);
                     }, 50);
                 }, 200);
             });
@@ -6349,10 +6503,10 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 // 챗봇 종료 처리
                 chatbotApp.style.transition = 'opacity 0.5s ease';
                 chatbotApp.style.opacity = '0';
-                
+
                 setTimeout(() => {
                     chatbotApp.style.display = 'none';
-                    
+
                     // 대시보드 복귀
                     dashboard.style.display = 'flex';
                     setTimeout(() => { dashboard.style.opacity = '1'; }, 50);
@@ -6363,9 +6517,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const deepResearchBtn = document.getElementById('deep-research-btn');
             const briefingCard = document.getElementById('ai-briefing-card');
             const loadingContainer = document.getElementById('ai-loading-container');
+            const aiTopContainer = document.getElementById('ai-top-container');
+            const aiIconsContainer = document.getElementById('ai-icons-container');
+            const aiQuestionsContainer = document.getElementById('ai-questions-container');
 
             if (deepResearchBtn) {
-                deepResearchBtn.addEventListener('click', function() {
+                deepResearchBtn.addEventListener('click', function () {
                     // 1. 버튼 로딩 상태로 변경
                     const originalHTML = this.innerHTML;
                     this.disabled = true;
@@ -6379,7 +6536,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     briefingCard.style.display = 'none';
                     loadingContainer.classList.remove('hidden');
                     loadingContainer.classList.add('flex');
-                    
+
                     const dashboardTarget = document.getElementById('dashboard-stream-target');
                     const questionsTarget = document.getElementById('ai-questions-stream-target');
                     if (dashboardTarget) dashboardTarget.innerHTML = '';
@@ -6397,37 +6554,56 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         this.classList.remove('opacity-80', 'cursor-not-allowed');
 
                         // 결과 카드 노출 및 순차 스트리밍 시작
-                        briefingCard.style.display = 'block';
-                        briefingCard.style.opacity = '1';
-                        briefingCard.style.transform = 'translateY(0)';
-                        
-                        const briefingSource = document.getElementById('ai-briefing-source');
-                        const briefingContent = document.getElementById('ai-briefing-content');
-                        
-                        const dashboardSource = document.getElementById('dashboard-source');
-                        const questionsSource = document.getElementById('ai-questions-source');
-
-                        // [순차적 스트리밍 시퀀스]
-                        if (briefingSource && briefingContent) {
-                            // Stage 1: AI 브리핑
-                            streamHTML(briefingSource, briefingContent, () => {
-                                // Stage 2: 대시보드 분석 본체 (통계, TOP 10 등)
-                                if (dashboardSource && dashboardTarget) {
-                                    streamHTML(dashboardSource, dashboardTarget, () => {
-                                        // Stage 3: 추천 질문
-                                        if (questionsSource && questionsTarget) {
-                                            streamHTML(questionsSource, questionsTarget, () => {
-                                                // 전체 완료 후 인터랙션 재연결
-                                                initDashboardInteractions();
-                                                window.dispatchEvent(new Event('resize'));
-                                            });
-                                        }
-                                    }, 20); // 본문은 양이 매우 많으므로 20자씩 고속 출력
-                                }
-                            });
-                        }
-                    }, 1400); 
+                        runStreamingSequence();
+                    }, 1400);
                 });
+            }
+
+            // [스트리밍 시퀀스 통합 관리 함수]
+            function runStreamingSequence() {
+                const briefingCard = document.getElementById('ai-briefing-card');
+                const briefingSource = document.getElementById('ai-briefing-source');
+                const briefingContent = document.getElementById('ai-briefing-content');
+                const dashboardSource = document.getElementById('dashboard-source');
+                const dashboardTarget = document.getElementById('dashboard-stream-target');
+                const questionsSource = document.getElementById('ai-questions-source');
+                const questionsTarget = document.getElementById('ai-questions-stream-target');
+                const aiTopContainer = document.getElementById('ai-top-container');
+                const aiIconsContainer = document.getElementById('ai-icons-container');
+                const aiQuestionsContainer = document.getElementById('ai-questions-container');
+
+                if (aiTopContainer) aiTopContainer.style.display = 'block';
+                if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
+                if (aiQuestionsContainer) aiQuestionsContainer.style.display = 'block';
+
+                if (briefingCard) {
+                    briefingCard.style.display = 'block';
+                    briefingCard.style.opacity = '1';
+                    briefingCard.style.transform = 'translateY(0)';
+                }
+
+                if (briefingSource && briefingContent) {
+                    // Stage 1: AI 브리핑
+                    streamHTML(briefingSource, briefingContent, () => {
+                        // Stage 2: 대시보드 분석 본체 (통계, TOP 10 등)
+                        if (dashboardSource && dashboardTarget) {
+                            streamHTML(dashboardSource, dashboardTarget, () => {
+                                // Stage 3: 추천 질문
+                                if (questionsSource && questionsTarget) {
+                                    streamHTML(questionsSource, questionsTarget, () => {
+                                        // 전체 완료 후 인터랙션 재연결
+                                        initDashboardInteractions();
+                                        window.dispatchEvent(new Event('resize'));
+                                    });
+                                } else {
+                                    // 질문 영역이 없더라도 인터랙션은 재연결
+                                    initDashboardInteractions();
+                                    window.dispatchEvent(new Event('resize'));
+                                }
+                            }, 20); // 본문은 양이 매우 많으므로 20자씩 고속 출력
+                        }
+                    });
+                }
             }
 
             // [인터랙션 재연결 함수]
@@ -6436,9 +6612,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 const toggleBtn = document.getElementById('toggle-parts-btn');
                 const wrapper = document.getElementById('parts-table-wrapper');
                 const icon = document.getElementById('toggle-parts-icon');
-                
+
                 if (toggleBtn && wrapper) {
-                    toggleBtn.onclick = function() {
+                    toggleBtn.onclick = function () {
                         const isHidden = wrapper.style.maxHeight === '0px';
                         wrapper.style.maxHeight = isHidden ? '1000px' : '0px';
                         wrapper.style.opacity = isHidden ? '1' : '0';
@@ -6452,7 +6628,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     const rows = dashboardTarget.querySelectorAll('table tbody tr');
                     rows.forEach(row => {
                         row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-                        row.onclick = function() {
+                        row.onclick = function () {
                             const cells = this.querySelectorAll('td');
                             if (cells.length >= 4 && this.closest('section')?.querySelector('h2')?.innerText.includes('부품')) {
                                 const partData = {
@@ -6473,17 +6649,17 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 const htmlString = sourceElement.innerHTML;
                 let index = 0;
                 targetElement.innerHTML = '';
-                
+
                 function step() {
                     if (index < htmlString.length) {
                         // 기본은 10자, 본문 등 양이 많으면 전달받은 customChunkSize 사용
-                        let chunkSize = customChunkSize || 10; 
+                        let chunkSize = customChunkSize || 10;
                         let nextIndex = Math.min(index + chunkSize, htmlString.length);
-                        
+
                         let currentSub = htmlString.substring(0, nextIndex);
                         let lastOpen = currentSub.lastIndexOf('<');
                         let lastClose = currentSub.lastIndexOf('>');
-                        
+
                         if (lastOpen > lastClose) {
                             const realEnd = htmlString.indexOf('>', lastOpen);
                             if (realEnd !== -1) {
@@ -6494,16 +6670,16 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         } else {
                             index = nextIndex;
                         }
-                        
+
                         targetElement.innerHTML = htmlString.substring(0, index);
-                        
+
                         // 자연스러운 스크롤 추적 (메인 컨테이너 하단으로)
                         const appMain = document.querySelector('#chatbot-app-layer main');
                         if (appMain) {
                             appMain.scrollTop = appMain.scrollHeight;
                         }
-                        
-                        setTimeout(step, 8); 
+
+                        setTimeout(step, 8);
                     } else if (callback) {
                         callback();
                     }
