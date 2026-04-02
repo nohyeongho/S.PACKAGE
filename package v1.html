@@ -5225,8 +5225,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             <div id="ai-briefing-source" style="display:none;">
                                 <div id="repair-stats-section" class="mb-6">
                                     <h3
-                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
-                                        수리 통계</h3>
+                                        class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        <span>수리 통계</span>
+                                        <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                        </button>
+                                    </h3>
                                     <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
                                         드럼세탁기 <span class="text-slate-900 dark:text-white font-bold">LE 에러 발생 시 부품 소요 비중이
                                             64%</span>로 가장 높으며, 조정 수리는 10%, 설명 처리는 2% 수준임. 부품 교체 중에서는 <span
@@ -5237,8 +5241,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                                 <div class="mb-6">
                                     <h3
-                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
-                                        업무 기준</h3>
+                                        class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        <span>업무 기준</span>
+                                        <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                        </button>
+                                    </h3>
                                     <p class="text-slate-700 dark:text-slate-300 font-medium">
                                         해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년
                                             무상 적용 대상</span>임. 2018년 5월부터 2019년 11월까지 생산된 제품에 한해 무상 처리 가능함.
@@ -5247,8 +5255,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                                 <div class="mb-6">
                                     <h3
-                                        class="flex items-center gap-2 font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
-                                        기술정보</h3>
+                                        class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        <span>기술정보</span>
+                                        <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                        </button>
+                                    </h3>
                                     <p class="text-slate-700 dark:text-slate-300 font-medium">
                                         LE 에러 발생 시 세탁물 과다 및 이물 유입 여부를 우선 점검하고, <span
                                             class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위로 측정</span>하여 기준을
@@ -5258,8 +5270,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                                 <div class="pt-2" id="history-info-section">
                                     <h3
-                                        class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">
-                                        이력 정보</h3>
+                                        class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">
+                                        <span>이력 정보</span>
+                                        <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                        </button>
+                                    </h3>
                                     <div class="space-y-3">
                                         <p class="text-slate-700 dark:text-slate-300 font-medium">
                                             고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>으로, 해당
@@ -5272,6 +5288,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                             필요합니다.
                                         </p>
                                     </div>
+                                </div>
+                                
+                                <div class="mt-6 border-l-[3px] border-purple-500 pl-3 py-0.5">
+                                    <p class="text-blue-700 dark:text-blue-400 font-medium text-[13px]">LGSC/Argus</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
                                 </div>
                             </div>
                         </div>
@@ -5707,8 +5728,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const originalContentHTML = `
                         <div id="repair-stats-section">
                             <h3
-                                class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                수리 통계</h3>
+                                class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                <span>수리 통계</span>
+                                <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                    <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                </button>
+                            </h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
                                 드럼세탁기 <span class="text-slate-900 dark:text-white font-bold">LE 에러 발생 시 부품 소요 비중이
                                     64%</span>로 가장 높으며, 조정 수리는 10%, 설명 처리는 2% 수준임. 부품 교체 중에서는 <span
@@ -5718,8 +5743,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                         <div class="mt-6">
                             <h3
-                                class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                업무 기준</h3>
+                                class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                <span>업무 기준</span>
+                                <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                    <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                </button>
+                            </h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
                                 해당 모델은 LE 에러 발생 시 <span class="text-slate-900 dark:text-white font-bold">MAIN PCB에 대해 7년
                                     무상 적용 대상</span>임. 2018년 5월부터 2019년 11월까지 생산된 제품에 한해 무상 처리 가능함.
@@ -5727,8 +5756,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                         <div class="mt-6">
                             <h3
-                                class="flex items-center gap-2 font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
-                                기술정보</h3>
+                                class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
+                                <span>기술정보</span>
+                                <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                    <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                </button>
+                            </h3>
                             <p class="text-slate-700 dark:text-slate-300 font-medium">
                                 LE 에러 발생 시 세탁물 과다 및 이물 유입 여부를 우선 점검하고, <span
                                     class="text-slate-900 dark:text-white font-bold">스테이터 저항값을 8~11Ω 범위로 측정</span>하여 기준을
@@ -5737,8 +5770,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                         <div class="pt-2" id="history-info-section">
                             <h3
-                                class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
-                                이력 정보</h3>
+                                class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
+                                <span>이력 정보</span>
+                                <button class="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors">
+                                    <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                </button>
+                            </h3>
                             <div class="space-y-3">
                                 <p class="text-slate-700 dark:text-slate-300 font-medium">
                                     고객님은 <span class="text-slate-900 dark:text-white font-bold">VIP 멤버십 등급</span>으로, 해당
@@ -5751,6 +5788,10 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     필요합니다.
                                 </p>
                             </div>
+                        </div>
+                        <div class="mt-6 border-l-[3px] border-purple-500 pl-3 py-0.5">
+                            <p class="text-blue-700 dark:text-blue-400 font-medium text-[13px]">LGSC/Argus</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
                         </div>`;
 
             // 상세 콘텐츠
