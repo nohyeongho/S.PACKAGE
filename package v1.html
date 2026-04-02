@@ -325,7 +325,6 @@
         .toggle-detail-btn .material-symbols-outlined {
             transition: transform 0.3s;
         }
-
     </style>
 
 
@@ -5369,93 +5368,95 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         <h2 class="font-bold text-lg text-slate-900 dark:text-slate-50">통계 정보</h2>
                                     </div>
                                     <div
-                                        class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-                                        <table class="w-full text-center text-[13px] border-collapse">
+                                        class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm relative custom-scrollbar">
+                                        <table class="w-full text-center text-[10.5px] border-collapse">
                                             <thead
-                                                class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                                <tr>
+                                                class="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-500 font-bold uppercase tracking-tight">
+                                                <tr class="whitespace-nowrap">
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         고장원인</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         비중</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         부품</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         조정</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         설명</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         방문 취소</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         비용계</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         부품대</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         수리비</th>
                                                     <th
-                                                        class="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+                                                        class="px-1.5 py-2.5 border-b border-slate-100 dark:border-slate-700">
                                                         출장비</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                                <tr>
-                                                    <td class="px-3 py-2 font-bold">소계</td>
-                                                    <td class="px-3 py-2">79%</td>
-                                                    <td class="px-3 py-2">11%</td>
-                                                    <td class="px-3 py-2">48%</td>
-                                                    <td class="px-3 py-2">19%</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2">-</td>
+                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 whitespace-nowrap">
+                                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                                                    <td class="px-1.5 py-2 font-bold text-slate-900 dark:text-white">소계</td>
+                                                    <td class="px-1.5 py-2 font-semibold text-slate-700 dark:text-slate-300">79%</td>
+                                                    <td class="px-1.5 py-2">11%</td>
+                                                    <td class="px-1.5 py-2">48%</td>
+                                                    <td class="px-1.5 py-2">19%</td>
+                                                    <td class="px-1.5 py-2 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2 text-slate-400">-</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="px-3 py-2 font-bold">건조덕트이물</td>
-                                                    <td class="px-3 py-2 font-bold bg-[#63b39c] text-white">39%</td>
-                                                    <td class="px-3 py-2">7%</td>
-                                                    <td class="px-3 py-2">24%</td>
-                                                    <td class="px-3 py-2">7%</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2 font-bold">83,500</td>
-                                                    <td class="px-3 py-2">44,500</td>
-                                                    <td class="px-3 py-2">11,000</td>
-                                                    <td class="px-3 py-2">28,000</td>
+                                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">건조덕트이물</td>
+                                                    <td class="px-1.5 py-2.5">
+                                                        <span class="inline-block px-1.5 py-0.5 rounded bg-[#63b39c] text-white font-bold">39%</span>
+                                                    </td>
+                                                    <td class="px-1.5 py-2.5 font-medium">7%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">24%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">7%</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">83,500</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">44,500</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">11,000</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">28,000</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="px-3 py-2 font-bold">기능이해/설정미숙</td>
-                                                    <td
-                                                        class="px-3 py-2 font-bold bg-[#e0f2f1] text-slate-700 dark:bg-[#e0f2f1]/10 dark:text-slate-200">
-                                                        25%</td>
-                                                    <td class="px-3 py-2">1%</td>
-                                                    <td class="px-3 py-2">13%</td>
-                                                    <td class="px-3 py-2">11%</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2 font-bold">72,500</td>
-                                                    <td class="px-3 py-2">44,500</td>
-                                                    <td class="px-3 py-2">0</td>
-                                                    <td class="px-3 py-2">28,000</td>
+                                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">기능이해/설정미숙</td>
+                                                    <td class="px-1.5 py-2.5">
+                                                        <span class="inline-block px-1.5 py-0.5 rounded bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400 font-bold">25%</span>
+                                                    </td>
+                                                    <td class="px-1.5 py-2.5 font-medium">1%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">13%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">11%</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">72,500</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">44,500</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">0</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">28,000</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="px-3 py-2 font-bold">메인보드</td>
-                                                    <td class="px-3 py-2">14%</td>
-                                                    <td class="px-3 py-2">3%</td>
-                                                    <td class="px-3 py-2">10%</td>
-                                                    <td class="px-3 py-2">1%</td>
-                                                    <td class="px-3 py-2">-</td>
-                                                    <td class="px-3 py-2 font-bold">103,000</td>
-                                                    <td class="px-3 py-2">64,000</td>
-                                                    <td class="px-3 py-2">11,000</td>
-                                                    <td class="px-3 py-2">28,000</td>
+                                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">메인보드</td>
+                                                    <td class="px-1.5 py-2.5 font-medium text-slate-700 dark:text-slate-300">14%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">3%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">10%</td>
+                                                    <td class="px-1.5 py-2.5 font-medium">1%</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-400">-</td>
+                                                    <td class="px-1.5 py-2.5 font-bold text-slate-900 dark:text-white">103,000</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">64,000</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">11,000</td>
+                                                    <td class="px-1.5 py-2.5 text-slate-600 dark:text-slate-400">28,000</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -6125,7 +6126,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
                                 </div>
                             </div>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors mt-0.5" data-section="history-info">
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-500 text-white hover:bg-slate-600 transition-colors mt-0.5" data-section="lgsc-info">
                                 <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </div>`;
@@ -6976,11 +6977,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 // 회전 애니메이션 중간 지점(180도) 부근에서 콘텐츠 교체
                                 setTimeout(() => {
                                     if (icon.innerText === 'add') {
-                                        // 상세 내용으로 교체
-                                        targetDiv.innerHTML = detailedData[sectionKey];
+                                        // 상세 내용으로 교체 (중첩 방지를 위해 outerHTML 사용)
+                                        targetDiv.outerHTML = detailedData[sectionKey];
                                     } else {
-                                        // 요약 내용으로 복구
-                                        targetDiv.innerHTML = summaryData[sectionKey];
+                                        // 요약 내용으로 복구 (중첩 방지를 위해 outerHTML 사용)
+                                        targetDiv.outerHTML = summaryData[sectionKey];
                                     }
 
                                     // 하단 스크롤 추적
@@ -6990,7 +6991,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                                 // 애니메이션 종료 후 클래스 제거 (재사용 가능하도록)
                                 setTimeout(() => {
-                                    const newBtn = targetDiv.querySelector('.toggle-detail-btn');
+                                    // outerHTML로 교체되었으므로 document에서 다시 요소를 찾음
+                                    const updatedDiv = document.getElementById(parentId);
+                                    const newBtn = updatedDiv ? updatedDiv.querySelector('.toggle-detail-btn') : null;
                                     if (newBtn) newBtn.classList.remove('spin-3d');
                                 }, 600);
                             }
