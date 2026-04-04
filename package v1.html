@@ -332,6 +332,17 @@
             }
         }
 
+        /* [NEW] 360도 무한 회전 애니메이션 */
+        @keyframes rotate-infinite {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-rotate-360 {
+            animation: rotate-infinite 3s linear infinite;
+            display: inline-block;
+        }
+
         .toggle-detail-btn .material-symbols-outlined {
             transition: transform 0.3s;
         }
@@ -613,10 +624,7 @@
             font-weight: 700;
         }
 
-        /* 주문 완료 전용 팝업 스타일 */
-        #order-complete-modal-container {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-        }
+
     </style>
     <style>
         body {
@@ -5393,34 +5401,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         Deep research
                     </button>
                 </div>
-
-                <!-- 상태 리스트 -->
-                <div class="space-y-0.5">
-                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        <span>LGSC : 지원</span>
-                        <span class="ml-auto">&gt;</span>
-                    </div>
-
-                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        <span>LGSC 중수리 : 지원</span>
-                        <span class="ml-auto">&gt;</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                        <span class="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                        <span>ARGUS : 미지원</span>
-                        <span class="ml-auto">&gt;</span>
-                    </div>
-
-                    <!-- 대시보드 복귀 버튼 (ARGUS 아래 배치) -->
-                    <button type="button" id="exit-chatbot-btn"
-                        class="mt-4 inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-slate-400 hover:text-primary"
-                        title="대시보드로 돌아가기">
-                        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
-                    </button>
-                </div>
             </div>
+
 
         </header>
         <main class="px-4 space-y-6">
@@ -5442,7 +5424,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 <div class="p-0 pt-5">
                     <div class="flex items-center justify-between gap-2 mb-4 w-full">
                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[#9333EA]">auto_awesome</span>
+                            <span class="material-symbols-outlined text-[#9333EA] animate-rotate-360">auto_awesome</span>
                             <span class="briefing-gradient font-bold text-[15px] tracking-tight">AI Service Intelligence
                                 Briefing</span>
                         </div>
@@ -5459,8 +5441,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         class="hidden flex-col items-center justify-center py-24 mb-6 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl border border-white/40 shadow-sm transition-all duration-300">
                         <div class="ai-simple-orb">
                             <div class="ai-pulse-ring"></div>
-                            <span
-                                class="material-symbols-outlined text-purple-600 text-5xl font-black relative z-10">auto_awesome</span>
+                                <span
+                                    class="material-symbols-outlined text-purple-600 text-5xl font-black relative z-10 animate-rotate-360">auto_awesome</span>
                         </div>
                         <div class="text-center relative z-10 px-6">
                             <p class="text-[19px] font-black tracking-tighter mb-2"
@@ -5576,22 +5558,60 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </p>
                                 </div>
                             </div>
-                            <div id="section-lgsc-info"
-                                class="mt-6 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                                <div class="flex items-start gap-3">
-                                    <span
-                                        class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
-                                    <div>
-                                        <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC/Argus</p>
-                                        <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전
-                                            정보를 확인하세요.</p>
+                            <div id="section-lgsc-info-group" class="space-y-3">
+                                <!-- 1. LGSC -->
+                                <div
+                                    class="mt-6 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                        <div>
+                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC</p>
+                                            <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
+                                        </div>
                                     </div>
+                                    <button
+                                        class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5"
+                                        data-section="lgsc-info">
+                                        <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                    </button>
                                 </div>
-                                <button
-                                    class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5"
-                                    data-section="lgsc-info">
-                                    <span class="material-symbols-outlined text-[14px] font-bold">add</span>
-                                </button>
+
+                                <!-- 2. LGSC 중수리 -->
+                                <div
+                                    class="mt-3 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                        <div>
+                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리</p>
+                                            <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">LGSC 중수리 정보를 확인하세요.</p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5"
+                                        data-section="lgsc-info">
+                                        <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                    </button>
+                                </div>
+
+                                <!-- 3. Argus -->
+                                <div
+                                    class="mt-3 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                        <div>
+                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus</p>
+                                            <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">AI 요약 정보를 확인하세요</p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5"
+                                        data-section="lgsc-info">
+                                        <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
@@ -5932,12 +5952,12 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                             </div>
                                         </div>
                                         <!-- [NEW] 분해분 하단 버튼 영역 (취소, 담기) -->
-                                        <div class="px-6 pb-6 flex gap-3">
+                                        <div id="c600-footer-buttons" class="px-6 pb-6 flex gap-3">
                                             <button onclick="toggleC600Detail(event)" 
                                                     class="flex-1 py-3.5 font-bold rounded-xl explosion-btn-cancel transition-all hover:bg-gray-50 active:scale-[0.98]">
                                                 취소
                                             </button>
-                                            <button onclick="showConfirmModal()" 
+                                            <button onclick="handlePartOrderRequest()" 
                                                     class="flex-1 py-3.5 font-bold rounded-xl explosion-btn-add shadow-lg transition-all hover:bg-[#A00040] active:scale-[0.98]">
                                                 담기
                                             </button>
@@ -6009,10 +6029,10 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
 
                                     <!-- 분해도 -->
-                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-red-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                    <div onclick="toggleC600Detail(event, false)" class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-red-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
-                                                <span class="material-symbols-outlined">grid_view</span>
+                                            <div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400" style="opacity: 1; transition: opacity 0.2s;">
+                                                <span class="material-symbols-outlined" style="opacity: 1; transition: opacity 0.2s;">grid_view</span>
                                             </div>
                                             <span class="font-bold text-sm text-slate-900 dark:text-slate-100">분해도</span>
                                         </div>
@@ -6020,14 +6040,14 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
 
                                     <!-- 스스로해결 -->
-                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-green-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
-                                                <span class="material-symbols-outlined">handyman</span>
+                                    <div onclick="openTechInfoSheet()" class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-green-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group" style="opacity: 1; transition: opacity 0.2s;">
+                                        <div class="flex items-center gap-3" style="opacity: 1; transition: opacity 0.2s;">
+                                            <div class="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity: 1; transition: opacity 0.2s;">
+                                                <span class="material-symbols-outlined" style="opacity: 1; transition: opacity 0.2s;">handyman</span>
                                             </div>
-                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">스스로해결</span>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100" style="opacity: 1; transition: opacity 0.2s;">스스로해결</span>
                                         </div>
-                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-green-500 transition-colors text-sm">arrow_forward_ios</span>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-green-500 transition-colors text-sm" style="opacity: 1; transition: opacity 0.2s;">arrow_forward_ios</span>
                                     </div>
 
                                     <!-- 증상별수리가이드 -->
@@ -6374,17 +6394,48 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'lgsc-info': `
-                    <div id="section-lgsc-info" class="mt-6 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
-                            <div>
-                                <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC/Argus</p>
-                                <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
+                    <div id="section-lgsc-info-group" class="space-y-3">
+                        <!-- 1. LGSC -->
+                        <div class="mt-6 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                <div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">진단이력과 S/W 버전 정보를 확인하세요.</p>
+                                </div>
                             </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
                         </div>
-                        <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
-                            <span class="material-symbols-outlined text-[14px] font-bold">add</span>
-                        </button>
+
+                        <!-- 2. LGSC 중수리 -->
+                        <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                <div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">LGSC 중수리 정보를 확인하세요.</p>
+                                </div>
+                            </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </div>
+                        
+                        <!-- 3. Argus -->
+                        <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                <div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">AI 요약 정보를 확인하세요</p>
+                                </div>
+                            </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
+                        </div>
                     </div>`
             };
 
@@ -6530,81 +6581,112 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'lgsc-info': `
-                    <div id="section-lgsc-info" class="mt-6 space-y-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
-                        <div class="flex items-center justify-between mb-2 relative z-10">
-                            <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-purple-600">query_stats</span>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-[15px]">LGSC/Argus 상세 정보</h3>
+                    <div id="section-lgsc-info-group" class="space-y-3 mt-6">
+                        <!-- 1. LGSC 상세 정보 (확장됨) -->
+                        <div class="space-y-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+                            <div class="flex items-center justify-between mb-2 relative z-10">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-purple-600">query_stats</span>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-[15px]">LGSC/Argus 상세 정보</h3>
+                                </div>
+                                <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="lgsc-info">
+                                    <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                                </button>
                             </div>
-                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all" data-section="lgsc-info">
-                                <span class="material-symbols-outlined text-[14px] font-bold">remove</span>
+                            
+                            <div class="space-y-5 relative z-10">
+                                <!-- 1. LGSC 진단이력 -->
+                                <div class="space-y-2">
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                                        1. LGSC 진단이력
+                                    </h4>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">진단이력이 있습니다.</span>
+                                        <span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] rounded border border-slate-200 dark:border-slate-700 font-bold cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" onclick="window.open('https://lgscdev.lge.com/diagnosis/0b40459a-8bdc-4a83-9c49-319812e31481', '_blank')">SHOW</span>
+                                    </div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[13px] mb-2 px-1 border-l-2 border-slate-200 dark:border-slate-700">LGSC 내장형 FOTA 이력이 있습니다</p>
+                                    <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
+                                        <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
+                                            <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                                <tr>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Checksum(전)</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum(후)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                                                <tr>
+                                                    <td class="px-2 py-2 font-mono">P00000000</td>
+                                                    <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
+                                                    <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
+                                                    <td class="px-2 py-2 font-mono text-slate-500">0x00001212</td>
+                                                    <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- 2. 최근 S/W 버전 정보(LGSC) -->
+                                <div class="space-y-2">
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                                        2. 최근 S/W 버전 정보(LGSC)
+                                    </h4>
+                                    <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
+                                        <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
+                                            <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                                                <tr>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
+                                                    <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                                                <tr>
+                                                    <td class="px-2 py-2 font-mono">P00000000</td>
+                                                    <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
+                                                    <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
+                                                    <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. LGSC 중수리 (요약 유지) -->
+                        <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                <div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">LGSC 중수리 정보를 확인하세요.</p>
+                                </div>
+                            </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
                             </button>
                         </div>
                         
-                        <div class="space-y-5 relative z-10">
-                            <!-- 1. LGSC 진단이력 -->
-                            <div class="space-y-2">
-                                <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                                    1. LGSC 진단이력
-                                </h4>
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="text-slate-700 dark:text-slate-300 font-medium text-[13px]">진단이력이 있습니다.</span>
-                                    <span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] rounded border border-slate-200 dark:border-slate-700 font-bold">SHOW</span>
-                                </div>
-                                <p class="text-slate-900 dark:text-white font-bold text-[13px] mb-2 px-1 border-l-2 border-slate-200 dark:border-slate-700">LGSC 내장형 FOTA 이력이 있습니다</p>
-                                <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
-                                    <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
-                                        <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                            <tr>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Checksum(전)</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum(후)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
-                                            <tr>
-                                                <td class="px-2 py-2 font-mono">P00000000</td>
-                                                <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
-                                                <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
-                                                <td class="px-2 py-2 font-mono text-slate-500">0x00001212</td>
-                                                <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <!-- 3. Argus (요약 유지) -->
+                        <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[22px] text-purple-600 dark:text-purple-400 mt-0.5">info</span>
+                                <div>
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus</p>
+                                    <p class="text-slate-600 dark:text-slate-400 text-[13px] mt-0.5">AI 요약 정보를 확인하세요</p>
                                 </div>
                             </div>
-
-                            <!-- 2. 최근 S/W 버전 정보(LGSC) -->
-                            <div class="space-y-2">
-                                <h4 class="font-bold text-slate-900 dark:text-white text-[14px] flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                                    2. 최근 S/W 버전 정보(LGSC)
-                                </h4>
-                                <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 shadow-inner">
-                                    <table class="w-full text-center text-[11px] border-collapse min-w-[400px]">
-                                        <thead class="bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                            <tr>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">접수번호</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">진단일시</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Part No</th>
-                                                <th class="px-2 py-2 border-b border-slate-200 dark:border-slate-700 text-slate-500">Check sum</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-slate-700 dark:text-slate-300 divide-y divide-slate-100 dark:divide-slate-800 font-medium">
-                                            <tr>
-                                                <td class="px-2 py-2 font-mono">P00000000</td>
-                                                <td class="px-2 py-2 text-[10px]">2026.03.19 12:10</td>
-                                                <td class="px-2 py-2 text-slate-900 dark:text-white font-mono">SAA0000000</td>
-                                                <td class="px-2 py-2 font-mono font-bold text-blue-600 dark:text-blue-400">0x00001221</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-[#5A7184] text-white hover:bg-[#4A5D6D] transition-all mt-0.5" data-section="lgsc-info">
+                                <span class="material-symbols-outlined text-[14px] font-bold">add</span>
+                            </button>
                         </div>
                     </div>`
 
@@ -7395,14 +7477,21 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         });
 
         // [NEW] C600 상세 정보 토글 함수 (이벤트 전파 중지 추가)
-        window.toggleC600Detail = function (event) {
-            if (event) event.stopPropagation();
+        window.toggleC600Detail = function (event, showButtons = true) {
+            if (event && event.stopPropagation) event.stopPropagation();
             const container = document.getElementById('c600-detail-container');
+            const footerButtons = document.getElementById('c600-footer-buttons');
             if (!container) return;
 
             const isHidden = container.classList.contains('hidden');
             if (isHidden) {
                 container.classList.remove('hidden');
+                
+                // 버튼 노출 제어
+                if (footerButtons) {
+                    footerButtons.style.display = showButtons ? 'flex' : 'none';
+                }
+
                 // 부드러운 스크롤 이동
                 setTimeout(() => {
                     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -7468,43 +7557,6 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         }
 
 
-        // --- '담기' 확인 팝업 제어 로직 ---
-        function showConfirmModal() {
-            const modal = document.getElementById('confirm-modal');
-            const container = document.getElementById('confirm-modal-container');
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            setTimeout(() => {
-                container.classList.remove('opacity-0', 'scale-95');
-                container.classList.add('opacity-100', 'scale-100');
-            }, 10);
-        }
-
-        function closeConfirmModal() {
-            const modal = document.getElementById('confirm-modal');
-            const container = document.getElementById('confirm-modal-container');
-            
-            container.classList.remove('opacity-100', 'scale-100');
-            container.classList.add('opacity-0', 'scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 200);
-        }
-
-        function handleConfirmAdd() {
-            // 1. 확인 팝업 닫기
-            closeConfirmModal();
-            // 2. 분해분 상세창 닫기 (선택 사항)
-            toggleC600Detail();
-            
-            // 3. 부품정보 팝업 오픈
-            showPartInfoModal();
-        }
-
         // --- 부품 리스트 체크박스 및 로직 ---
         function toggleRowCheck(el) {
             const isChecked = el.classList.contains('bg-blue-600');
@@ -7555,30 +7607,46 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             }
         }
 
-        // --- 담기 버튼 클릭 핸들러 (1단계: 컨펌 모달) ---
+        // --- 담기 버튼 클릭 핸들러 (1단계: 컨펌 모달 노출) ---
         function handlePartOrderRequest() {
-            const modal = document.getElementById('part-add-confirm-modal');
-            const container = document.getElementById('part-add-confirm-container');
+            const modal = document.getElementById('confirm-modal');
+            const container = document.getElementById('confirm-modal-container');
             
             if (modal && container) {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 
                 setTimeout(() => {
-                    container.classList.remove('opacity-0', 'scale-95', 'translate-y-4');
+                    container.classList.remove('opacity-0', 'scale-95', 'translate-y-2');
                     container.classList.add('opacity-100', 'scale-100', 'translate-y-0');
                 }, 10);
             }
         }
 
-        // 컨펌 모달에서 '확인' 클릭 시 (2단계: 주문 완료)
-        function confirmPartAddOrder() {
-            closePartAddConfirmModal();
+        // 컨펌 모달 닫기
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirm-modal');
+            const container = document.getElementById('confirm-modal-container');
             
-            // 약간의 딜레이 후 주문 완료 모달 표시
+            if (modal && container) {
+                container.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+                container.classList.add('opacity-0', 'scale-95', 'translate-y-2');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 250);
+            }
+        }
+
+        // 컨펌 모달에서 '확인' 클릭 시 (2단계: 주문 완료 노출)
+        function handleConfirmAdd() {
+            closeConfirmModal();
+            
+            // 약간의 딜레이 후 결과 모달 표시
             setTimeout(() => {
-                const modal = document.getElementById('order-complete-modal-v2');
-                const container = document.getElementById('order-complete-modal-container-v2');
+                const modal = document.getElementById('order-complete-modal');
+                const container = document.getElementById('order-complete-modal-container');
                 
                 if (modal && container) {
                     modal.classList.remove('hidden');
@@ -7589,38 +7657,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         container.classList.add('opacity-100', 'scale-100');
                     }, 10);
                 }
-            }, 400);
-        }
-
-        function closePartAddConfirmModal() {
-            const modal = document.getElementById('part-add-confirm-modal');
-            const container = document.getElementById('part-add-confirm-container');
-            
-            if (modal && container) {
-                container.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
-                container.classList.add('opacity-0', 'scale-95', 'translate-y-4');
-                
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                }, 300);
-            }
-        }
-
-        // 주문 완료 모달 닫기
-        function closeOrderCompleteModal() {
-            const modal = document.getElementById('order-complete-modal-v2');
-            const container = document.getElementById('order-complete-modal-container-v2');
-            
-            if (modal && container) {
-                container.classList.remove('opacity-100', 'scale-100');
-                container.classList.add('opacity-0', 'scale-95');
-                
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                }, 300);
-            }
+            }, 350);
         }
 
         // --- '부품정보' 상세 팝업 제어 로직 ---
@@ -7654,26 +7691,44 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             document.body.style.overflow = '';
         }
 
+        // --- 담기 버튼 클릭 핸들러 (1단계: 컨펌 모달 호출) ---
         function handlePartOrderRequest() {
-            // 1. 기존 부품정보 창 닫기
-            closePartInfoModal();
-            // 2. 주문 완료 전용 전면 팝업 노출
-            showOrderCompleteModal();
+            const modal = document.getElementById('confirm-modal');
+            const container = document.getElementById('confirm-modal-container');
+            
+            if (modal && container) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                setTimeout(() => {
+                    container.classList.remove('opacity-0', 'scale-95');
+                    container.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            }
         }
 
-        // --- '주문 완료 전면 팝업' 제어 로직 ---
-        function showOrderCompleteModal() {
-            const modal = document.getElementById('order-complete-modal');
-            const container = document.getElementById('order-complete-modal-container');
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            setTimeout(() => {
-                container.classList.remove('opacity-0', 'scale-95');
-                container.classList.add('opacity-100', 'scale-100');
-            }, 10);
+        // --- 컨펌/결과 모달 제어 로직 ---
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirm-modal');
+            const container = document.getElementById('confirm-modal-container');
+            if (modal && container) {
+                container.classList.remove('opacity-100', 'scale-100');
+                container.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 200);
+            }
         }
+
+        function handleConfirmAdd() {
+            closeConfirmModal();
+            // 컨펌 후 사용자가 요청한 '부품정보' 상세 팝업 오픈
+            setTimeout(() => {
+                showPartInfoModal();
+            }, 300);
+        }
+
 
         function closeOrderCompleteModal() {
             // 1. 모든 모달 ID 목록
@@ -7910,11 +7965,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <!-- Bottom Buttons -->
             <div class="px-4 pb-6 flex gap-3">
                 <button onclick="closePartInfoModal()" 
-                        class="flex-1 py-3.5 rounded-xl font-bold text-[14px] pi-btn-delete active:scale-[0.98] transition-all">
+                        class="flex-1 py-3.5 border border-slate-200 bg-white text-slate-800 rounded-xl font-bold text-[14px] hover:bg-slate-50 active:scale-[0.98] transition-all">
                     삭제
                 </button>
-                <button onclick="handlePartOrderRequest()" 
-                        class="flex-1 py-3.5 rounded-xl font-bold text-[14px] pi-btn-order active:scale-[0.98] transition-all">
+                <button onclick="handlePartOrderFinalRequest()" 
+                        class="flex-1 py-3.5 border border-[#C0004D] bg-white text-[#C0004D] rounded-xl font-bold text-[14px] hover:bg-red-50 active:scale-[0.98] transition-all">
                     주문요청
                 </button>
             </div>
@@ -8003,57 +8058,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <div class="h-4"></div>
         </div>
     </div>
-    <!-- [NEW] 부품 담기 확인 컨펌 모달 -->
-    <div id="part-add-confirm-modal" class="fixed inset-0 z-[12000] hidden items-center justify-center p-6">
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]" onclick="closePartAddConfirmModal()"></div>
-        <div id="part-add-confirm-container" 
-             class="relative w-full max-w-[320px] bg-white rounded-2xl shadow-2xl transition-all p-6 opacity-0 scale-95 translate-y-4">
-            
-            <div class="text-center mb-8">
-                <p class="text-[16px] font-bold text-slate-800 leading-normal">
-                    선택된 부품의 담기를<br>진행하시겠습니까?
-                </p>
-            </div>
+    <!-- 담기 확인 모달은 상단(7815 라인)에 통합 정의됨 -->
 
-            <div class="flex gap-3">
-                <button onclick="closePartAddConfirmModal()" 
-                        class="flex-1 py-3.5 bg-[#F1F5F9] text-slate-600 rounded-xl font-bold text-[15px] hover:bg-slate-200 transition-all active:scale-[0.98]">
-                    취소
-                </button>
-                <button onclick="confirmPartAddOrder()" 
-                        class="flex-1 py-3.5 bg-[#C0004D] text-white rounded-xl font-bold text-[15px] shadow-md hover:bg-[#A00040] transition-all active:scale-[0.98]">
-                    확인
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <!-- [NEW] '주문 완료' 전면 팝업 HTML (ID 중복 제거를 위한 v2 적용 - 'X' 버튼 삭제 버전) -->
-    <div id="order-complete-modal-v2" class="fixed inset-0 z-[11000] hidden items-center justify-center p-6">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-[3px]"></div>
-        
-        <div id="order-complete-modal-container-v2" 
-             class="relative w-full max-w-[280px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all p-10 flex flex-col items-center opacity-0 scale-95">
-            
-            <!-- Success Icon -->
-            <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-[#2E7D32] text-3xl font-bold">check</span>
-            </div>
-
-            <!-- Message - 타이틀만 남기고 설명 문구 삭제 -->
-            <div class="text-center mb-8">
-                <h3 class="text-[20px] font-bold text-slate-900 leading-tight">주문이 완료되었습니다</h3>
-            </div>
-
-            <!-- Confirm Button - 주 버튼 강조 -->
-            <button type="button" 
-                    id="order-complete-ok-btn-v2" 
-                    onclick="event.stopPropagation(); closeOrderCompleteModal();"
-                    class="relative z-30 inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-bold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[140px] cursor-pointer transition-all active:scale-[0.96]">
-                확인
-            </button>
-        </div>
-    </div>
     <!-- [NEW] 기술정보 상세 바텀 시트 -->
     <div id="tech-info-sheet-overlay" 
          onclick="closeTechInfoSheet()"
