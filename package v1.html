@@ -373,7 +373,8 @@
         /* [NEW] 하단 플로팅 메뉴 전용 스타일 */
         #floating-grid-menu {
             position: fixed;
-            bottom: 85px; /* 푸터 높이 고려 */
+            bottom: 85px;
+            /* 푸터 높이 고려 */
             left: 16px;
             width: calc(100% - 32px);
             max-width: 320px;
@@ -6806,115 +6807,97 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
         <tr id="explosion-c600-row" class="hidden overflow-hidden bg-slate-50/50 dark:bg-slate-800/30">
             <td colspan="5" class="px-0 py-0">
-                <div class="max-w-4xl mx-auto p-4 bg-white">
-                    <!-- [NEW] 분해도 전용 타이틀 -->
-                    <div class="text-center mb-4">
-                        <p class="text-[12px] font-bold text-slate-500">분해도 조회 (Model Name : RH14VH.AKOR / (C600))</p>
-                    </div>
-                    
-                    <div class="rounded-xl border border-slate-200 overflow-hidden shadow-lg bg-white mb-6">
-                        <div class="bg-slate-50 px-4 py-2 border-b border-slate-100 flex items-center justify-between">
-                            <span class="text-[13px] font-black text-slate-800">EXPLODED VIEW: DRYER INTERNAL COMPONENTS (MODEL X2100)</span>
-                            <span class="material-symbols-outlined text-slate-400 text-lg">zoom_in</span>
-                        </div>
-                        <img src="./images/explosion_c600.png" alt="Explosion Diagram" class="w-full h-auto">
-                    </div>
 
-                    <!-- [NEW] 하단 버튼 (취소 / 담기) -->
-                    <div class="flex gap-3 mt-4">
-                        <button class="flex-1 py-3.5 rounded-lg font-bold text-[15px] explosion-btn-cancel" onclick="this.closest('tr').classList.add('hidden')">취소</button>
-                        <button class="flex-1 py-3.5 rounded-lg font-bold text-[15px] explosion-btn-add" onclick="alert('부품이 담겼습니다.'); this.closest('tr').classList.add('hidden')">담기</button>
-                    </div>
-                </div>
-            </td>
-        </tr>
+    </div>
+    </td>
+    </tr>
 
-        <!-- 복사 완료 알림 (Toast) -->
+    <!-- 복사 완료 알림 (Toast) -->
 
 
-        <script>
-            // ... (기존 스크립트) ...
+    <script>
+        // ... (기존 스크립트) ...
 
-            // Parts Popup Functionality & Flow
-            const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
-            const partsRows = popupPartsTableWrapper ? popupPartsTableWrapper.querySelectorAll('tbody tr') : [];
+        // Parts Popup Functionality & Flow
+        const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
+        const partsRows = popupPartsTableWrapper ? popupPartsTableWrapper.querySelectorAll('tbody tr') : [];
 
-            // Modal Elements
-            const addPartsModal = document.getElementById('add-parts-modal');
-            const confirmMoveModal = document.getElementById('confirm-move-modal');
-            const orderPartsModal = document.getElementById('order-parts-modal');
-            const orderCompleteModal = document.getElementById('order-complete-modal');
+        // Modal Elements
+        const addPartsModal = document.getElementById('add-parts-modal');
+        const confirmMoveModal = document.getElementById('confirm-move-modal');
+        const orderPartsModal = document.getElementById('order-parts-modal');
+        const orderCompleteModal = document.getElementById('order-complete-modal');
 
-            // Modal Content Containers
-            const modalPartsList = document.getElementById('modal-parts-list');
-            const orderPartsList = document.getElementById('order-parts-list');
+        // Modal Content Containers
+        const modalPartsList = document.getElementById('modal-parts-list');
+        const orderPartsList = document.getElementById('order-parts-list');
 
-            // State
-            let currentPartsList = []; // Array to store parts data in the Add Modal
-            let orderPopupItems = []; // Array to store parts state in the Order Modal
+        // State
+        let currentPartsList = []; // Array to store parts data in the Add Modal
+        let orderPopupItems = []; // Array to store parts state in the Order Modal
 
-            // 1. Open Add Parts Modal
-            function openModal(partData) {
-                // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
-                // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
-                // 여기서는 UI 시나리오대로 기존 예시와 합침.
+        // 1. Open Add Parts Modal
+        function openModal(partData) {
+            // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
+            // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
+            // 여기서는 UI 시나리오대로 기존 예시와 합침.
 
-                const otherPart = {
-                    id: 'part-1',
-                    name: 'Compressor,Parts Assembly,SVC',
-                    pn: 'AGM30128802\n(원품)',
-                    pnRaw: 'AGM30128802',
-                    count: '235건\n(55%)',
-                    price: '310,000원',
-                    priceRaw: 310000,
-                    checked: true
-                };
+            const otherPart = {
+                id: 'part-1',
+                name: 'Compressor,Parts Assembly,SVC',
+                pn: 'AGM30128802\n(원품)',
+                pnRaw: 'AGM30128802',
+                count: '235건\n(55%)',
+                price: '310,000원',
+                priceRaw: 310000,
+                checked: true
+            };
 
-                const selectedPart = {
-                    id: 'part-2',
-                    name: (partData.name || '').replace(',', ',<br>'),
-                    pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
-                    pnRaw: (partData.pn || '').split(' ')[0],
-                    locator: (partData.pn || '').includes('(') ? (partData.pn || '').match(/\(([^)]+)\)/)[0] : '',
-                    count: (partData.count || '').replace(' ', '<br>'),
-                    price: (partData.price || '') + '원',
-                    priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
-                    checked: false,
-                    isExpanded: false
-                };
+            const selectedPart = {
+                id: 'part-2',
+                name: (partData.name || '').replace(',', ',<br>'),
+                pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
+                pnRaw: (partData.pn || '').split(' ')[0],
+                locator: (partData.pn || '').includes('(') ? (partData.pn || '').match(/\(([^)]+)\)/)[0] : '',
+                count: (partData.count || '').replace(' ', '<br>'),
+                price: (partData.price || '') + '원',
+                priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
+                checked: false,
+                isExpanded: false
+            };
 
-                currentPartsList = [otherPart, selectedPart];
-                renderAddPartsList();
-                addPartsModal.classList.remove('hidden');
+            currentPartsList = [otherPart, selectedPart];
+            renderAddPartsList();
+            addPartsModal.classList.remove('hidden');
+        }
+
+        function renderAddPartsList() {
+            // Check Select All State
+            const allChecked = currentPartsList.length > 0 && currentPartsList.every(p => p.checked);
+            const selectAllBtn = document.getElementById('add-parts-select-all');
+
+            if (selectAllBtn) {
+                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                const iconClass = allChecked ? '' : 'hidden';
+
+                selectAllBtn.className = `w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
+                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>`;
+
+                // Remove old listener to avoid duplicates if any (though cleaner to just assign logic here as it's simple)
+                selectAllBtn.onclick = function () { toggleAddSelectAll(!allChecked); };
             }
 
-            function renderAddPartsList() {
-                // Check Select All State
-                const allChecked = currentPartsList.length > 0 && currentPartsList.every(p => p.checked);
-                const selectAllBtn = document.getElementById('add-parts-select-all');
+            let html = '';
+            currentPartsList.forEach((part, index) => {
+                const checkClass = part.checked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                const iconClass = part.checked ? '' : 'hidden';
 
-                if (selectAllBtn) {
-                    const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                    const iconClass = allChecked ? '' : 'hidden';
+                // 로케이터 코드가 있을 경우 클릭 가능한 링크 추가
+                const pnDisplay = part.locator
+                    ? `${part.pn}<br><span class="text-[#0066CC] font-bold underline cursor-pointer hover:text-blue-800 block mt-1" onclick="toggleModalDetail(${index}, event)">${part.locator}</span>`
+                    : part.pn;
 
-                    selectAllBtn.className = `w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                    selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>`;
-
-                    // Remove old listener to avoid duplicates if any (though cleaner to just assign logic here as it's simple)
-                    selectAllBtn.onclick = function () { toggleAddSelectAll(!allChecked); };
-                }
-
-                let html = '';
-                currentPartsList.forEach((part, index) => {
-                    const checkClass = part.checked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                    const iconClass = part.checked ? '' : 'hidden';
-
-                    // 로케이터 코드가 있을 경우 클릭 가능한 링크 추가
-                    const pnDisplay = part.locator
-                        ? `${part.pn}<br><span class="text-[#0066CC] font-bold underline cursor-pointer hover:text-blue-800 block mt-1" onclick="toggleModalDetail(${index}, event)">${part.locator}</span>`
-                        : part.pn;
-
-                    html += `
+                html += `
                 <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleAddCheckbox(${index})">
                     <td class="py-4 pl-4 w-12 text-center">
                         <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center transition-all duration-200">
@@ -6928,9 +6911,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 </tr>
             `;
 
-                    // [추가] 확장 상태일 경우 분해도 이미지 행 렌더링
-                    if (part.isExpanded) {
-                        html += `
+                // [추가] 확장 상태일 경우 분해도 이미지 행 렌더링
+                if (part.isExpanded) {
+                    html += `
                 <tr class="bg-slate-50 no-hover">
                     <td colspan="5" class="py-4 px-4">
                         <div class="animate-in fade-in slide-in-from-top-2 duration-300">
@@ -6953,104 +6936,104 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     </td>
                 </tr>
             `;
-                    }
-                });
-                modalPartsList.innerHTML = html;
-            }
-
-            function toggleAddCheckbox(index) {
-                if (currentPartsList[index]) {
-                    currentPartsList[index].checked = !currentPartsList[index].checked;
-                    renderAddPartsList(); // Re-render to update UI
                 }
-            }
+            });
+            modalPartsList.innerHTML = html;
+        }
 
-            function toggleAddSelectAll(checked) {
-                currentPartsList.forEach(p => p.checked = checked);
+        function toggleAddCheckbox(index) {
+            if (currentPartsList[index]) {
+                currentPartsList[index].checked = !currentPartsList[index].checked;
+                renderAddPartsList(); // Re-render to update UI
+            }
+        }
+
+        function toggleAddSelectAll(checked) {
+            currentPartsList.forEach(p => p.checked = checked);
+            renderAddPartsList();
+        }
+
+        // [NEW] 팝업 내 분해도 상호작용 함수
+        window.toggleModalDetail = function (index, event) {
+            if (event) event.stopPropagation(); // 행 클릭(체크박스 토글) 방지
+            if (currentPartsList[index]) {
+                currentPartsList[index].isExpanded = !currentPartsList[index].isExpanded;
                 renderAddPartsList();
             }
+        };
 
-            // [NEW] 팝업 내 분해도 상호작용 함수
-            window.toggleModalDetail = function (index, event) {
-                if (event) event.stopPropagation(); // 행 클릭(체크박스 토글) 방지
-                if (currentPartsList[index]) {
-                    currentPartsList[index].isExpanded = !currentPartsList[index].isExpanded;
-                    renderAddPartsList();
-                }
-            };
+        // Close Functions
+        function closeModal() {
+            addPartsModal.classList.add('hidden');
+        }
+        function closeConfirmModal() {
+            confirmMoveModal.classList.add('hidden');
+        }
+        function closeOrderModal() {
+            orderPartsModal.classList.add('hidden');
+        }
+        function closeOrderCompleteModal() {
+            orderCompleteModal.classList.add('hidden');
+        }
 
-            // Close Functions
-            function closeModal() {
-                addPartsModal.classList.add('hidden');
+        // Event Listeners for Add Parts Modal
+        document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
+        document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
+
+        // "담기" Click -> Show Confirmation
+        document.getElementById('confirm-add-btn').addEventListener('click', function () {
+            // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
+            closeModal(); // 1번 닫고
+            confirmMoveModal.classList.remove('hidden'); // 2번 열기
+        });
+
+
+        // Event Listeners for Confirmation Modal
+        document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
+            closeConfirmModal();
+            addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
+        });
+
+        document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
+            closeConfirmModal();
+            openOrderModal(); // 3번 열기
+        });
+
+
+        // 3. Open Order Modal Logic
+        function openOrderModal() {
+            // Filter only checked items from Add Modal to init Order Modal
+            // We use a separate state `orderPopupItems` to manage checkboxes inside Order Modal
+            orderPopupItems = currentPartsList.filter(p => p.checked).map(p => ({ ...p, orderChecked: true, qty: 1 }));
+
+            renderOrderPopup();
+            orderPartsModal.classList.remove('hidden');
+        }
+
+        function renderOrderPopup() {
+            // Check if all are selected for "Select All" state
+            const allChecked = orderPopupItems.length > 0 && orderPopupItems.every(p => p.orderChecked);
+            const selectAllBtn = document.getElementById('order-select-all-btn');
+
+            if (selectAllBtn) {
+                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                const iconClass = allChecked ? '' : 'hidden'; // using hidden class for visibility
+
+                selectAllBtn.className = `w-6 h-6 rounded border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
+                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-sm font-bold ${iconClass}">check</span>`;
+
+                selectAllBtn.onclick = function () { toggleOrderSelectAll(!allChecked); };
             }
-            function closeConfirmModal() {
-                confirmMoveModal.classList.add('hidden');
-            }
-            function closeOrderModal() {
-                orderPartsModal.classList.add('hidden');
-            }
-            function closeOrderCompleteModal() {
-                orderCompleteModal.classList.add('hidden');
-            }
 
-            // Event Listeners for Add Parts Modal
-            document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
-            document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
+            let html = '';
+            if (orderPopupItems.length === 0) {
+                html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
+            } else {
+                orderPopupItems.forEach((part, index) => {
+                    const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
+                    const iconClass = part.orderChecked ? '' : 'hidden';
 
-            // "담기" Click -> Show Confirmation
-            document.getElementById('confirm-add-btn').addEventListener('click', function () {
-                // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
-                closeModal(); // 1번 닫고
-                confirmMoveModal.classList.remove('hidden'); // 2번 열기
-            });
-
-
-            // Event Listeners for Confirmation Modal
-            document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
-                closeConfirmModal();
-                addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
-            });
-
-            document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
-                closeConfirmModal();
-                openOrderModal(); // 3번 열기
-            });
-
-
-            // 3. Open Order Modal Logic
-            function openOrderModal() {
-                // Filter only checked items from Add Modal to init Order Modal
-                // We use a separate state `orderPopupItems` to manage checkboxes inside Order Modal
-                orderPopupItems = currentPartsList.filter(p => p.checked).map(p => ({ ...p, orderChecked: true, qty: 1 }));
-
-                renderOrderPopup();
-                orderPartsModal.classList.remove('hidden');
-            }
-
-            function renderOrderPopup() {
-                // Check if all are selected for "Select All" state
-                const allChecked = orderPopupItems.length > 0 && orderPopupItems.every(p => p.orderChecked);
-                const selectAllBtn = document.getElementById('order-select-all-btn');
-
-                if (selectAllBtn) {
-                    const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                    const iconClass = allChecked ? '' : 'hidden'; // using hidden class for visibility
-
-                    selectAllBtn.className = `w-6 h-6 rounded border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                    selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-sm font-bold ${iconClass}">check</span>`;
-
-                    selectAllBtn.onclick = function () { toggleOrderSelectAll(!allChecked); };
-                }
-
-                let html = '';
-                if (orderPopupItems.length === 0) {
-                    html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
-                } else {
-                    orderPopupItems.forEach((part, index) => {
-                        const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                        const iconClass = part.orderChecked ? '' : 'hidden';
-
-                        html += `
+                    html += `
                         <div class="flex items-start gap-4">
                             <div class="pt-1">
                                 <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200" onclick="toggleOrderCheckbox(${index})">
@@ -7085,64 +7068,64 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
                         </div>
                     `;
-                    });
-                }
-                orderPartsList.innerHTML = html;
+                });
             }
+            orderPartsList.innerHTML = html;
+        }
 
-            function toggleOrderCheckbox(index) {
-                if (orderPopupItems[index]) {
-                    orderPopupItems[index].orderChecked = !orderPopupItems[index].orderChecked;
-                    renderOrderPopup();
-                }
-            }
-
-            function toggleOrderSelectAll(checked) {
-                orderPopupItems.forEach(p => p.orderChecked = checked);
+        function toggleOrderCheckbox(index) {
+            if (orderPopupItems[index]) {
+                orderPopupItems[index].orderChecked = !orderPopupItems[index].orderChecked;
                 renderOrderPopup();
             }
+        }
 
-            function updateOrderQty(index, value) {
-                if (orderPopupItems[index]) {
-                    const newQty = parseInt(value, 10);
-                    if (!isNaN(newQty) && newQty >= 1) {
-                        orderPopupItems[index].qty = newQty;
-                        // No need to re-render the whole list for quantity change,
-                        // but if total price or other derived values are shown,
-                        // a partial update or re-render might be needed.
-                        // For now, just update the state.
-                    }
+        function toggleOrderSelectAll(checked) {
+            orderPopupItems.forEach(p => p.orderChecked = checked);
+            renderOrderPopup();
+        }
+
+        function updateOrderQty(index, value) {
+            if (orderPopupItems[index]) {
+                const newQty = parseInt(value, 10);
+                if (!isNaN(newQty) && newQty >= 1) {
+                    orderPopupItems[index].qty = newQty;
+                    // No need to re-render the whole list for quantity change,
+                    // but if total price or other derived values are shown,
+                    // a partial update or re-render might be needed.
+                    // For now, just update the state.
                 }
             }
+        }
 
-            // Event Listeners for Order Modal
-            document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
-            document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
-            document.getElementById('final-order-btn').addEventListener('click', function () {
-                alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
-                closeOrderModal();
+        // Event Listeners for Order Modal
+        document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
+        document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
+        document.getElementById('final-order-btn').addEventListener('click', function () {
+            alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
+            closeOrderModal();
+        });
+
+
+        // ... (기존 테이블 행 클릭 이벤트 유지) ...
+        partsRows.forEach(row => {
+            row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
+            row.addEventListener('click', function () {
+                const cells = this.querySelectorAll('td');
+                if (cells.length >= 4) {
+                    const partData = {
+                        name: cells[0].innerText.trim(),
+                        pn: cells[1].innerText.trim(),
+                        count: cells[2].innerText.trim(),
+                        price: cells[3].innerText.trim()
+                    };
+                    openModal(partData);
+                }
             });
+        });
 
 
-            // ... (기존 테이블 행 클릭 이벤트 유지) ...
-            partsRows.forEach(row => {
-                row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-                row.addEventListener('click', function () {
-                    const cells = this.querySelectorAll('td');
-                    if (cells.length >= 4) {
-                        const partData = {
-                            name: cells[0].innerText.trim(),
-                            pn: cells[1].innerText.trim(),
-                            count: cells[2].innerText.trim(),
-                            price: cells[3].innerText.trim()
-                        };
-                        openModal(partData);
-                    }
-                });
-            });
-
-
-        </script>
+    </script>
     </div><!-- #chatbot-app-layer END -->
 
     <script>
