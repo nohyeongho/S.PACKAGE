@@ -6890,39 +6890,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             </div>
         </div>
 
-        <!-- 주문 완료 팝업 -->
-        <div id="order-complete-modal" class="fixed inset-0 z-[80] hidden" aria-labelledby="modal-title" role="dialog"
-            aria-modal="true">
-            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div
-                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
-                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                            <div class="mt-2 text-center">
-                                <div
-                                    class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
-                                    <span
-                                        class="material-symbols-outlined text-green-600 text-2xl font-bold">check</span>
-                                </div>
-                                <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">
-                                    주문이 완료되었습니다
-                                </h3>
-                                <p class="text-sm text-slate-500 mt-2">
-                                    선택하신 부품 주문이 정상적으로 접수되었습니다.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bg-white px-4 py-3 pb-6 flex justify-center sm:px-6">
-                            <button type="button" id="order-complete-ok-btn"
-                                class="inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[100px]">
-                                확인
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <tr id="explosion-c600-row" class="hidden overflow-hidden bg-slate-50/50 dark:bg-slate-800/30">
             <td colspan="5" class="px-0 py-0">
@@ -6945,7 +6913,6 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         const addPartsModal = document.getElementById('add-parts-modal');
         const confirmMoveModal = document.getElementById('confirm-move-modal');
         const orderPartsModal = document.getElementById('order-parts-modal');
-        const orderCompleteModal = document.getElementById('order-complete-modal');
 
         // Modal Content Containers
         const modalPartsList = document.getElementById('modal-parts-list');
@@ -7092,7 +7059,18 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             orderPartsModal.classList.add('hidden');
         }
         function closeOrderCompleteModal() {
-            orderCompleteModal.classList.add('hidden');
+            // [의도] 중복 ID 혼선을 방지하기 위해 v2 전용 ID 사용 및 부드러운 닫기
+            const modal = document.getElementById('order-complete-modal-v2');
+            const container = document.getElementById('order-complete-modal-container-v2');
+            
+            if (container) {
+                container.classList.add('opacity-0', 'scale-95');
+                container.classList.remove('opacity-100', 'scale-100');
+            }
+            
+            setTimeout(() => {
+                if (modal) modal.classList.add('hidden');
+            }, 300);
         }
 
         // Event Listeners for Add Parts Modal
@@ -7221,8 +7199,23 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
         document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
         document.getElementById('final-order-btn').addEventListener('click', function () {
-            alert('주문이 완료되었습니다.'); // 실제 로직은 없으므로 알림
+            // [의도] v2 전용 ID를 사용하여 확실하게 신규 디자인 팝업 표시
             closeOrderModal();
+            
+            const modal = document.getElementById('order-complete-modal-v2');
+            const container = document.getElementById('order-complete-modal-container-v2');
+            
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.style.display = 'flex';
+            }
+            
+            setTimeout(() => {
+                if (container) {
+                    container.classList.remove('opacity-0', 'scale-95');
+                    container.classList.add('opacity-100', 'scale-100');
+                }
+            }, 10);
         });
 
 
@@ -8302,38 +8295,28 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <div class="h-4"></div>
         </div>
     </div>
-    <!-- [NEW] '주문 완료' 전면 팝업 HTML (최상위 z-index 11000) -->
-    <div id="order-complete-modal" class="fixed inset-0 z-[11000] hidden items-center justify-center p-6">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-[3px]" onclick="closeOrderCompleteModal()"></div>
+    <!-- [NEW] '주문 완료' 전면 팝업 HTML (ID 중복 제거를 위한 v2 적용 - 'X' 버튼 삭제 버전) -->
+    <div id="order-complete-modal-v2" class="fixed inset-0 z-[11000] hidden items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-[3px]"></div>
         
-        <div id="order-complete-modal-container" 
-             onclick="closeOrderCompleteModal()"
-             class="relative w-full max-w-[280px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all p-8 flex flex-col items-center cursor-pointer">
+        <div id="order-complete-modal-container-v2" 
+             class="relative w-full max-w-[280px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all p-10 flex flex-col items-center opacity-0 scale-95">
             
-            <!-- Close Button (X) - Visibility Enhanced -->
-            <button onclick="closeOrderCompleteModal(); event.stopPropagation();" 
-                    class="absolute top-5 right-5 text-slate-800 hover:text-black z-20 p-1 transition-all active:scale-[0.85] flex items-center justify-center">
-                <span class="material-symbols-outlined text-[26px] font-bold">close</span>
-            </button>
-
-            <!-- Success Icon (Design Match) -->
+            <!-- Success Icon -->
             <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-[#2E7D32] text-3xl font-bold">check</span>
             </div>
 
-            <!-- Message (Design Match) -->
+            <!-- Message - 타이틀만 남기고 설명 문구 삭제 -->
             <div class="text-center mb-8">
-                <h3 class="text-[19px] font-bold text-slate-900 mb-2 leading-tight">주문이 완료되었습니다</h3>
-                <p class="text-[12px] font-medium text-slate-400 leading-normal">
-                    선택하신 부품 주문이<br>정상적으로 접수되었습니다.
-                </p>
+                <h3 class="text-[20px] font-bold text-slate-900 leading-tight">주문이 완료되었습니다</h3>
             </div>
 
-            <!-- Confirm Button (Spec Match: bg-slate-900) -->
+            <!-- Confirm Button - 주 버튼 강조 -->
             <button type="button" 
-                    id="order-complete-ok-btn" 
-                    onclick="closeOrderCompleteModal()"
-                    class="inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[100px]">
+                    id="order-complete-ok-btn-v2" 
+                    onclick="event.stopPropagation(); closeOrderCompleteModal();"
+                    class="relative z-30 inline-flex w-full justify-center rounded-md bg-slate-900 px-3 py-3 text-sm font-bold text-white shadow-sm hover:bg-black sm:w-auto sm:min-w-[140px] cursor-pointer transition-all active:scale-[0.96]">
                 확인
             </button>
         </div>
