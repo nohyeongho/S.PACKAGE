@@ -5798,8 +5798,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 class="bg-[#F8FAFC] text-slate-500 font-bold border-b border-slate-200">
                                                 <tr>
                                                     <th class="w-14 py-3">
-                                                        <div
-                                                            class="w-5 h-5 rounded-full border-2 border-slate-200 bg-white mx-auto flex items-center justify-center">
+                                                        <div onclick="togglePageChecks(this)" 
+                                                            class="w-5 h-5 rounded-full border-2 border-slate-200 bg-white mx-auto flex items-center justify-center cursor-pointer transition-all hover:border-blue-400">
+                                                            <span class="material-symbols-outlined text-[14px] text-white opacity-0 transition-opacity">check</span>
                                                         </div>
                                                     </th>
                                                     <th class="w-32 py-3 text-[13px]">부품명</th>
@@ -5812,8 +5813,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 <tr class="hover:bg-slate-50/70 transition-all duration-300">
                                                     <td class="py-3.5">
                                                         <div class="flex justify-center">
-                                                            <div
-                                                                class="w-5 h-5 rounded-full border-2 border-slate-300 bg-white flex-shrink-0">
+                                                            <div onclick="toggleRowCheck(this)" 
+                                                                class="row-checkbox w-5 h-5 rounded-full border-2 border-slate-300 bg-white flex-shrink-0 flex items-center justify-center cursor-pointer transition-all hover:border-blue-500">
+                                                                <span class="material-symbols-outlined text-[14px] text-white opacity-0 transition-opacity">check</span>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -5850,8 +5852,9 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 <tr class="hover:bg-slate-50/70 transition-all duration-300">
                                                     <td class="py-3.5">
                                                         <div class="flex justify-center">
-                                                            <div
-                                                                class="w-5 h-5 rounded-full border-2 border-slate-300 bg-white flex-shrink-0">
+                                                            <div onclick="toggleRowCheck(this)" 
+                                                                class="row-checkbox w-5 h-5 rounded-full border-2 border-slate-300 bg-white flex-shrink-0 flex items-center justify-center cursor-pointer transition-all hover:border-blue-500">
+                                                                <span class="material-symbols-outlined text-[14px] text-white opacity-0 transition-opacity">check</span>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -5887,6 +5890,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- [NEW] '담기' 버튼 추가 -->
+                                    <div class="px-6 py-4 flex justify-end border-t border-slate-50">
+                                        <button onclick="handlePartOrderRequest()" 
+                                                class="px-10 py-3 bg-[#C0004D] text-white rounded-xl font-bold text-[15px] shadow-lg hover:bg-[#A00040] transition-all active:scale-[0.98] flex items-center justify-center min-w-[120px]">
+                                            담기
+                                        </button>
                                     </div>
                                 </div>
                             </section>
@@ -5935,6 +5945,103 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
                                 </div>
                             </div>
+
+
+                            <section class="space-y-3 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-slate-600">play_arrow</span>
+                                    <h2 class="font-bold text-lg text-slate-900 dark:text-white">Contents</h2>
+                                </div>
+                                <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x px-1">
+                                    <!-- 기술정보 7건 -->
+                                    <div onclick="openTechInfoSheet()" class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-blue-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                                <span class="material-symbols-outlined">description</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">기술정보 7건</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 서비스매뉴얼 1건 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-purple-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                                <span class="material-symbols-outlined">construction</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">서비스매뉴얼 1건</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-purple-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 설명서 1건 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-indigo-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                                <span class="material-symbols-outlined">menu_book</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">설명서 1건</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-indigo-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 스펙 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-orange-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                                                <span class="material-symbols-outlined">fact_check</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">스펙</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-orange-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 결선도 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-amber-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                                                <span class="material-symbols-outlined">hub</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">결선도</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-amber-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 분해도 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-red-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                                                <span class="material-symbols-outlined">grid_view</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">분해도</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-red-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 스스로해결 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-green-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+                                                <span class="material-symbols-outlined">handyman</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">스스로해결</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-green-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+
+                                    <!-- 증상별수리가이드 -->
+                                    <div class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-teal-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400">
+                                                <span class="material-symbols-outlined">healing</span>
+                                            </div>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">증상별수리가이드</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-slate-400 group-hover:text-teal-500 transition-colors text-sm">arrow_forward_ios</span>
+                                    </div>
+                                </div>
+                            </section>
 
                             <section class="space-y-3 mb-8">
                                 <div class="flex items-center gap-2">
@@ -6726,169 +6833,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             }
         </script>
 
-        <!-- 부품 담기 팝업 -->
-        <div id="add-parts-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
-            aria-modal="true">
-            <!-- 배경 오버레이 -->
-            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
 
-            <!-- 팝업 패널 -->
-            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div
-                        class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                        <!-- 헤더 -->
-                        <div
-                            class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-slate-100 dark:border-slate-700">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <button type="button" id="close-modal-btn-x"
-                                        class="text-slate-400 hover:text-slate-500">
-                                        <span class="material-symbols-outlined">close</span>
-                                    </button>
-                                    <h3 class="text-lg font-bold leading-6 text-slate-900" id="modal-title">부품 담기</h3>
-                                </div>
-                                <div class="flex items-center gap-2 text-slate-400">
-                                    <span class="material-symbols-outlined">shopping_cart</span>
-                                    <span class="material-symbols-outlined">notifications</span>
-                                </div>
-                            </div>
-                            <div class="mt-4 pb-2 border-b-2 border-slate-800 w-full">
-                                <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
-                            </div>
-                        </div>
-
-                        <!-- 컨텐츠 -->
-                        <div class="bg-white px-4 py-4">
-                            <table class="w-full text-center text-sm border-collapse">
-                                <thead class="bg-slate-50 text-slate-600 font-bold border-t border-slate-200">
-                                    <tr>
-                                        <th class="py-3 w-12 pl-4">
-                                            <!-- 전체 선택 체크박스 (비활성 예시) -->
-                                            <div id="add-parts-select-all"
-                                                class="w-6 h-6 rounded-full border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
-                                            </div>
-                                        </th>
-                                        <th class="py-3">부품명</th>
-                                        <th class="py-3">PN</th>
-                                        <th class="py-3">건수</th>
-                                        <th class="py-3">가격</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="modal-parts-list"
-                                    class="divide-y divide-slate-100 text-slate-700 text-[13px]">
-                                    <!-- JavaScript로 동적 추가될 영역 -->
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- 푸터 -->
-                        <div class="bg-white px-4 py-3 pb-6 sm:flex sm:flex-row-reverse sm:px-6 gap-2">
-                            <button type="button" id="confirm-add-btn"
-                                class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                                담기
-                            </button>
-                            <button type="button" id="cancel-modal-btn"
-                                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                                취소
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 확인 팝업 (페이지 이동 확인) -->
-        <div id="confirm-move-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog"
-            aria-modal="true">
-            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div
-                        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
-                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                            <div class="mt-2 text-center">
-                                <h3 class="text-base font-semibold leading-6 text-slate-900" id="modal-title">
-                                    부품주문 화면으로 이동 하시겠습니까?
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="bg-white px-4 py-3 pb-6 flex justify-center gap-8 sm:px-6">
-                            <button type="button" id="confirm-move-cancel-btn"
-                                class="text-slate-500 hover:text-slate-700 font-bold text-sm">
-                                취소
-                            </button>
-                            <button type="button" id="confirm-move-ok-btn"
-                                class="text-slate-900 hover:text-black font-bold text-sm">
-                                확인
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 부품 주문 팝업 -->
-        <div id="order-parts-modal" class="fixed inset-0 z-[70] hidden" aria-labelledby="modal-title" role="dialog"
-            aria-modal="true">
-            <div class="fixed inset-0 bg-black/50 transition-opacity" aria-hidden="true"></div>
-            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div
-                        class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
-                        <!-- 헤더 -->
-                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                            <div class="flex items-center justify-between mb-4">
-                                <button type="button" id="close-order-modal-btn-x" class="text-slate-900">
-                                    <span class="material-symbols-outlined font-bold">close</span>
-                                </button>
-                                <h3 class="text-xl font-bold leading-6 text-slate-900">부품 주문</h3>
-                                <div class="flex items-center gap-3">
-                                    <div class="relative">
-                                        <span class="material-symbols-outlined text-slate-900">shopping_cart</span>
-                                        <span
-                                            class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white ring-2 ring-white">1</span>
-                                    </div>
-                                    <span class="material-symbols-outlined text-slate-900">notifications</span>
-                                </div>
-                            </div>
-                            <div class="pb-2 border-b border-slate-400 w-full">
-                                <p class="text-sm font-bold text-slate-900">접수번호 : PC301551TX</p>
-                            </div>
-                        </div>
-
-                        <!-- 전체선택 -->
-                        <div class="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center gap-3">
-                            <div id="order-select-all-btn"
-                                class="w-6 h-6 rounded border border-slate-300 bg-white flex items-center justify-center cursor-pointer">
-                                <!-- 체크박스 UI -->
-                            </div>
-                            <span class="font-bold text-slate-900 text-sm">전체선택</span>
-                        </div>
-
-                        <!-- 주문 목록 -->
-                        <div class="bg-white px-6 py-4 max-h-[60vh] overflow-y-auto">
-                            <div id="order-parts-list" class="space-y-6">
-                                <!-- 동적 추가 -->
-                            </div>
-                        </div>
-
-                        <!-- 푸터 -->
-                        <div
-                            class="bg-white px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 gap-2 border-t border-slate-100">
-                            <button type="button" id="final-order-btn"
-                                class="inline-flex w-full justify-center rounded-md bg-[#E91E63] px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#D81B60] sm:w-1/2">
-                                주문
-                            </button>
-                            <button type="button" id="cancel-order-btn"
-                                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-3 text-sm font-bold text-slate-600 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-1/2">
-                                취소
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 
@@ -6902,342 +6847,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
     <!-- 복사 완료 알림 (Toast) -->
 
 
-    <script>
-        // ... (기존 스크립트) ...
 
-        // Parts Popup Functionality & Flow
-        const popupPartsTableWrapper = document.getElementById('parts-table-wrapper');
-        const partsRows = popupPartsTableWrapper ? popupPartsTableWrapper.querySelectorAll('tbody tr') : [];
-
-        // Modal Elements
-        const addPartsModal = document.getElementById('add-parts-modal');
-        const confirmMoveModal = document.getElementById('confirm-move-modal');
-        const orderPartsModal = document.getElementById('order-parts-modal');
-
-        // Modal Content Containers
-        const modalPartsList = document.getElementById('modal-parts-list');
-        const orderPartsList = document.getElementById('order-parts-list');
-
-        // State
-        let currentPartsList = []; // Array to store parts data in the Add Modal
-        let orderPopupItems = []; // Array to store parts state in the Order Modal
-
-        // 1. Open Add Parts Modal
-        function openModal(partData) {
-            // 초기 데이터 세팅 (기존 예시 데이터 + 클릭한 데이터)
-            // 실제 구현에서는 클릭한 데이터만 넣거나, 비동기로 가져와야 함.
-            // 여기서는 UI 시나리오대로 기존 예시와 합침.
-
-            const otherPart = {
-                id: 'part-1',
-                name: 'Compressor,Parts Assembly,SVC',
-                pn: 'AGM30128802\n(원품)',
-                pnRaw: 'AGM30128802',
-                count: '235건\n(55%)',
-                price: '310,000원',
-                priceRaw: 310000,
-                checked: true
-            };
-
-            const selectedPart = {
-                id: 'part-2',
-                name: (partData.name || '').replace(',', ',<br>'),
-                pn: (partData.pn || '').split(' ')[0] + '<br>(원품)',
-                pnRaw: (partData.pn || '').split(' ')[0],
-                locator: (partData.pn || '').includes('(') ? (partData.pn || '').match(/\(([^)]+)\)/)[0] : '',
-                count: (partData.count || '').replace(' ', '<br>'),
-                price: (partData.price || '') + '원',
-                priceRaw: parseInt((partData.price || '').replace(/[^0-9]/g, '')) || 0,
-                checked: false,
-                isExpanded: false
-            };
-
-            currentPartsList = [otherPart, selectedPart];
-            renderAddPartsList();
-            addPartsModal.classList.remove('hidden');
-        }
-
-        function renderAddPartsList() {
-            // Check Select All State
-            const allChecked = currentPartsList.length > 0 && currentPartsList.every(p => p.checked);
-            const selectAllBtn = document.getElementById('add-parts-select-all');
-
-            if (selectAllBtn) {
-                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = allChecked ? '' : 'hidden';
-
-                selectAllBtn.className = `w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>`;
-
-                // Remove old listener to avoid duplicates if any (though cleaner to just assign logic here as it's simple)
-                selectAllBtn.onclick = function () { toggleAddSelectAll(!allChecked); };
-            }
-
-            let html = '';
-            currentPartsList.forEach((part, index) => {
-                const checkClass = part.checked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = part.checked ? '' : 'hidden';
-
-                // 로케이터 코드가 있을 경우 클릭 가능한 링크 추가
-                const pnDisplay = part.locator
-                    ? `${part.pn}<br><span class="text-[#0066CC] font-bold underline cursor-pointer hover:text-blue-800 block mt-1" onclick="toggleModalDetail(${index}, event)">${part.locator}</span>`
-                    : part.pn;
-
-                html += `
-                <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleAddCheckbox(${index})">
-                    <td class="py-4 pl-4 w-12 text-center">
-                        <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center transition-all duration-200">
-                             <span class="material-symbols-outlined text-white text-[16px] font-bold ${iconClass}">check</span>
-                        </div>
-                    </td>
-                    <td class="py-4 px-2 text-left leading-snug break-keep font-semibold text-slate-800">${part.name}</td>
-                    <td class="py-4 px-2 font-bold text-sm text-slate-600 text-center leading-tight">${pnDisplay}</td>
-                    <td class="py-4 px-2 font-bold text-sm text-slate-600 text-center leading-tight">${part.count}</td>
-                    <td class="py-4 px-2 pr-4 text-right font-bold text-slate-900">${part.price}</td>
-                </tr>
-            `;
-
-                // [추가] 확장 상태일 경우 분해도 이미지 행 렌더링
-                if (part.isExpanded) {
-                    html += `
-                <tr class="bg-slate-50 no-hover">
-                    <td colspan="5" class="py-4 px-4">
-                        <div class="animate-in fade-in slide-in-from-top-2 duration-300">
-                            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-md">
-                                <div class="bg-slate-100 px-3 py-2 flex justify-between items-center border-b border-slate-200">
-                                    <span class="text-[11px] font-extrabold text-slate-700 flex items-center gap-1.5">
-                                        <span class="material-symbols-outlined text-[16px] text-primary">analytics</span>
-                                        기술 분해도 상세 분석: ${part.locator}
-                                    </span>
-                                    <button class="material-symbols-outlined text-[18px] text-slate-400 hover:text-slate-600 transition-colors" onclick="toggleModalDetail(${index}, event)">close</button>
-                                </div>
-                                <div class="relative group cursor-zoom-in" onclick="openC600LargeImage(); event.stopPropagation();">
-                                    <img src="./washing_machine_exploded_view.png" class="w-full h-auto object-contain" alt="Exploded View">
-                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
-                                        <span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-3xl">zoom_in</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            `;
-                }
-            });
-            modalPartsList.innerHTML = html;
-        }
-
-        function toggleAddCheckbox(index) {
-            if (currentPartsList[index]) {
-                currentPartsList[index].checked = !currentPartsList[index].checked;
-                renderAddPartsList(); // Re-render to update UI
-            }
-        }
-
-        function toggleAddSelectAll(checked) {
-            currentPartsList.forEach(p => p.checked = checked);
-            renderAddPartsList();
-        }
-
-        // [NEW] 팝업 내 분해도 상호작용 함수
-        window.toggleModalDetail = function (index, event) {
-            if (event) event.stopPropagation(); // 행 클릭(체크박스 토글) 방지
-            if (currentPartsList[index]) {
-                currentPartsList[index].isExpanded = !currentPartsList[index].isExpanded;
-                renderAddPartsList();
-            }
-        };
-
-        // Close Functions
-        function closeModal() {
-            addPartsModal.classList.add('hidden');
-        }
-        function closeConfirmModal() {
-            confirmMoveModal.classList.add('hidden');
-        }
-        function closeOrderModal() {
-            orderPartsModal.classList.add('hidden');
-        }
-        function closeOrderCompleteModal() {
-            // [의도] 중복 ID 혼선을 방지하기 위해 v2 전용 ID 사용 및 부드러운 닫기
-            const modal = document.getElementById('order-complete-modal-v2');
-            const container = document.getElementById('order-complete-modal-container-v2');
-            
-            if (container) {
-                container.classList.add('opacity-0', 'scale-95');
-                container.classList.remove('opacity-100', 'scale-100');
-            }
-            
-            setTimeout(() => {
-                if (modal) modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // Event Listeners for Add Parts Modal
-        document.getElementById('close-modal-btn-x').addEventListener('click', closeModal);
-        document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
-
-        // "담기" Click -> Show Confirmation
-        document.getElementById('confirm-add-btn').addEventListener('click', function () {
-            // 선택된 항목이 있는지 확인 (선택 없어도 확인창 띄울지 여부는 기획 의존, 여기서는 띄움)
-            closeModal(); // 1번 닫고
-            confirmMoveModal.classList.remove('hidden'); // 2번 열기
-        });
-
-
-        // Event Listeners for Confirmation Modal
-        document.getElementById('confirm-move-cancel-btn').addEventListener('click', function () {
-            closeConfirmModal();
-            addPartsModal.classList.remove('hidden'); // 취소 시 다시 1번 모달로 돌아감 (UX상 자연스러움)
-        });
-
-        document.getElementById('confirm-move-ok-btn').addEventListener('click', function () {
-            closeConfirmModal();
-            openOrderModal(); // 3번 열기
-        });
-
-
-        // 3. Open Order Modal Logic
-        function openOrderModal() {
-            // Filter only checked items from Add Modal to init Order Modal
-            // We use a separate state `orderPopupItems` to manage checkboxes inside Order Modal
-            orderPopupItems = currentPartsList.filter(p => p.checked).map(p => ({ ...p, orderChecked: true, qty: 1 }));
-
-            renderOrderPopup();
-            orderPartsModal.classList.remove('hidden');
-        }
-
-        function renderOrderPopup() {
-            // Check if all are selected for "Select All" state
-            const allChecked = orderPopupItems.length > 0 && orderPopupItems.every(p => p.orderChecked);
-            const selectAllBtn = document.getElementById('order-select-all-btn');
-
-            if (selectAllBtn) {
-                const checkClass = allChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                const iconClass = allChecked ? '' : 'hidden'; // using hidden class for visibility
-
-                selectAllBtn.className = `w-6 h-6 rounded border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200`;
-                selectAllBtn.innerHTML = `<span class="material-symbols-outlined text-white text-sm font-bold ${iconClass}">check</span>`;
-
-                selectAllBtn.onclick = function () { toggleOrderSelectAll(!allChecked); };
-            }
-
-            let html = '';
-            if (orderPopupItems.length === 0) {
-                html = '<div class="text-center py-8 text-slate-500">선택된 부품이 없습니다.</div>';
-            } else {
-                orderPopupItems.forEach((part, index) => {
-                    const checkClass = part.orderChecked ? 'border-transparent bg-slate-800' : 'border-slate-300 bg-white';
-                    const iconClass = part.orderChecked ? '' : 'hidden';
-
-                    html += `
-                        <div class="flex items-start gap-4">
-                            <div class="pt-1">
-                                <div class="w-6 h-6 rounded-full border ${checkClass} flex items-center justify-center cursor-pointer transition-all duration-200" onclick="toggleOrderCheckbox(${index})">
-                                    <span class="material-symbols-outlined text-white text-[14px] font-bold ${iconClass}">check</span>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-1">
-                                    <div class="font-bold text-slate-900 text-[15px] leading-snug">
-                                        <span class="font-black mr-1">CNZ</span> ${part.pnRaw}
-                                    </div>
-                                    <div class="text-xs text-slate-500 font-bold tracking-tight">
-                                        ${part.priceRaw.toLocaleString()}원 / ${part.priceRaw.toLocaleString()}원
-                                    </div>
-                                </div>
-                                <div class="text-[13px] text-slate-800 font-medium mb-3 leading-snug">
-                                    ${part.name.replace('<br>', ' ')}
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                         <div class="flex items-center gap-1 px-2 py-0.5 rounded-full border border-[#4CAF50] text-[#4CAF50] bg-white text-xs font-bold">
-                                            <span class="material-symbols-outlined text-[14px]">search</span>
-                                            출고
-                                         </div>
-                                         <span class="text-slate-800 text-sm font-bold">냉장고</span>
-                                         <span class="text-slate-400 text-sm ml-2">0</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input type="number" value="${part.qty}" min="1" onchange="updateOrderQty(${index}, this.value)" class="w-16 border border-slate-300 rounded px-2 py-1 text-right font-bold text-slate-900 focus:outline-none focus:border-red-500">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            orderPartsList.innerHTML = html;
-        }
-
-        function toggleOrderCheckbox(index) {
-            if (orderPopupItems[index]) {
-                orderPopupItems[index].orderChecked = !orderPopupItems[index].orderChecked;
-                renderOrderPopup();
-            }
-        }
-
-        function toggleOrderSelectAll(checked) {
-            orderPopupItems.forEach(p => p.orderChecked = checked);
-            renderOrderPopup();
-        }
-
-        function updateOrderQty(index, value) {
-            if (orderPopupItems[index]) {
-                const newQty = parseInt(value, 10);
-                if (!isNaN(newQty) && newQty >= 1) {
-                    orderPopupItems[index].qty = newQty;
-                    // No need to re-render the whole list for quantity change,
-                    // but if total price or other derived values are shown,
-                    // a partial update or re-render might be needed.
-                    // For now, just update the state.
-                }
-            }
-        }
-
-        // Event Listeners for Order Modal
-        document.getElementById('close-order-modal-btn-x').addEventListener('click', closeOrderModal);
-        document.getElementById('cancel-order-btn').addEventListener('click', closeOrderModal);
-        document.getElementById('final-order-btn').addEventListener('click', function () {
-            // [의도] v2 전용 ID를 사용하여 확실하게 신규 디자인 팝업 표시
-            closeOrderModal();
-            
-            const modal = document.getElementById('order-complete-modal-v2');
-            const container = document.getElementById('order-complete-modal-container-v2');
-            
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.style.display = 'flex';
-            }
-            
-            setTimeout(() => {
-                if (container) {
-                    container.classList.remove('opacity-0', 'scale-95');
-                    container.classList.add('opacity-100', 'scale-100');
-                }
-            }, 10);
-        });
-
-
-        // ... (기존 테이블 행 클릭 이벤트 유지) ...
-        partsRows.forEach(row => {
-            row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-            row.addEventListener('click', function () {
-                const cells = this.querySelectorAll('td');
-                if (cells.length >= 4) {
-                    const partData = {
-                        name: cells[0].innerText.trim(),
-                        pn: cells[1].innerText.trim(),
-                        count: cells[2].innerText.trim(),
-                        price: cells[3].innerText.trim()
-                    };
-                    openModal(partData);
-                }
-            });
-        });
-
-
-    </script>
     </div><!-- #chatbot-app-layer END -->
 
     <script>
@@ -7442,26 +7052,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     };
                 }
 
-                // 2. 테이블 행 클릭 시 팝업 열기 재연결
-                const dashboardTarget = document.getElementById('dashboard-stream-target');
-                if (dashboardTarget) {
-                    const rows = dashboardTarget.querySelectorAll('table tbody tr');
-                    rows.forEach(row => {
-                        row.classList.add('cursor-pointer', 'hover:bg-slate-50', 'transition-colors');
-                        row.onclick = function () {
-                            const cells = this.querySelectorAll('td');
-                            if (cells.length >= 4 && this.closest('section')?.querySelector('h2')?.innerText.includes('부품')) {
-                                const partData = {
-                                    name: cells[0].innerText.trim(),
-                                    pn: cells[1].innerText.trim(),
-                                    count: cells[2].innerText.trim(),
-                                    price: cells[3].innerText.trim()
-                                };
-                                if (typeof openModal === 'function') openModal(partData);
-                            }
-                        };
-                    });
-                }
+
 
                 // 3. 개별 섹션 상세 토글 기능 추가 (이벤트 위임 + 3D 회전 애니메이션)
                 const briefingContent = document.getElementById('ai-briefing-content');
@@ -7915,6 +7506,124 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             showPartInfoModal();
         }
 
+        // --- 부품 리스트 체크박스 및 로직 ---
+        function toggleRowCheck(el) {
+            const isChecked = el.classList.contains('bg-blue-600');
+            const icon = el.querySelector('.material-symbols-outlined');
+            
+            if (isChecked) {
+                // 체크 해제
+                el.classList.remove('bg-blue-600', 'border-blue-600');
+                el.classList.add('bg-white', 'border-slate-300');
+                if (icon) icon.classList.add('opacity-0');
+            } else {
+                // 체크 설정
+                el.classList.remove('bg-white', 'border-slate-300');
+                el.classList.add('bg-blue-600', 'border-blue-600');
+                if (icon) icon.classList.remove('opacity-0');
+            }
+        }
+
+        function togglePageChecks(headerEl) {
+            const icon = headerEl.querySelector('.material-symbols-outlined');
+            const isChecked = headerEl.classList.contains('bg-blue-600');
+            const allRows = document.querySelectorAll('.row-checkbox');
+            
+            if (isChecked) {
+                // 전체 해제
+                headerEl.classList.remove('bg-blue-600', 'border-blue-600');
+                headerEl.classList.add('bg-white', 'border-slate-200');
+                if (icon) icon.classList.add('opacity-0');
+                
+                allRows.forEach(row => {
+                    const rowIcon = row.querySelector('.material-symbols-outlined');
+                    row.classList.remove('bg-blue-600', 'border-blue-600');
+                    row.classList.add('bg-white', 'border-slate-300');
+                    if (rowIcon) rowIcon.classList.add('opacity-0');
+                });
+            } else {
+                // 전체 선택
+                headerEl.classList.remove('bg-white', 'border-slate-200');
+                headerEl.classList.add('bg-blue-600', 'border-blue-600');
+                if (icon) icon.classList.remove('opacity-0');
+                
+                allRows.forEach(row => {
+                    const rowIcon = row.querySelector('.material-symbols-outlined');
+                    row.classList.remove('bg-white', 'border-slate-300');
+                    row.classList.add('bg-blue-600', 'border-blue-600');
+                    if (rowIcon) rowIcon.classList.remove('opacity-0');
+                });
+            }
+        }
+
+        // --- 담기 버튼 클릭 핸들러 (1단계: 컨펌 모달) ---
+        function handlePartOrderRequest() {
+            const modal = document.getElementById('part-add-confirm-modal');
+            const container = document.getElementById('part-add-confirm-container');
+            
+            if (modal && container) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                setTimeout(() => {
+                    container.classList.remove('opacity-0', 'scale-95', 'translate-y-4');
+                    container.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+                }, 10);
+            }
+        }
+
+        // 컨펌 모달에서 '확인' 클릭 시 (2단계: 주문 완료)
+        function confirmPartAddOrder() {
+            closePartAddConfirmModal();
+            
+            // 약간의 딜레이 후 주문 완료 모달 표시
+            setTimeout(() => {
+                const modal = document.getElementById('order-complete-modal-v2');
+                const container = document.getElementById('order-complete-modal-container-v2');
+                
+                if (modal && container) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    
+                    setTimeout(() => {
+                        container.classList.remove('opacity-0', 'scale-95');
+                        container.classList.add('opacity-100', 'scale-100');
+                    }, 10);
+                }
+            }, 400);
+        }
+
+        function closePartAddConfirmModal() {
+            const modal = document.getElementById('part-add-confirm-modal');
+            const container = document.getElementById('part-add-confirm-container');
+            
+            if (modal && container) {
+                container.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+                container.classList.add('opacity-0', 'scale-95', 'translate-y-4');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+        }
+
+        // 주문 완료 모달 닫기
+        function closeOrderCompleteModal() {
+            const modal = document.getElementById('order-complete-modal-v2');
+            const container = document.getElementById('order-complete-modal-container-v2');
+            
+            if (modal && container) {
+                container.classList.remove('opacity-100', 'scale-100');
+                container.classList.add('opacity-0', 'scale-95');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+        }
+
         // --- '부품정보' 상세 팝업 제어 로직 ---
         function showPartInfoModal() {
             const modal = document.getElementById('part-info-modal');
@@ -8295,6 +8004,31 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             <div class="h-4"></div>
         </div>
     </div>
+    <!-- [NEW] 부품 담기 확인 컨펌 모달 -->
+    <div id="part-add-confirm-modal" class="fixed inset-0 z-[12000] hidden items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]" onclick="closePartAddConfirmModal()"></div>
+        <div id="part-add-confirm-container" 
+             class="relative w-full max-w-[320px] bg-white rounded-2xl shadow-2xl transition-all p-6 opacity-0 scale-95 translate-y-4">
+            
+            <div class="text-center mb-8">
+                <p class="text-[16px] font-bold text-slate-800 leading-normal">
+                    선택된 부품의 담기를<br>진행하시겠습니까?
+                </p>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="closePartAddConfirmModal()" 
+                        class="flex-1 py-3.5 bg-[#F1F5F9] text-slate-600 rounded-xl font-bold text-[15px] hover:bg-slate-200 transition-all active:scale-[0.98]">
+                    취소
+                </button>
+                <button onclick="confirmPartAddOrder()" 
+                        class="flex-1 py-3.5 bg-[#C0004D] text-white rounded-xl font-bold text-[15px] shadow-md hover:bg-[#A00040] transition-all active:scale-[0.98]">
+                    확인
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- [NEW] '주문 완료' 전면 팝업 HTML (ID 중복 제거를 위한 v2 적용 - 'X' 버튼 삭제 버전) -->
     <div id="order-complete-modal-v2" class="fixed inset-0 z-[11000] hidden items-center justify-center p-6">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-[3px]"></div>
@@ -8321,6 +8055,105 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             </button>
         </div>
     </div>
+    <!-- [NEW] 기술정보 상세 바텀 시트 -->
+    <div id="tech-info-sheet-overlay" 
+         onclick="closeTechInfoSheet()"
+         class="fixed inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-300 z-[9000]"></div>
+    <div id="tech-info-sheet" 
+         class="fixed bottom-0 left-0 right-0 bg-[#F0F4F8] rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] transform translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] z-[9001] flex flex-col max-h-[85vh]">
+        
+        <!-- Handle & Header -->
+        <div class="flex flex-col items-center pt-3 pb-2 cursor-pointer" onclick="closeTechInfoSheet()">
+            <div class="w-12 h-1.5 rounded-full bg-slate-400 mb-4 transition-colors hover:bg-slate-500"></div>
+        </div>
+
+        <!-- Content List -->
+        <div class="flex-1 overflow-y-auto px-4 pb-10 space-y-3 custom-scrollbar">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [LGSC 연결 방법] 드럼 세탁기 Wi-Fi 활성화 방법_2026-04-02
+                </span>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_수리기술] 드럼세탁기 통살균 후 검은 이물 발생 SVC 기술정보_2026-03-31
+                </span>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_건조기_부가서비스] 리빙 동결 예방 캠페인 활동 가이드_2026-03-31
+                </span>
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_수리기술] 6_17일 서비스용 하네스 공급안내_드럼세탁기 _FH19__외_dHE에러 발생 시 하네스 교체 안내_2026-03-31
+                </span>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_수리기술] 7_19일_PCB무상 5년_7년연장 _16_17_19_21KG_드럼세탁기_LE Error_전원무감 불량_Main PCB 부품 무상 조치 가이드_2026-03-31
+                </span>
+            </div>
+            <!-- Item 6 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_수리기술] 드럼세탁기 수평조절 조치 가이드_2026-03-31
+                </span>
+            </div>
+            <!-- Item 7 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_수리기술] 드럼세탁기-공통-Gasket 찌그러짐_2026-03-31
+                </span>
+            </div>
+            <!-- Item 8 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3 active:scale-[0.98] transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[#4A5D6D] mt-0.5">description</span>
+                <span class="text-[14px] font-bold text-slate-800 leading-snug">
+                    [세탁기_종합가이드]드럼세탁기-공통-dE2-점검_2026-03-31
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 기술정보 바텀 시트 제어
+        function openTechInfoSheet() {
+            const overlay = document.getElementById('tech-info-sheet-overlay');
+            const sheet = document.getElementById('tech-info-sheet');
+            
+            overlay.classList.remove('hidden', 'pointer-events-none', 'opacity-0');
+            overlay.classList.add('opacity-100');
+            sheet.classList.remove('translate-y-full');
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTechInfoSheet() {
+            const overlay = document.getElementById('tech-info-sheet-overlay');
+            const sheet = document.getElementById('tech-info-sheet');
+            
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            sheet.classList.add('translate-y-full');
+            
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    </script>
 </body>
 
 </html>
