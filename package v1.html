@@ -5921,50 +5921,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </div>
                             </section>
 
-                            <!-- [NEW] 대시보드 상세 정보 컨테이너 (위치 이동: 학습용 영상 바로 위) -->
-                            <div id="c600-detail-container" class="hidden mb-6">
-                                <div class="animate-in fade-in slide-in-from-top-4 duration-500">
-                                    <div
-                                        class="bg-white dark:bg-slate-900 rounded-2xl border-2 border-primary/20 overflow-hidden shadow-xl">
-                                        <div
-                                            class="px-4 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
-                                            <h3
-                                                class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-[14px]">
-                                                <span
-                                                    class="material-symbols-outlined text-primary text-[20px]">analytics</span>
-                                                분해도 - C600: BASE Parts Assembly 상세 분석
-                                            </h3>
-                                            <button onclick="toggleC600Detail(event)"
-                                                class="text-slate-400 hover:text-slate-600 transition-colors">
-                                                <span class="material-symbols-outlined text-[20px]">close</span>
-                                            </button>
-                                        </div>
-                                        <div class="p-6 pb-2 flex justify-center items-start">
-                                            <div class="relative group cursor-zoom-in overflow-hidden rounded-xl border border-slate-200 shadow-sm max-w-2xl w-full"
-                                                onclick="openC600LargeImage(); event.stopPropagation();">
-                                                <img src="./washing_machine_exploded_view.png"
-                                                    class="w-full h-auto object-contain" alt="C600 Exploded View">
-                                                <div
-                                                    class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
-                                                    <span
-                                                        class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- [NEW] 분해분 하단 버튼 영역 (취소, 담기) -->
-                                        <div id="c600-footer-buttons" class="px-6 pb-6 flex gap-3">
-                                            <button onclick="toggleC600Detail(event)" 
-                                                    class="flex-1 py-3.5 font-bold rounded-xl explosion-btn-cancel transition-all hover:bg-gray-50 active:scale-[0.98]">
-                                                취소
-                                            </button>
-                                            <button onclick="handlePartOrderRequest()" 
-                                                    class="flex-1 py-3.5 font-bold rounded-xl explosion-btn-add shadow-lg transition-all hover:bg-[#A00040] active:scale-[0.98]">
-                                                담기
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
 
 
                             <section class="space-y-3 mb-6">
@@ -7479,25 +7436,31 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
         // [NEW] C600 상세 정보 토글 함수 (이벤트 전파 중지 추가)
         window.toggleC600Detail = function (event, showButtons = true) {
             if (event && event.stopPropagation) event.stopPropagation();
-            const container = document.getElementById('c600-detail-container');
+            const overlay = document.getElementById('c600-detail-overlay');
+            const sheet = document.getElementById('c600-detail-sheet');
             const footerButtons = document.getElementById('c600-footer-buttons');
-            if (!container) return;
+            
+            if (!overlay || !sheet) return;
 
-            const isHidden = container.classList.contains('hidden');
+            const isHidden = sheet.classList.contains('translate-y-full');
             if (isHidden) {
-                container.classList.remove('hidden');
+                overlay.classList.remove('hidden', 'pointer-events-none', 'opacity-0');
+                overlay.classList.add('opacity-100');
+                sheet.classList.remove('translate-y-full');
                 
-                // 버튼 노출 제어
                 if (footerButtons) {
                     footerButtons.style.display = showButtons ? 'flex' : 'none';
                 }
-
-                // 부드러운 스크롤 이동
-                setTimeout(() => {
-                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
+                
+                document.body.style.overflow = 'hidden';
             } else {
-                container.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                sheet.classList.add('translate-y-full');
+                
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                }, 300);
             }
         }
 
@@ -8131,6 +8094,53 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                     [세탁기_종합가이드]드럼세탁기-공통-dE2-점검_2026-03-31
                 </span>
             </div>
+        </div>
+    </div>
+
+    <!-- [NEW] C600 상세 분해도 바텀 시트 Overlay -->
+    <div id="c600-detail-overlay" 
+         onclick="toggleC600Detail(event)"
+         class="fixed inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-300 z-[9100]"></div>
+    
+    <!-- [NEW] C600 상세 분해도 바텀 시트 -->
+    <div id="c600-detail-sheet" 
+         class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] transform translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] z-[9101] flex flex-col max-h-[90vh] overflow-hidden">
+        
+        <!-- Handle & Header -->
+        <div class="flex flex-col items-center pt-3 pb-2 cursor-pointer border-b border-slate-100 dark:border-slate-800" onclick="toggleC600Detail(event)">
+            <div class="w-12 h-1.5 rounded-full bg-slate-400 mb-4 transition-colors hover:bg-slate-500"></div>
+            <div class="px-6 w-full flex justify-between items-center mb-2">
+                <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-[16px]">
+                    <span class="material-symbols-outlined text-[#C0004D] text-[24px]">analytics</span>
+                    분해도 - C600: BASE Parts Assembly 상세 분석
+                </h3>
+                <button onclick="toggleC600Detail(event)" class="text-slate-400 hover:text-slate-600 transition-colors">
+                    <span class="material-symbols-outlined text-[24px]">close</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto px-6 py-6 custom-scrollbar flex flex-col items-center">
+             <div class="relative group cursor-zoom-in overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl w-full"
+                  onclick="openC600LargeImage(); event.stopPropagation();">
+                <img src="./washing_machine_exploded_view.png" class="w-full h-auto object-contain" alt="C600 Exploded View">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div id="c600-footer-buttons" class="px-6 py-6 border-t border-slate-100 dark:border-slate-800 flex gap-3 bg-white dark:bg-slate-900">
+            <button onclick="toggleC600Detail(event)" 
+                    class="flex-1 py-4 font-bold rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98]">
+                취소
+            </button>
+            <button onclick="handlePartOrderRequest()" 
+                    class="flex-1 py-4 font-bold rounded-xl bg-[#C0004D] text-white shadow-lg hover:bg-[#A00040] transition-all active:scale-[0.98]">
+                담기
+            </button>
         </div>
     </div>
 
