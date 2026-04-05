@@ -6376,6 +6376,22 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 });
             }
 
+            // 설정 상태를 일괄 적용하는 함수
+            function applySettingsVisibility() {
+                const repairStatsToggle = document.getElementById('toggle-repair-stats');
+                const historyInfoToggle = document.getElementById('toggle-history-info');
+                
+                const repairStatsSection = document.getElementById('section-repair-stats');
+                const historyInfoSection = document.getElementById('section-history-info');
+
+                if (repairStatsToggle && repairStatsSection) {
+                    repairStatsSection.style.display = repairStatsToggle.checked ? 'block' : 'none';
+                }
+                if (historyInfoToggle && historyInfoSection) {
+                    historyInfoSection.style.display = historyInfoToggle.checked ? 'block' : 'none';
+                }
+            }
+
             // Deep Research Functionality
             const deepResearchBtn = document.getElementById('deep-research-btn');
             let isDeepResearchMode = false;
@@ -6825,36 +6841,72 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </button>
                         </div>`;
 
-            deepResearchBtn.addEventListener('click', function () {
-                const briefingSource = document.getElementById('ai-briefing-source');
+            // [FIX] Deep Research 버튼 리스너 복구
+            if (deepResearchBtn) {
+                deepResearchBtn.addEventListener('click', function () {
+                    const bSource = document.getElementById('ai-briefing-source');
+                    const bContent = document.getElementById('ai-briefing-content');
+                    const lContainer = document.getElementById('ai-loading-container');
+                    const bCard = document.getElementById('ai-briefing-card');
 
-                if (!isDeepResearchMode) {
-                    // 상세 모드로 전환: 스트리밍 원본 소스를 상세 내용으로 교체
-                    briefingSource.innerHTML = detailedContentHTML;
-                    this.classList.remove('bg-blue-50', 'text-blue-700');
-                    this.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-                    isDeepResearchMode = true;
-                } else {
-                    // 원래 모드로 복귀: 스트리밍 원본 소스를 원래 내용으로 교체
-                    briefingSource.innerHTML = originalContentHTML;
-                    this.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-                    this.classList.add('bg-blue-50', 'text-blue-700');
-                    isDeepResearchMode = false;
-                }
+                    // 버튼 초기 기호 및 텍스트 저장
+                    const originalBtnHTML = this.innerHTML;
 
-                // [추가] 콘텐츠가 교체되었으므로 접기 버튼 인터랙션 재연결
-                initDashboardInteractions();
+                    // 상태 전환
+                    if (!isDeepResearchMode) {
+                        bSource.innerHTML = detailedContentHTML;
+                        this.classList.remove('bg-blue-50', 'text-blue-700');
+                        this.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+                        isDeepResearchMode = true;
+                    } else {
+                        bSource.innerHTML = originalContentHTML;
+                        this.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                        this.classList.add('bg-blue-50', 'text-blue-700');
+                        isDeepResearchMode = false;
+                    }
 
-                // 설정 메뉴의 토글 상태 재적용
-                const repairStatsEl = document.getElementById('repair-stats-section');
-                const historyInfoEl = document.getElementById('history-info-section');
+                    // 로딩 바 및 버튼 애니메이션 상태
+                    this.disabled = true;
+                    this.innerHTML = `
+                        <span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+                        ${isDeepResearchMode ? '심층 분석 중...' : '요약 정리 중...'}
+                    `;
 
-                if (repairStatsEl) repairStatsEl.style.display = document.getElementById('toggle-repair-stats').checked ? 'block' : 'none';
-                if (historyInfoEl) historyInfoEl.style.display = document.getElementById('toggle-history-info').checked ? 'block' : 'none';
-            });
+                    // 카드 숨기고 로딩 바 노출
+                    if (bCard) bCard.style.display = 'none';
+                    if (lContainer) {
+                        lContainer.classList.remove('hidden');
+                        lContainer.classList.add('flex');
+                    }
 
-            // Content Toggle Functionality
-            const toggleContentBtn = document.getElementById('toggle-content-btn');
+                    // 타겟 초기화
+                    if (bContent) bContent.innerHTML = '';
+                    const dTarget = document.getElementById('dashboard-stream-target');
+                    const qTarget = document.getElementById('ai-questions-stream-target');
+                    if (dTarget) dTarget.innerHTML = '';
+                    if (qTarget) qTarget.innerHTML = '';
+
+                    setTimeout(() => {
+                        // 로딩 바 숨기기
+                        if (lContainer) {
+                            lContainer.classList.add('hidden');
+                            lContainer.classList.remove('flex');
+                        }
+
+                        // 버튼 상태 복구
+                        this.innerHTML = `
+                            <span class="material-symbols-outlined text-[20px] leading-none">campaign</span>
+                            ${isDeepResearchMode ? '원래대로 (요약)' : 'Deep research'}
+                        `;
+                        this.disabled = false;
+
+                        // 전역화된 runStreamingSequence 호출
+                        if (window.runStreamingSequence) {
+                            window.runStreamingSequence();
+                        }
+                    }, 1400);
+                });
+            }
             const aiContentWrapper = document.getElementById('ai-content-wrapper');
             const toggleContentText = document.getElementById('toggle-content-text');
             const toggleContentIcon = document.getElementById('toggle-content-icon');
@@ -7024,54 +7076,11 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 }, 550);
             });
 
-            // Deep Research 버튼 인터랙션 로직
-            const deepResearchBtn = document.getElementById('deep-research-btn');
-            const briefingCard = document.getElementById('ai-briefing-card');
-            const loadingContainer = document.getElementById('ai-loading-container');
-            const aiTopContainer = document.getElementById('ai-top-container');
-            const aiIconsContainer = document.getElementById('ai-icons-container');
-            const aiQuestionsContainer = document.getElementById('ai-questions-container');
-
-            if (deepResearchBtn) {
-                deepResearchBtn.addEventListener('click', function () {
-                    // 1. 버튼 로딩 상태로 변경
-                    const originalHTML = this.innerHTML;
-                    this.disabled = true;
-                    this.classList.add('opacity-80', 'cursor-not-allowed');
-                    this.innerHTML = `
-                        <span class="material-symbols-outlined text-[16px] leading-none animate-spin">sync</span>
-                        연구 진행 중...
-                    `;
-
-                    // 2. 초기 리셋 (기본 답변 및 하단 영역 모두 비우기)
-                    briefingCard.style.display = 'none';
-                    loadingContainer.classList.remove('hidden');
-                    loadingContainer.classList.add('flex');
-
-                    const dashboardTarget = document.getElementById('dashboard-stream-target');
-                    const questionsTarget = document.getElementById('ai-questions-stream-target');
-                    if (dashboardTarget) dashboardTarget.innerHTML = '';
-                    if (questionsTarget) questionsTarget.innerHTML = '';
-
-                    // 3. 1.2초 후 순차 스트리밍 시작
-                    setTimeout(() => {
-                        // 로딩 컨테이너 숨기기
-                        loadingContainer.classList.add('hidden');
-                        loadingContainer.classList.remove('flex');
-
-                        // 버튼 상태 복구
-                        this.innerHTML = originalHTML;
-                        this.disabled = false;
-                        this.classList.remove('opacity-80', 'cursor-not-allowed');
-
-                        // 결과 카드 노출 및 순차 스트리밍 시작
-                        runStreamingSequence();
-                    }, 1400);
-                });
-            }
+                // [삭제] 리스너는 상단 스크립트 블록에서 관리됩니다.
 
             // [스트리밍 시퀀스 통합 관리 함수]
             function runStreamingSequence() {
+                window.runStreamingSequence = runStreamingSequence;
                 const briefingCard = document.getElementById('ai-briefing-card');
                 const briefingSource = document.getElementById('ai-briefing-source');
                 const briefingContent = document.getElementById('ai-briefing-content');
@@ -7114,6 +7123,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         if (toggleContainer) toggleContainer.style.display = 'flex';
                                         if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
 
+                                        // [추가] 설정에 따른 섹션 가시성 적용
+                                        applySettingsVisibility();
                                         initDashboardInteractions();
                                         window.dispatchEvent(new Event('resize'));
                                     });
@@ -7123,6 +7134,8 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     if (toggleContainer) toggleContainer.style.display = 'flex';
                                     if (aiIconsContainer) aiIconsContainer.style.display = 'flex';
 
+                                    // [추가] 설정에 따른 섹션 가시성 적용
+                                    applySettingsVisibility();
                                     initDashboardInteractions();
                                     window.dispatchEvent(new Event('resize'));
                                 }
