@@ -5637,31 +5637,44 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                                 <!-- 2. LGSC 중수리 -->
                                 <div
-                                    class="mt-3 flex items-center justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                                    class="mt-3 flex items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800/50 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-slate-200 dark:border-slate-700">
                                     <div class="flex items-center gap-3">
                                         <img src="./lgsc_icon.png"
                                             class="w-[34px] h-[34px] rounded-md object-contain grayscale"
                                             alt="LGSC 중수리">
                                         <div>
-                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리 📌
+                                            <p class="text-slate-500 dark:text-slate-400 font-bold text-[14px]">LGSC 중수리
+                                                📌
                                                 중수리 정보를 확인하세요.</p>
                                         </div>
                                     </div>
-                                    <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0"
+                                    <img src="./chevron_icon.png"
+                                        class="w-[22px] h-[22px] object-contain flex-shrink-0 grayscale opacity-80"
                                         alt="chevron">
                                 </div>
 
                                 <!-- 3. Argus -->
                                 <div
                                     class="mt-3 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                                    <div class="flex items-center gap-3">
+                                    <div class="flex items-start gap-3">
                                         <img src="./argus_logo.png" class="w-[34px] h-[34px] rounded-md object-contain"
                                             alt="Argus">
-                                        <div>
-                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌AI
-                                                요약 정보를 확인하세요</p>
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌 AI
+                                                진단 결과 요약</p>
+                                            <div class="text-[12px] text-slate-600 dark:text-slate-400 leading-snug">
+                                                <p>제품: 4도어 냉장고 (M623GNN392.AKOR)</p>
+                                                <p class="mt-0.5"><span
+                                                        class="font-bold text-red-600 dark:text-red-400">진단:</span> 냉동실
+                                                    온도 이상 상승 확인, 팬모터 점검 필요</p>
+                                                <p class="text-[11px] text-slate-400 mt-1">2026년 3월 26일 16시 30분</p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <img src="./chevron_icon.png"
+                                        class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer"
+                                        alt="chevron"
+                                        onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
                                 </div>
                             </div>
 
@@ -6157,18 +6170,23 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
 
                                     <!-- 서비스매뉴얼 1건 -->
-                                    <div
+                                    <div onclick="window.open('https://qbotservice.lge.com/svc-manual/616_r4/ko-kr/main.html#topic_18', '_blank')"
+                                        style="opacity: 1; transition: opacity 0.2s;"
                                         class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-purple-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
-                                                <span class="material-symbols-outlined">construction</span>
+                                        <div class="flex items-center gap-3"
+                                            style="opacity: 1; transition: opacity 0.2s;">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400"
+                                                style="opacity: 1; transition: opacity 0.2s;">
+                                                <span class="material-symbols-outlined"
+                                                    style="opacity: 1; transition: opacity 0.2s;">construction</span>
                                             </div>
-                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100">서비스매뉴얼
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100"
+                                                style="opacity: 1; transition: opacity 0.2s;">서비스매뉴얼
                                                 1건</span>
                                         </div>
                                         <span
-                                            class="material-symbols-outlined text-slate-400 group-hover:text-purple-500 transition-colors text-sm">arrow_forward_ios</span>
+                                            class="material-symbols-outlined text-slate-400 group-hover:text-purple-500 transition-colors text-sm"
+                                            style="opacity: 1; transition: opacity 0.2s;">arrow_forward_ios</span>
                                     </div>
 
                                     <!-- 설명서 1건 -->
@@ -6219,17 +6237,19 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     <div onclick="openMainExplodedViewSheet()"
                                         style="opacity: 1; transition: opacity 0.2s;"
                                         class="snap-start flex-shrink-0 w-48 p-3 rounded-xl border border-red-100 bg-white dark:bg-slate-900 cursor-pointer hover:shadow-md transition-all flex items-center justify-between group">
-                                        <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3"
+                                            style="opacity: 1; transition: opacity 0.2s;">
                                             <div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400"
                                                 style="opacity: 1; transition: opacity 0.2s;">
                                                 <span class="material-symbols-outlined"
                                                     style="opacity: 1; transition: opacity 0.2s;">grid_view</span>
                                             </div>
-                                            <span
-                                                class="font-bold text-sm text-slate-900 dark:text-slate-100">분해도</span>
+                                            <span class="font-bold text-sm text-slate-900 dark:text-slate-100"
+                                                style="opacity: 1; transition: opacity 0.2s;">분해도</span>
                                         </div>
                                         <span
-                                            class="material-symbols-outlined text-slate-400 group-hover:text-red-500 transition-colors text-sm">arrow_forward_ios</span>
+                                            class="material-symbols-outlined text-slate-400 group-hover:text-red-500 transition-colors text-sm"
+                                            style="opacity: 1; transition: opacity 0.2s;">arrow_forward_ios</span>
                                     </div>
 
                                     <!-- 스스로해결 -->
@@ -6268,40 +6288,89 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </div>
                             </section>
 
-                            <section class="space-y-3 mb-8">
-                                <div class="flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-slate-600 text-xl">smart_display</span>
-                                    <h2 class="font-bold text-lg text-slate-900 dark:text-white">학습용 영상 컨텐츠</h2>
-                                </div>
-                                <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+                            <section class="mb-2 px-2 max-w-full overflow-hidden">
+                                <!-- Tab Header -->
+                                <div class="flex">
                                     <div
-                                        class="flex-shrink-0 w-52 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                        <a href="https://www.youtube.com/watch?v=kYcIeC-R63w" target="_blank"
-                                            class="block">
-                                            <div
-                                                class="h-28 bg-slate-200 flex items-center justify-center relative group">
-                                                <img src="https://img.youtube.com/vi/kYcIeC-R63w/0.jpg"
-                                                    class="w-full h-full object-cover" alt="YouTube Thumbnail">
+                                        class="px-6 py-2 bg-white dark:bg-slate-900 border-t border-l border-r border-[#e0e0e0] dark:border-slate-700 rounded-t-2xl shadow-[0_-4px_10px_-5px_rgba(0,0,0,0.1)]">
+                                        <span
+                                            class="text-[15px] font-bold text-slate-800 dark:text-white">Contents</span>
+                                    </div>
+                                </div>
+
+                                <!-- Box Container -->
+                                <div
+                                    class="bg-white dark:bg-slate-800 border border-[#e0e0e0] dark:border-slate-700 rounded-b-2xl rounded-tr-2xl shadow-sm p-4 pt-3">
+                                    <h3 class="text-[14px] font-bold text-slate-700 dark:text-slate-300 mb-3 px-1">영상
+                                    </h3>
+
+                                    <div class="space-y-2.5">
+                                        <!-- Video 1 -->
+                                        <a href="https://www.lge.co.kr/support/solutions-20150847759507" target="_blank"
+                                            class="flex gap-3 p-2 bg-white dark:bg-slate-900 border border-[#eeeeee] dark:border-slate-700 rounded-xl hover:shadow-md transition-all group overflow-hidden items-center">
+                                            <div class="w-32 h-[72px] rounded-lg overflow-hidden flex-shrink-0">
+                                                <img src="https://img.youtube.com/vi/aZ3-2lS6p5A/mqdefault.jpg"
+                                                    class="w-full h-full object-cover" alt="Thumbnail">
+                                            </div>
+                                            <div class="flex-1 pr-1 min-w-0">
+                                                <h4
+                                                    class="text-[13px] font-bold text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-purple-600">
+                                                    인공지능 리모컨(매직 리모컨)을 통합 리모컨으로 설정하는 방법</h4>
                                                 <div
-                                                    class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                                                    <span
-                                                        class="material-symbols-outlined text-white text-4xl opacity-90">play_circle</span>
+                                                    class="flex justify-between items-center text-[10.5px] text-slate-500 font-medium">
+                                                    <span>통합리모컨 자동으로 설정하기</span>
+                                                    <div class="flex gap-1.5 opacity-80">
+                                                        <span>228.2천 회</span>
+                                                        <span>•</span>
+                                                        <span>2025-04-05</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="p-3">
-                                                <h3
-                                                    class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2">
-                                                    세탁기 분해 청소 방법 전체영상 세탁조 통돌이 분해 청소 풀영상
-                                                </h3>
+                                        </a>
+
+                                        <!-- Video 2 -->
+                                        <a href="https://www.youtube.com/watch?v=pY9W4-O-jrk" target="_blank"
+                                            class="flex gap-3 p-2 bg-white dark:bg-slate-900 border border-[#eeeeee] dark:border-slate-700 rounded-xl hover:shadow-md transition-all group overflow-hidden items-center">
+                                            <div class="w-32 h-[72px] rounded-lg overflow-hidden flex-shrink-0">
+                                                <img src="https://img.youtube.com/vi/pY9W4-O-jrk/mqdefault.jpg"
+                                                    class="w-full h-full object-cover" alt="Thumbnail">
+                                            </div>
+                                            <div class="flex-1 pr-1 min-w-0">
+                                                <h4
+                                                    class="text-[13px] font-bold text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-purple-600">
+                                                    식기세척기 걸레받이 높이 고르는법 *필수시청* 📝 | LG식기세척기 | 걸레받이 높이</h4>
                                                 <div
-                                                    class="flex items-center gap-2 text-[10px] text-slate-500 font-medium mt-2">
-                                                    <span class="text-green-600 flex items-center gap-0.5">
-                                                        <span
-                                                            class="material-symbols-outlined text-[12px]">check_circle</span>
-                                                        Verified
-                                                    </span>
-                                                    <span>•</span>
-                                                    <span>51.5K Views</span>
+                                                    class="flex justify-between items-center text-[10.5px] text-slate-500 font-medium">
+                                                    <span>가전각색</span>
+                                                    <div class="flex gap-1.5 opacity-80">
+                                                        <span>0.8천 회</span>
+                                                        <span>•</span>
+                                                        <span>2025-09-22</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <!-- Video 3 -->
+                                        <a href="https://www.youtube.com/watch?v=Fj-y5M5Xy3o" target="_blank"
+                                            class="flex gap-3 p-2 bg-white dark:bg-slate-900 border border-[#eeeeee] dark:border-slate-700 rounded-xl hover:shadow-md transition-all group overflow-hidden items-center">
+                                            <div class="w-32 h-[72px] rounded-lg overflow-hidden flex-shrink-0">
+                                                <img src="https://img.youtube.com/vi/Fj-y5M5Xy3o/mqdefault.jpg"
+                                                    class="w-full h-full object-cover" alt="Thumbnail">
+                                            </div>
+                                            <div class="flex-1 pr-1 min-w-0">
+                                                <h4
+                                                    class="text-[13px] font-bold text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-purple-600">
+                                                    2025 TV 역대급 가성비 티비 판매 랭킹 TOP5 TV 고를 때 이것만 보세요 [삼성티비, 엘지티비, LGTV,
+                                                    TCL, 65인치, 75인치, 85인치]</h4>
+                                                <div
+                                                    class="flex justify-between items-center text-[10.5px] text-slate-500 font-medium">
+                                                    <span>리뷰하는 펭귄 '리펭'</span>
+                                                    <div class="flex gap-1.5 opacity-80">
+                                                        <span>1.6천 회</span>
+                                                        <span>•</span>
+                                                        <span>2025-10-28</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -6310,33 +6379,13 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </section>
                         </section>
 
-                        <!-- Content Area -->
-                        <div class="p-3">
-                            <p class="text-[10px] text-slate-500 font-bold mb-1">lge.co.kr</p>
-                            <h3 class="text-slate-900 dark:text-white font-bold text-xs leading-snug line-clamp-2 mb-2">
-                                세탁기 분해 청소 방법 전체영상 세탁조 통돌이 분해 청소 풀영상
-                            </h3>
-                            <div class="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
-                                <span class="text-green-600 flex items-center gap-0.5">
-                                    <span class="material-symbols-outlined text-[12px]">check_circle</span>
-                                    Verified
-                                </span>
-                                <span>•</span>
-                                <span>Mar 6, 2020</span>
-                                <span>•</span>
-                                <span>51.5K Views</span>
-                            </div>
-                        </div>
-                        </a>
-
-
                     </div>
             </div>
 
 
             </section>
         </main>
-        <div id="ai-questions-container" class="pt-2 px-4" style="display: none;">
+        <div id="ai-questions-container" class="pt-2 px-4 pb-40">
             <h3
                 class="flex items-center gap-2 font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                 AI 추천 질문</h3>
@@ -6631,24 +6680,30 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
 
                         <!-- 2. LGSC 중수리 -->
-                        <div class="mt-2 flex items-center justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                        <div class="mt-2 flex items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800/50 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-slate-200 dark:border-slate-700">
                             <div class="flex items-center gap-3">
                                 <img src="./lgsc_icon.png" class="w-[34px] h-[34px] rounded-md object-contain grayscale" alt="LGSC 중수리">
                                 <div>
-                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
+                                    <p class="text-slate-500 dark:text-slate-400 font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
                                 </div>
                             </div>
-                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openDiagnosisReport(event)">
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer grayscale opacity-80" alt="chevron" onclick="openDiagnosisReport(event)">
                         </div>
                         
                         <!-- 3. Argus -->
                         <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-start gap-3">
                                 <img src="./argus_logo.png" class="w-[34px] h-[34px] rounded-md object-contain" alt="Argus">
-                                <div>
-                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌AI 요약 정보를 확인하세요</p>
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌 AI 진단 결과 요약</p>
+                                    <div class="text-[12px] text-slate-600 dark:text-slate-400 leading-snug">
+                                        <p>제품: 4도어 냉장고 (M623GNN392.AKOR)</p>
+                                        <p class="mt-0.5"><span class="font-bold text-red-600 dark:text-red-400">진단:</span> 냉동실 온도 이상 상승 확인, 팬모터 점검 필요</p>
+                                        <p class="text-[11px] text-slate-400 mt-1">2026년 3월 26일 16시 30분</p>
+                                    </div>
                                 </div>
                             </div>
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
                         </div>
                     </div>`
             };
@@ -6878,24 +6933,30 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
 
                         <!-- 2. LGSC 중수리 (요약 유지) -->
-                        <div class="mt-2 flex items-center justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                        <div class="mt-2 flex items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800/50 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-slate-200 dark:border-slate-700">
                             <div class="flex items-center gap-3">
                                 <img src="./lgsc_icon.png" class="w-[34px] h-[34px] rounded-md object-contain grayscale" alt="LGSC 중수리">
                                 <div>
-                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
+                                    <p class="text-slate-500 dark:text-slate-400 font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
                                 </div>
                             </div>
-                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openDiagnosisReport(event)">
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer grayscale opacity-80" alt="chevron" onclick="openDiagnosisReport(event)">
                         </div>
                         
                         <!-- 3. Argus (요약 유지) -->
                         <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-start gap-3">
                                 <img src="./argus_logo.png" class="w-[34px] h-[34px] rounded-md object-contain" alt="Argus">
-                                <div>
-                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌AI 요약 정보를 확인하세요</p>
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌 AI 진단 결과 요약</p>
+                                    <div class="text-[12px] text-slate-600 dark:text-slate-400 leading-snug">
+                                        <p>제품: 4도어 냉장고 (M623GNN392.AKOR)</p>
+                                        <p class="mt-0.5"><span class="font-bold text-red-600 dark:text-red-400">진단:</span> 냉동실 온도 이상 상승 확인, 팬모터 점검 필요</p>
+                                        <p class="text-[11px] text-slate-400 mt-1">2026년 3월 26일 16시 30분</p>
+                                    </div>
                                 </div>
                             </div>
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
                         </div>
                     </div>`
 
@@ -6994,24 +7055,30 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                             </div>
 
                             <!-- 2. LGSC 중수리 -->
-                            <div class="mt-2 flex items-center justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
+                            <div class="mt-2 flex items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800/50 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-slate-200 dark:border-slate-700">
                                 <div class="flex items-center gap-3">
                                     <img src="./lgsc_icon.png" class="w-[34px] h-[34px] rounded-md object-contain grayscale" alt="LGSC 중수리">
                                     <div>
-                                        <p class="text-slate-900 dark:text-white font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
+                                        <p class="text-slate-500 dark:text-slate-400 font-bold text-[14px]">LGSC 중수리 📌 중수리 정보를 확인하세요.</p>
                                     </div>
                                 </div>
-                                <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openDiagnosisReport(event)">
+                                <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer grayscale opacity-80" alt="chevron" onclick="openDiagnosisReport(event)">
                             </div>
                             
                             <!-- 3. Argus -->
                             <div class="mt-2 flex items-start justify-between gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl py-3 pl-3 pr-4 shadow-sm border border-purple-100 dark:border-purple-800/50">
-                                <div class="flex items-center gap-3">
+                                <div class="flex items-start gap-3">
                                     <img src="./argus_logo.png" class="w-[34px] h-[34px] rounded-md object-contain" alt="Argus">
-                                    <div>
-                                        <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌AI 요약 정보를 확인하세요</p>
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-slate-900 dark:text-white font-bold text-[14px]">Argus 📌 AI 진단 결과 요약</p>
+                                        <div class="text-[12px] text-slate-600 dark:text-slate-400 leading-snug">
+                                            <p>제품: 4도어 냉장고 (M623GNN392.AKOR)</p>
+                                            <p class="mt-0.5"><span class="font-bold text-red-600 dark:text-red-400">진단:</span> 냉동실 온도 이상 상승 확인, 팬모터 점검 필요</p>
+                                            <p class="text-[11px] text-slate-400 mt-1">2026년 3월 26일 16시 30분</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
                             </div>
                         </div>`;
 
@@ -8427,48 +8494,35 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                 document.body.style.overflow = '';
             }, 300);
         }
+
+        // 전체 분해도 바텀 시트 제어
+        function openMainExplodedViewSheet() {
+            const overlay = document.getElementById('main-exploded-view-overlay');
+            const sheet = document.getElementById('main-exploded-view-sheet');
+
+            overlay.classList.remove('pointer-events-none', 'opacity-0');
+            overlay.classList.add('opacity-100');
+            sheet.classList.remove('translate-y-full');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMainExplodedViewSheet() {
+            closeSourceImage();
+        }
+
+        // 전체 분해도 모달 제어 (가운데 크게 보기)
+        function openMainExplodedViewSheet() {
+            const modal = document.getElementById('source-image-modal');
+            const modalImg = modal.querySelector('img');
+            if (modal && modalImg) {
+                modalImg.src = "C:/Users/noh.yeongho/.gemini/antigravity/brain/c6224b4a-737a-40cc-a443-cae4393a4e65/media__1775464662094.png";
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
     </script>
-    <!-- [전체 분해도 바텀 시트] -->
-    <div id="main-exploded-view-overlay" onclick="closeMainExplodedViewSheet()"
-        class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[9998]"></div>
-    <div id="main-exploded-view-sheet"
-        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 rounded-t-[32px] transform translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] z-[9999] px-6 pb-12 shadow-[0_-10px_40px_rgba(0,0,0,0.3)] overflow-hidden border-t border-slate-100 dark:border-slate-800 flex flex-col max-h-[90vh]">
-        <!-- 상단 핸들 -->
-        <div class="flex flex-col items-center pt-3 pb-2 cursor-pointer" onclick="closeMainExplodedViewSheet()">
-            <div class="w-12 h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 mb-4"></div>
-            <div class="px-2 w-full flex justify-between items-center mb-2">
-                <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-[18px]">
-                    <span class="material-symbols-outlined text-[#C0004D] text-[24px]">grid_view</span>
-                    전체 분해도
-                </h3>
-                <button onclick="closeMainExplodedViewSheet()"
-                    class="text-slate-400 hover:text-slate-600 transition-colors">
-                    <span class="material-symbols-outlined text-[28px]">close</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- 이미지 영역 -->
-        <div class="flex-1 overflow-y-auto pt-4 pb-8 flex flex-col items-center">
-            <div class="w-full max-w-4xl bg-white rounded-2xl border border-slate-100 p-2 shadow-inner overflow-hidden">
-                <img src="./main_exploded_view_landscape.png" class="w-full h-auto object-contain rounded-xl"
-                    alt="Main Exploded View">
-            </div>
-
-            <!-- 부가 정보 -->
-            <div class="mt-8 grid grid-cols-2 gap-4 w-full max-w-4xl px-2">
-                <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                    <p class="text-[12px] text-slate-500 mb-1">스탠드 모델</p>
-                    <p class="text-[16px] font-bold text-slate-900 dark:text-white">AD-65B7KE</p>
-                </div>
-                <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                    <p class="text-[12px] text-slate-500 mb-1">벽걸이 모델</p>
-                    <p class="text-[16px] font-bold text-slate-900 dark:text-white">OTVW420A</p>
-                </div>
-            </div>
-        </div>
-    </div>
+</body>
 
 </html>
