@@ -1,0 +1,24 @@
+﻿[OK] 紐⑤뱺 ?ㅽ겕由쏀듃 釉붾줉 臾몃쾿 ?뺤긽 (8媛?
+
+=== 以묒슂 蹂??const ?좎뼵 ?꾩튂 ===
+[?놁쓬] isDeepResearchMode (0??
+[?놁쓬] detailedContentHTML (0??
+[OK  ] originalContentHTML (1??
+  ??Line 6763: const originalContentHTML = `
+[?놁쓬] deepResearchBtn (0??
+
+=== window ?꾩뿭 蹂???깅줉 ?잛닔 ===
+  window.deepResearchBtn: 3??  window.isDeepResearchMode: 8??  window.detailedContentHTML: 3??  window.originalContentHTML: 3??
+=== runStreamingSequence 李몄“ ?꾩튂 ===
+  Line 6984: runStreamingSequence();
+  Line 7077: runStreamingSequence();
+  Line 7083: function runStreamingSequence() {
+
+=== ai-briefing-source ??<script> ?쒓렇 ===
+[OK  ] script ?쒓렇 ?놁쓬 (?대┛)
+
+=== originalContentHTML ?뺤쓽 諛⑹떇 ===
+  Line 6759: window.originalContentHTML = document.getElementById('ai-briefing-source').innerHTML;
+  Line 6763: const originalContentHTML = `
+  Line 7029: } else if (window.originalContentHTML) {
+  Line 7030: briefingSource.innerHTML = window.originalContentHTML;
