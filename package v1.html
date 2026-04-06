@@ -5536,7 +5536,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
                         <!-- 스트리밍 원본 소스 (순수 콘텐츠만 포함) -->
                         <div id="ai-briefing-source" style="display:none;">
-                            <div id="section-repair-stats" class="mb-6">
+                            <div id="section-repair-stats" class="bg-slate-50/80 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all mb-4">
                                 <h3
                                     class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                     <span>수리 통계</span>
@@ -5555,7 +5555,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </p>
                             </div>
 
-                            <div id="section-work-standard" class="mb-6">
+                            <div id="section-work-standard" class="bg-blue-50/40 dark:bg-blue-900/10 p-4 rounded-2xl border border-blue-100/50 dark:border-blue-800/20 shadow-sm transition-all mb-4">
                                 <h3
                                     class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                     <span>업무 기준</span>
@@ -5572,7 +5572,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </p>
                             </div>
 
-                            <div id="section-tech-info" class="mb-6">
+                            <div id="section-tech-info" class="bg-emerald-50/30 dark:bg-emerald-900/10 p-4 rounded-2xl border border-emerald-100/50 dark:border-emerald-800/20 shadow-sm transition-all mb-4">
                                 <h3
                                     class="flex items-center justify-between font-bold mb-3 border-l-4 border-primary pl-2 text-slate-900 dark:text-white text-[15px]">
                                     <span>기술정보</span>
@@ -5590,7 +5590,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 </p>
                             </div>
 
-                            <div id="section-history-info" class="pt-2">
+                            <div id="section-history-info" class="bg-purple-50/40 dark:bg-purple-900/10 p-4 rounded-2xl border border-purple-100/50 dark:border-purple-800/20 shadow-sm transition-all">
                                 <h3
                                     class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white text-[15px]">
                                     <span>이력 정보</span>
@@ -5674,8 +5674,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
                                     <img src="./chevron_icon.png"
                                         class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer"
-                                        alt="chevron"
-                                        onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
+                                        onclick="openArgusDiagnosisReport(event)">
                                 </div>
                             </div>
 
@@ -6134,17 +6133,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- 분해분 하단 버튼 영역 -->
-                                        <div class="px-6 pb-6 flex gap-3">
-                                            <button onclick="toggleC600Detail(event)"
-                                                class="flex-1 py-3.5 font-bold rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-gray-50 active:scale-[0.98] transition-all">
-                                                취소
-                                            </button>
-                                            <button onclick="handlePartOrderRequest()"
-                                                class="flex-1 py-3.5 font-bold rounded-xl bg-[#C0004D] text-white shadow-lg shadow-red-500/20 transition-all hover:bg-[#A00040] active:scale-[0.98]">
-                                                담기
-                                            </button>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -6614,7 +6603,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             // 요약 콘텐츠 데이터 구조화 (접기 기능용)
             const summaryData = {
                 'repair-stats': `
-                    <div id="section-repair-stats">
+                    <div id="section-repair-stats" class="bg-slate-50/80 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>수리 통계</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="repair-stats">
@@ -6626,7 +6615,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </p>
                     </div>`,
                 'work-standard': `
-                    <div id="section-work-standard">
+                    <div id="section-work-standard" class="bg-blue-50/40 dark:bg-blue-900/10 p-4 rounded-2xl border border-blue-100/50 dark:border-blue-800/20 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>업무 기준</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="work-standard">
@@ -6638,7 +6627,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </p>
                     </div>`,
                 'tech-info': `
-                    <div id="section-tech-info">
+                    <div id="section-tech-info" class="bg-emerald-50/30 dark:bg-emerald-900/10 p-4 rounded-2xl border border-emerald-100/50 dark:border-emerald-800/20 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>기술정보</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="tech-info">
@@ -6650,7 +6639,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </p>
                     </div>`,
                 'history-info': `
-                    <div id="section-history-info">
+                    <div id="section-history-info" class="bg-purple-50/40 dark:bg-purple-900/10 p-4 rounded-2xl border border-purple-100/50 dark:border-purple-800/20 shadow-sm transition-all">
                         <div class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                             <span>이력 정보</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="history-info">
@@ -6707,7 +6696,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
                                 </div>
                             </div>
-                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openArgusDiagnosisReport(event)">
                         </div>
                     </div>`
             };
@@ -6715,7 +6704,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             // 상세 콘텐츠 데이터 구조화
             const detailedData = {
                 'repair-stats': `
-                    <div id="section-repair-stats">
+                    <div id="section-repair-stats" class="bg-slate-50/80 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>1. 수리 통계 분석</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="repair-stats">
@@ -6741,7 +6730,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'work-standard': `
-                    <div id="section-work-standard">
+                    <div id="section-work-standard" class="bg-blue-50/40 dark:bg-blue-900/10 p-4 rounded-2xl border border-blue-100/50 dark:border-blue-800/20 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>2. 업무 기준 안내 (무상 적용 조건)</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="work-standard">
@@ -6771,7 +6760,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'tech-info': `
-                    <div id="section-tech-info">
+                    <div id="section-tech-info" class="bg-emerald-50/30 dark:bg-emerald-900/10 p-4 rounded-2xl border border-emerald-100/50 dark:border-emerald-800/20 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                             <span>3. 기술 정보 및 점검 절차</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="tech-info">
@@ -6809,7 +6798,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                         </div>
                     </div>`,
                 'history-info': `
-                    <div id="section-history-info">
+                    <div id="section-history-info" class="bg-purple-50/40 dark:bg-purple-900/10 p-4 rounded-2xl border border-purple-100/50 dark:border-purple-800/20 shadow-sm transition-all">
                         <h3 class="flex items-center justify-between font-bold mb-3 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                             <span>4. 이력 정보 및 유의사항</span>
                             <button class="toggle-detail-btn flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-slate-400 text-white hover:bg-slate-500 transition-all" data-section="history-info">
@@ -6961,7 +6950,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     </div>
                                 </div>
                             </div>
-                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
+                            <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openArgusDiagnosisReport(event)">
                         </div>
                     </div>`
 
@@ -6981,7 +6970,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
 
             // 원본 콘텐츠
             const originalContentHTML = `
-                        <div id="section-repair-stats">
+                        <div id="section-repair-stats" class="bg-slate-50/80 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm mb-4">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>수리 통계</span>
@@ -6996,7 +6985,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 차지함.
                             </p>
                         </div>
-                        <div id="section-work-standard" class="mt-6">
+                        <div id="section-work-standard" class="bg-blue-50/40 dark:bg-blue-900/10 p-4 rounded-2xl border border-blue-100/50 dark:border-blue-800/20 shadow-sm mb-4">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>업무 기준</span>
@@ -7009,7 +6998,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                     무상 적용 대상</span>임. 2018년 5월부터 2019년 11월까지 생산된 제품에 한해 무상 처리 가능함.
                             </p>
                         </div>
-                        <div id="section-tech-info" class="mt-6">
+                        <div id="section-tech-info" class="bg-emerald-50/30 dark:bg-emerald-900/10 p-4 rounded-2xl border border-emerald-100/50 dark:border-emerald-800/20 shadow-sm mb-4">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-primary pl-2 text-slate-900 dark:text-white">
                                 <span>기술정보</span>
@@ -7023,7 +7012,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                 벗어날 경우 모터를 교체함. 이상이 없을 경우 PCB 교체를 권장함.
                             </p>
                         </div>
-                        <div id="section-history-info" class="pt-2">
+                        <div id="section-history-info" class="bg-purple-50/40 dark:bg-purple-900/10 p-4 rounded-2xl border border-purple-100/50 dark:border-purple-800/20 shadow-sm">
                             <h3
                                 class="flex items-center justify-between font-bold mb-2 border-l-4 border-purple-500 pl-2 text-slate-900 dark:text-white">
                                 <span>이력 정보</span>
@@ -7084,7 +7073,7 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
                                         </div>
                                     </div>
                                 </div>
-                                <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="window.open('https://lgsc.lge.com/diagnosis/4f6d851c-bb0f-4575-a893-4546760af784', '_blank')">
+                                <img src="./chevron_icon.png" class="w-[22px] h-[22px] object-contain flex-shrink-0 cursor-pointer" alt="chevron" onclick="openArgusDiagnosisReport(event)">
                             </div>
                         </div>`;
 
@@ -7798,8 +7787,22 @@ bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-30">
             const modal = document.getElementById('source-image-modal');
             const modalImg = modal.querySelector('img');
             if (modal && modalImg) {
-                // 생성된 정밀 진단 보고서 이미지로 소스 변경
+                // 기존 LGSC 리포트 경로
                 modalImg.src = "C:/Users/noh.yeongho/.gemini/antigravity/brain/9641c861-de6d-4670-9e5c-63e5746d5a0d/diagnosis_report_1775462045164.png";
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Argus 정밀 진단 보고서 이미지 열기 (쉐브론 아이콘 클릭 시)
+        function openArgusDiagnosisReport(event) {
+            if (event) event.stopPropagation();
+            const modal = document.getElementById('source-image-modal');
+            const modalImg = modal.querySelector('img');
+            if (modal && modalImg) {
+                // 새로 첨부된 Argus 정밀 진단 레포트 이미지
+                modalImg.src = "./argus_diagnosis_report.png";
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 document.body.style.overflow = 'hidden';
